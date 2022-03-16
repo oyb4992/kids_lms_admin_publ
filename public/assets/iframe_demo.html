@@ -44,9 +44,10 @@
                     <li><a href="">운영 관리</a></li>
                     <li><a href="">LMS 어드민</a>
                         <ul>
-                            <li><a href="">커리큘럼편성 관리</a></li>    
-                            <li><a href="">부모알림장 관리</a></li>    
-                            <li><a href="">문구 관리</a></li>
+                            <li><a href="./html/lms/curriculum.html" target="wrap_container">커리큘럼편성 관리</a></li>    
+                            <li><a href="./html/lms/parents.html" target="wrap_container">부모알림장 관리</a></li>    
+                            <li><a href="./html/lms/pet.html" target="wrap_container">펫 관리</a></li>    
+                            <li><a href="./html/lms/phrase.html" target="wrap_container">문구 관리</a></li>
                         </ul>
                     </li>
                     <li><a href="">퀴즈백과 관리</a>
@@ -61,7 +62,9 @@
             </nav>
         </header>
         <main class="container">
-            <iframe id="container" title="본문" width="100%" height="auto" src="http://localhost:3000"></iframe>
+            <!-- <iframe id="wrap_container" name="wrap_container" title="본문" width="100%" height="100%" style="height:100vh;" src="http://localhost:3000"></iframe> -->
+            <!-- <iframe id="wrap_container" name="wrap_container" title="본문" width="100%" height="100%" style="height:100vh;" src="https://mz-fivestring.github.io/kids_lms_admin_publ/"></iframe> -->
+            <iframe id="wrap_container" name="wrap_container" title="본문" width="100%" height="100%" style="height:100vh;" src="./html/lms/curriculum.html"></iframe>
 
         </main>
         <footer class="footer">
@@ -70,10 +73,15 @@
         
     </div>
 
-    
+    <script src="./js/style.js"></script>
     <script type="text/babel">
-
+        if(getUrlParam("iframeId")){
+            if(getUrlParam("iframeId")=="curriculum" || getUrlParam("iframeId")=="parents" || getUrlParam("iframeId")=="pet" || getUrlParam("iframeId")=="phrase"){
+                $("#wrap_container").attr("src", "./html/lms/" + getUrlParam("iframeId") + ".html");
+            }   
+        }
+        console.log("aaa");
     </script>
-    <script src="./js/live.style.all.js?v=4"></script>
+    
 </body>
 </html>
