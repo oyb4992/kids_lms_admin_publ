@@ -52,7 +52,7 @@ table { width:100%; border-collapse:collapse; }
 .header .nav > ul > li:hover ul { display:block; }
 .header .nav > ul > li ul li:hover { background-color:#ff6ab7; }
 
-.wrap_container { padding-top:43px; width:100%; min-width:1650px; margin:0 auto; }
+.wrap_container { padding-top:43px; width:1650px; margin:0 auto; }
 .wrap_container:after { content:""; display:block; width:100%; height:0; padding:0; margin:0; background:none; border:0 solid transparent; overflow:hidden; }
 .cpnt_contents { float:left; width:1350px; margin-left:50px; }
 
@@ -75,7 +75,7 @@ table { width:100%; border-collapse:collapse; }
 .cpnt_lnb > ul > li ul li.active a { color:#494d4e; font-weight:700; }
 
 /* cpnt : title */
-.cpnt_title { padding-bottom:30px; }
+.cpnt_title { padding-bottom:15px; }
 .cpnt_title h1 { line-height:35px; font-size:28px; font-weight:500; }
 
 /*cpnt : lug css 재정의*/
@@ -86,16 +86,26 @@ table { width:100%; border-collapse:collapse; }
 .cpnt.nav {  }
 .cpnt.nav-tabs {  }
 .cpnt.tab-content { padding-top:30px; }
-.cpnt.modal {  }
-.cpnt.modal::before { display:block; position:absolute; left:0; top:0; width:100%; height:100%; background-color:rgba(255,255,255,.8); }
+.cpnt.modal::before { display:block; position:fixed; left:0; top:0; width:100%; height:100%; background-color:rgba(255,255,255,.8); }
+.cpnt.modal .modal-dialog { box-shadow:5px 5px 20px rgba(0,0,0,.3); }
 .cpnt.modal .modal-dialog.modal-full { overflow-y:auto; width:calc(100% - 40px); height:calc(100vh - 140px); min-height:500px; margin:20px; }
 .modal-backdrop { display:none !important; background-color:#fff !important; }
-.modal-full {width:300px}
+
 .pagination { border-bottom:0 solid #fff; }
+.nav-processTabs .nav:before { z-index:0; }
+.cpnt.modal.alert .modal-dialog { position:fixed !important; top:50% !important; left:50% !important; transform:translate(-50%, -50%) !important; }
+.cpnt.modal.alert .modal-body { padding-left:20px; padding-right:20px; }
+.cpnt.table-content {  }
+
+
 
 
 .lo_frame { height:100%; }
 .lo_frame body { overflow:auto !important; }
 /* .lo_frame .cpnt.modal { height:100%; } */
 
+/* .float-left { float:left !important; }
+.float-right { float:right !important; } */
+.clear-both::after { content:""; display:block; overflow:hidden; height:0; padding:0; margin:0; background-color:transparent; border-width:0; font-size:0; }
+.scrollH { overflow-y:auto; }
 

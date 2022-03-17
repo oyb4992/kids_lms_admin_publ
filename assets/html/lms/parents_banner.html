@@ -48,25 +48,25 @@
         <div class="cpnt_lnb">
             <h1>LMS 어드민</h1>
             <ul>
-                <li class="active"><a href="">커리큘럼 편성관리</a>
+                <li><a href="curriculum_form.html">커리큘럼 편성관리</a>
                     <ul>
-                        <li class="active"><a href="">커리큘럼 편성</a></li>
-                        <li><a href="">커리큘럼 설정</a></li>
+                        <li><a href="curriculum_form.html">커리큘럼 편성</a></li>
+                        <li><a href="curriculum_setting.html">커리큘럼 설정</a></li>
                     </ul>
                 </li>
-                <li><a href="">부모알림장 관리</a>
+                <li class="active"><a href="parents_info.html">부모알림장 관리</a>
                     <ul>
-                        <li><a href="">학부모 유용정보</a></li>
-                        <li><a href="">배너</a></li>
+                        <li><a href="parents_info.html">학부모 유용정보</a></li>
+                        <li><a href="parents_banner.html">배너</a></li>
                     </ul>
                 </li>
-                <li><a href="">펫 관리</a>
+                <li><a href="pet_setting.html">펫 관리</a>
                     <ul>
-                        <li><a href="">펫 설정</a></li>
-                        <li><a href="">펫 목록</a></li>
+                        <li><a href="pet_setting.html">펫 설정</a></li>
+                        <li><a href="pet_list.html">펫 목록</a></li>
                     </ul>
                 </li>
-                <li><a href="">문구 관리</a></li>
+                <li><a href="phrase_setting.html">문구 관리</a></li>
             </ul>
         </div>
 
@@ -74,6 +74,22 @@
             <div class="cpnt_title">
                 <h1>커리큘럼 편성</h1>
             </div>
+            <article class="page-search">
+                <div>
+                    <div class="input-group pull-right">
+                        <label class="input-group-addon"><span>기질선택</span></label>
+                        <span class="input-group-form">
+                            <select class="form-control">
+                                <option>아이진단 미완료</option>
+                                <option>온순한 기질</option>
+                                <option>고집있는 기질</option>
+                                <option>변화무쌍한 기질</option>
+                                <option>섬세한 기질</option>
+                            </select>
+                        </span>
+                    </div>
+                </div>
+            </article>
             <ul class="cpnt nav nav-tabs">
                 <li class="active"><a href="#tab01" data-toggle="tab">아이진단 미완료</a></li>
                 <li><a href="#tab02" data-toggle="tab">부모진단 미완료</a></li>
@@ -115,8 +131,8 @@
                     </table>
                     <div class="cpnt btn-block">
                         <ul class="list-inline pull-left">
-                            <li><button class="btn btn-default"><i class="fa fa-check" aria-hidden="true"></i><span>적용</span></button></li>
-                            <li><button class="btn btn-default"><i class="fa fa-trash-o" aria-hidden="true"></i><span>삭제</span></button></li>
+                            <li><button class="btn btn-default" type="button" data-toggle="modal" data-target="#modal-confirm-apply"><i class="fa fa-check" aria-hidden="true"></i><span>적용</span></button></li>
+                            <li><button class="btn btn-default" type="button" data-toggle="modal" data-target="#modal-confirm-del"><i class="fa fa-trash-o" aria-hidden="true"></i><span>삭제</span></button></li>
                         </ul>
                         <ul class="list-inline pull-right">
                             <li>
@@ -215,106 +231,88 @@
                                 <th class="required"><span>지면 데이타</span></th>
                                 <td><input type="text" class="form-control input-block" placeholder="필수 사항입니다." required></td>
                             </tr>
-                            <!-- <tr>
-                                <th><span>기본</span></th>
-                                <td><input type="text" class="form-control"></td>
-                            </tr>
                             <tr>
-                                <th><span>기본 (various size)</span></th>
+                                <th class="required"><span>오늘의 영어 레벨 카테고리 설정</span></th>
                                 <td>
-                                    <ul class="list-inline">
-                                        <li><input type="text" class="form-control wd-50" /></li>
-                                        <li><input type="text" class="form-control wd-100" /></li>
-                                        <li><input type="text" class="form-control wd-200" /></li>
-                                        <li><input type="text" class="form-control wd-400" /></li>
-                                    </ul>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th><span>block 형태</span></th>
-                                <td><input type="text" class="form-control input-block"></td>
-                            </tr>
-                            <tr>
-                                <th><span>placeholder</span></th>
-                                <td><input type="text" class="form-control" placeholder="입력"></td>
-                            </tr>
-                            <tr>
-                                <th class="required"><span>필수</span></th>
-                                <td><input type="text" class="form-control" required></input>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th><span>readonly</span></th>
-                                <td><input type="text" class="form-control" readonly></td>
-                            </tr>
-                            <tr>
-                                <th><span>disabed</span></th>
-                                <td><input type="text" class="form-control" disabled></td>
-                            </tr>
-                            <tr>
-                                <th><span>validation check</span></th>
-                                <td>
-                                    <input type="text" class="form-control validate">
-                                </td>
-                            </tr>
-                            <tr>
-                                <th><span>select</span></th>
-                                <td>
-                                    <select class="form-control">
-                                        <option>선택</option>
-                                        <option>옵션선택01</option>
-                                        <option>옵션선택01</option>
-                                        <option>옵션선택01</option>
-                                        <option>옵션선택01</option>
-                                    </select>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th><span>textarea</span></th>
-                                <td>
-                                    <textarea class="form-control"></textarea>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th><span>textarea (readonly)</span></th>
-                                <td>
-                                    <textarea class="form-control" readonly></textarea>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th><span>textarea (disabled)</span></th>
-                                <td>
-                                    <textarea class="form-control" disabled></textarea>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th><span>radio</span></th>
-                                <td>
-                                    <div class="input-radio">
-                                        <label><input type="radio" class="form-control" name="rdo01" checked /><span>라디오옵션</span></label>
-                                        <label><input type="radio" class="form-control" name="rdo01" /><span>옵션</span></label>
-                                        <label><input type="radio" class="form-control" name="rdo01" /><span>옵션</span></label>
-                                        <label><input type="radio" class="form-control" name="rdo01" disabled /><span>옵션</span></label>
+                                    <!-- process tab start -->
+                                    <div class="nav-processTabs">
+                                        <ul class="nav nav-tabs">
+                                            <li class="active"><!--clsss: current disabled 사용가능-->
+                                                <button type="button" class="btn" data-toggle="tab" href="#step11"><span>STEP 1</span></button>
+                                            </li>
+                                            <li>
+                                                <button type="button" class="btn" data-toggle="tab" href="#step12"><span>STEP 2</span></button>
+                                            </li>
+                                            <li class="">
+                                                <button type="button" class="btn" data-toggle="tab" href="#step13"><span>STEP 3</span></button>
+                                            </li>
+                                            <li class="">
+                                                <button type="button" class="btn" data-toggle="tab" href="#step14"><span>STEP 4</span></button>
+                                            </li>
+                                            <li class="">
+                                                <button type="button" class="btn" data-toggle="tab" href="#step15"><span>STEP 5</span></button>
+                                            </li>
+                                            <li class="">
+                                                <button type="button" class="btn" data-toggle="tab" href="#step16"><span>STEP 6</span></button>
+                                            </li>
+                                        </ul>
                                     </div>
+                                    <div class="tab-content">
+                                        <div id="step11" class="tab-pane fade active in scrollH" style="height:370px;">
+                                            <table class="table-detail">
+                                                <caption>디테일 테이블(1단)</caption>
+                                                <colgroup>
+                                                    <col width="15%" />
+                                                    <col width="85%" />
+                                                </colgroup>
+                                                <tbody>
+                                                    <tr>
+                                                        <th><span>1차수</span></th>
+                                                        <td><input type="text" class="form-control input-block" /></td>
+                                                    </tr>
+                                                    <tr> <th><span>2차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr>
+                                                    <tr> <th><span>3차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr>
+                                                    <tr> <th><span>4차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr>
+                                                    <tr> <th><span>5차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr>
+                                                    <tr> <th><span>6차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr>
+                                                    <tr> <th><span>7차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr>
+                                                    <tr> <th><span>8차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr>
+                                                    <tr> <th><span>9차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr>
+                                                    <tr> <th><span>10차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr>
+                                                    <tr> <th><span>11차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr>
+                                                    <tr> <th><span>12차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr>
+                                                    <tr> <th><span>13차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr>
+                                                    <tr> <th><span>...</span></th> <td><input type="text" class="form-control input-block" /></td> </tr>
+                                                    <tr> <th><span>60차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div id="step12" class="tab-pane fade scrollH" style="height:370px;">
+                                            <table class="table-detail"> <caption>디테일 테이블(1단)</caption> <colgroup> <col width="15%" /> <col width="85%" /> </colgroup> <tbody> <tr> <th><span>1차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>2차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>3차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>4차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>5차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>6차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>7차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>8차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>9차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>10차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>11차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>12차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>13차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>...</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>60차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> </tbody> </table>
+                                        </div>
+                                        <div id="step13" class="tab-pane fade scrollH" style="height:370px;">
+                                            <table class="table-detail"> <caption>디테일 테이블(1단)</caption> <colgroup> <col width="15%" /> <col width="85%" /> </colgroup> <tbody> <tr> <th><span>1차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>2차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>3차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>4차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>5차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>6차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>7차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>8차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>9차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>10차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>11차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>12차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>13차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>...</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>60차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> </tbody> </table>
+                                        </div>
+                                        <div id="step14" class="tab-pane fade scrollH" style="height:370px;">
+                                            <table class="table-detail"> <caption>디테일 테이블(1단)</caption> <colgroup> <col width="15%" /> <col width="85%" /> </colgroup> <tbody> <tr> <th><span>1차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>2차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>3차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>4차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>5차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>6차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>7차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>8차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>9차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>10차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>11차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>12차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>13차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>...</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>60차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> </tbody> </table>
+                                        </div>
+                                        <div id="step15" class="tab-pane fade scrollH" style="height:370px;">
+                                            <table class="table-detail"> <caption>디테일 테이블(1단)</caption> <colgroup> <col width="15%" /> <col width="85%" /> </colgroup> <tbody> <tr> <th><span>1차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>2차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>3차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>4차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>5차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>6차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>7차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>8차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>9차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>10차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>11차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>12차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>13차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>...</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>60차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> </tbody> </table>
+                                        </div>
+                                        <div id="step16" class="tab-pane fade scrollH" style="height:370px;">
+                                            <table class="table-detail"> <caption>디테일 테이블(1단)</caption> <colgroup> <col width="15%" /> <col width="85%" /> </colgroup> <tbody> <tr> <th><span>1차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>2차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>3차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>4차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>5차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>6차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>7차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>8차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>9차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>10차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>11차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>12차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>13차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>...</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>60차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> </tbody> </table>
+                                        </div>
+                                    </div>
+                                    <!-- //process tab end -->
+
                                 </td>
                             </tr>
-                            <tr>
-                                <th><span>checkbox</span></th>
-                                <td>
-                                    <div class="input-checkbox">
-                                        <label><input type="checkbox" class="form-control" name="a" checked /><span>체크옵션</span></label>
-                                        <label><input type="checkbox" class="form-control" name="a" /><span>옵션</span></label>
-                                        <label><input type="checkbox" class="form-control" name="a" /><span>옵션</span></label>
-                                        <label><input type="checkbox" class="form-control" name="a" disabled /><span>옵션</span></label>
-                                    </div>
-                                </td>
-                            </tr> -->
                         </tbody>
                     </table>
                     <div class="btn-block">
                         <ul class="list-inline pull-right">
                             <li><button class="btn btn-default" data-dismiss="modal" aria-hidden="true"><span>취소</span></button></li>
-                            <li><button class="btn btn-primary" data-toggle="modal" data-target="#modal-confirm"><span>등록</span></button></li>
+                            <li><button class="btn btn-primary" data-toggle="modal" data-target="#modal-confirm-register"><span>등록</span></button></li>
                         </ul>
                     </div>
                 </div>
@@ -324,11 +322,27 @@
     <!-- //modal custom end -->
 
     <!-- modal alert01 start -->
-    <div class="cpnt modal alert fade" id="modal-confirm" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="cpnt modal alert fade" id="modal-confirm-register" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-sm modal-default">
             <div class="modal-content">
                 <div class="modal-body">
                     <p>등록하시겠습니까?</p>
+                </div>
+                <div class="modal-footer half">
+                    <button type="button" class="btn-full btn-default" data-dismiss="modal" aria-hidden="true">취소</button>
+                    <button type="button" class="btn-full btn-primary" data-dismiss="modal" aria-hidden="true" onclick="$('.cpnt.modal').removeClass('in').hide();">확인</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //modal alert01 end -->
+
+    <!-- modal alert02 start -->
+    <div class="cpnt modal alert fade" id="modal-confirm-apply" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-sm modal-default">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <p>커리큘럼 스케쥴을 적용하겠습니까?<br>단, 이미 생성된 커리큘럼이 있는 프로필은 즉시 적용되지 않으며 다음날 커리큘럼 생성 시 적용 및 확인이 가능합니다.</p>
                 </div>
                 <div class="modal-footer half">
                     <button type="button" class="btn-full btn-default" data-dismiss="modal" aria-hidden="true">취소</button>
@@ -337,7 +351,23 @@
             </div>
         </div>
     </div>
-    <!-- //modal alert01 end -->
+    <!-- //modal alert02 end -->
+
+    <!-- modal alert03 start -->
+    <div class="cpnt modal alert fade" id="modal-confirm-del" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-sm modal-default">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <p>삭제하시겠습니까?<br>삭제 후 복구가 불가능합니다.</p>
+                </div>
+                <div class="modal-footer half">
+                    <button type="button" class="btn-full btn-default" data-dismiss="modal" aria-hidden="true">취소</button>
+                    <button type="button" class="btn-full btn-primary" data-dismiss="modal" aria-hidden="true" onclick="$('.cpnt.modal').removeClass('in').hide();">확인</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //modal alert03 end -->
 
     <script type="text/javascript" src="../../addon/jquery/3.1.1/js/jquery-3.1.1.min.js"></script>
     <script type="text/javascript" src="../../addon/bootstrap/3.3.7/js/bootstrap.min.js"></script>
