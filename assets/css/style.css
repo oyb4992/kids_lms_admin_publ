@@ -94,8 +94,8 @@ table { width:100%; border-collapse:collapse; }
 .pagination { border-bottom:0 solid #fff; }
 
 
-.lo_frame { height:100%; }
+/* .lo_frame { height:100%; }
 .lo_frame body { overflow:auto !important; }
-.lo_frame .cpnt.modal { height:100%; }
+.lo_frame .cpnt.modal { height:100%; } */
 
 
