@@ -87,15 +87,15 @@ table { width:100%; border-collapse:collapse; }
 .cpnt.nav-tabs {  }
 .cpnt.tab-content { padding-top:30px; }
 .cpnt.modal {  }
-.cpnt.modal::before { display:none; }
+.cpnt.modal::before { display:block; position:absolute; left:0; top:0; width:100%; height:100%; background-color:rgba(255,255,255,.8); }
 .cpnt.modal .modal-dialog.modal-full { overflow-y:auto; width:calc(100% - 40px); height:calc(100vh - 140px); min-height:500px; margin:20px; }
-.modal-backdrop { background-color:#fff !important; }
+.modal-backdrop { display:none !important; background-color:#fff !important; }
 .modal-full {width:300px}
 .pagination { border-bottom:0 solid #fff; }
 
 
 .lo_frame { height:100%; }
 .lo_frame body { overflow:auto !important; }
-.lo_frame .cpnt.modal { height:100%; }
+/* .lo_frame .cpnt.modal { height:100%; } */
 
 
