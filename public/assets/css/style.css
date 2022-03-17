@@ -10,7 +10,7 @@ div { scrollbar-color: #dadce0 rgba(255,255,255,.2); }
 :root { --color-mi:#F53A1F; --color-sb:#FF8A15; --color-txm:#333; --color-txs:#828282; --color-wit:#fff; --color-bl:#000; --color-bgc:#fff8e6; --color-bg:#F7F7F7; --color-bd:#eee; --color-gap:#e0e0e0; --color-bb:#FFF143; --fsize-d:14px; --fsize-s:12px; --fsize-pt:18px; --fsize-p:17px; --fsize-pp:16px; --fsize-po:15px; --fsize-ps:13px; --fsize-pw:11px; }
 html, body { height:100%; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:auto; text-rendering:geometricPrecision; color:var(--color-txm); }
 .blind { position:absolute !important; width:0 !important; height:0 !important; padding:0 !important; margin:0 !important; line-height:0 !important; font-size:0 !important; overflow:hidden !important; }
-.none { display:none !important; } */
+.none { display:none !important; }
 /* input { width:auto; height:30px; padding:0 8px; background-color:var(--color-wit); border:1px solid #e0e0e0; border-radius:5px; line-height:30px; }
 input:hover, input:focus { border-color:var(--color-txm); outline:none; color:var(--color-txm); } */
 /* input:required { background-color:#f7f7f7; }
@@ -32,7 +32,7 @@ table { width:100%; border-collapse:collapse; }
 .wrap {  }
 .wrap .header { }
 .wrap .container {  }
-.wrap .footer { text-align:center; }
+.wrap .footer { text-align:center; position:absolute; height:0; line-height:0; overflow:hidden; }
 
 
 .header .hgroup { display:flex; flex-flow:row nowrap; align-items:center; width:100%; min-width:1600px; height:65px; margin:0 auto; }
@@ -62,7 +62,8 @@ table { width:100%; border-collapse:collapse; }
 
  /* cpnt : lnb */
 .cpnt_lnb { width:200px; float:left; margin-left:50px; font:12px/18px Dotum,'돋움',tahoma,sans-serif; }
-.cpnt_lnb h1 { height:34px; line-height:22px; font-size:16px; }
+.cpnt_lnb * { font-family:Dotum,'돋움',tahoma,sans-serif; }
+.cpnt_lnb h1 { height:34px; line-height:22px; font-size:16px; font-weight:700; }
 .cpnt_lnb > ul { border-top:2px solid #4f576a; }
 .cpnt_lnb > ul > li { line-height:36px; }
 .cpnt_lnb > ul > li > a { display:block; border-bottom:1px solid #e6eaeb; color:#858c8f; }
@@ -78,7 +79,23 @@ table { width:100%; border-collapse:collapse; }
 .cpnt_title h1 { line-height:35px; font-size:28px; font-weight:500; }
 
 /*cpnt : lug css 재정의*/
+.wrap_container {  }
+#wrap_container { height:calc(100vh - 100px); overflow-y:auto; overscroll-behavior:auto; }
+
 .cpnt.panel { margin-top:0px; }
 .cpnt.nav {  }
 .cpnt.nav-tabs {  }
 .cpnt.tab-content { padding-top:30px; }
+.cpnt.modal {  }
+.cpnt.modal::before { display:none; }
+.cpnt.modal .modal-dialog.modal-full { overflow-y:auto; width:calc(100% - 40px); height:calc(100vh - 140px); min-height:500px; margin:20px; }
+.modal-backdrop { background-color:#fff !important; }
+.modal-full {width:300px}
+.pagination { border-bottom:0 solid #fff; }
+
+
+.lo_frame { height:100%; }
+.lo_frame body { overflow:auto !important; }
+.lo_frame .cpnt.modal { height:100%; }
+
+

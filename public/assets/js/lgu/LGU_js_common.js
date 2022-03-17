@@ -111,7 +111,7 @@ $(window).on('load', function() {
 
 // selt file download button
 var x = document.createElement('script');
-x.src = '../addon/download.js';
+x.src = '../../addon/download.js';
 document.getElementsByTagName("head")[0].appendChild(x);
 
 function dlHTML(){
