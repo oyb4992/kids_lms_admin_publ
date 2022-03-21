@@ -608,13 +608,13 @@ td .page-search .input-group .input-group-form .datepicker:before {
     width: 954px;
     height: 560px;
     border-radius: 20px;
-    background: url("../../img/lgu/common/wsg-login-bg.png") no-repeat 0 0;
+    background: url("../images/common/wsg-login-bg.png") no-repeat 0 0;
     box-shadow: 8px 30px 52px 12px rgba(0,0,0,0.33);
 }
 .signin-box .left-area {
     width: 400px;
     height: 100%;
-    background: url("../../img/lgu/common/wsg-login-bg.png") no-repeat 0 0;
+    background: url("../images/common/wsg-login-bg.png") no-repeat 0 0;
     border-radius: 20px 0 0 20px;
     float: left;
 }
@@ -1657,7 +1657,7 @@ td .list-inline li > * {
     left: 0;
     width: 20px;
     height: 20px;
-    background: url("../../img/lgu/icon/checkbox.png") no-repeat 0 -20px;
+    background: url("../images/icon/checkbox.png") no-repeat 0 -20px;
 }
 .input-checkbox.input-style.checked label:before {
     background-position-y: 0;
@@ -2259,7 +2259,7 @@ td .btn-block .list-inline.pull-right {
     top: 5px;
     width: 10px;
     height: 10px;
-    background: url("../../img/lgu/icon/close3.png") no-repeat;
+    background: url("../images/icon/close3.png") no-repeat;
 }
 .modal-body em {
     color: #d50000;
@@ -2310,7 +2310,7 @@ td .btn-block .list-inline.pull-right {
 }
 .modal .list-check li {
     padding-left: 20px;
-    background: url("../../img/lgu/icon/check.png") no-repeat 2px 8px;
+    background: url("../images/icon/check.png") no-repeat 2px 8px;
 }
 .modal .loading i + p {
     margin-top: 10px;
@@ -4103,7 +4103,7 @@ h4 + .tree {
     left: 8px;
     width: 12px;
     height: 12px;
-    background: url("../../img/lgu/icon/calendar.png") no-repeat;
+    background: url("../images/icon/calendar.png") no-repeat;
     z-index: 4;
 }
 .datepicker:before {
@@ -4117,7 +4117,7 @@ h4 + .tree {
     left: 8px;
     width: 12px;
     height: 12px;
-    background: url("../../img/lgu/icon/calendar.png") no-repeat;
+    background: url("../images/icon/calendar.png") no-repeat;
     z-index: 4;
     cursor: pointer;
 }
@@ -6288,7 +6288,7 @@ p.nodata {
     height: 16px;
     vertical-align: middle;
     margin-top: -3px;
-    background: url("../../img/lgu/icon/support_icon_all.png") no-repeat;
+    background: url("../images/icon/support_icon_all.png") no-repeat;
     background-size: 34px auto;
     transition: transform 0.3s;
 }
@@ -6325,7 +6325,7 @@ p.nodata {
     display: inline-block;
     width: 28px;
     height: 25px;
-    background: url("../../img/lgu/icon/support_icon_all.png") no-repeat;
+    background: url("../images/icon/support_icon_all.png") no-repeat;
     background-size: 50px auto;
     background-position: -13px -199px;
 }
@@ -6410,7 +6410,7 @@ p.nodata {
     background-position: -6px -207px;
 }
 .support-menu.folded dl:hover dt .icon {
-    background: url("../../img/lgu/icon/support_icon_all_hover.png") no-repeat;
+    background: url("../images/icon/support_icon_all_hover.png") no-repeat;
     background-size: 52px auto;
     background-position: -6px -7px;
 }
