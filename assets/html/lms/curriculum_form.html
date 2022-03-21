@@ -33,14 +33,14 @@
     <link rel="stylesheet" type="text/css" href="../../css/lgu/LGU_style_content.css" />
 
     <!--new css-->
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <!-- <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"> -->
     <link rel="stylesheet" type="text/css" href="../../css/style.css">
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> -->
     <!-- <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js" integrity="sha256-hlKLmzaRlE8SCJC1Kw8zoUbU8BxA+8kR3gseuKfMjxA=" crossorigin="anonymous"></script> -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script> -->
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 </head>    
 <body class="ukids ">
     
@@ -322,7 +322,7 @@
     <!-- //modal custom end -->
 
     <!-- modal alert01 start -->
-    <div class="cpnt modal alert fade" id="modal-confirm-register" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="cpnt modal alert" id="modal-confirm-register">
         <div class="modal-dialog modal-sm modal-default">
             <div class="modal-content">
                 <div class="modal-body">
@@ -338,7 +338,7 @@
     <!-- //modal alert01 end -->
 
     <!-- modal alert02 start -->
-    <div class="cpnt modal alert fade" id="modal-confirm-apply" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="cpnt modal alert" id="modal-confirm-apply">
         <div class="modal-dialog modal-sm modal-default">
             <div class="modal-content">
                 <div class="modal-body">
@@ -354,7 +354,7 @@
     <!-- //modal alert02 end -->
 
     <!-- modal alert03 start -->
-    <div class="cpnt modal alert fade" id="modal-confirm-del" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="cpnt modal alert" id="modal-confirm-del">
         <div class="modal-dialog modal-sm modal-default">
             <div class="modal-content">
                 <div class="modal-body">
@@ -369,213 +369,9 @@
     </div>
     <!-- //modal alert03 end -->
 
-    <script type="text/javascript" src="../../addon/jquery/3.1.1/js/jquery-3.1.1.min.js"></script>
-    <script type="text/javascript" src="../../addon/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="../../addon/jqueryui/1.12.1/js/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="../../addon/datatables/1.10.12/js/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" src="../../addon/datatables/1.10.12/js/dataTables.bootstrap.min.js"></script>
-    <script type="text/javascript" src="../../addon/datatables/colresize/1.0.7/js/ColReorderWithResize.js"></script>
-    <script type="text/javascript" src="../../addon/datatables/fixedColumns/3.2.2/js/dataTables.fixedColumns.min.js"></script>
-    <script type="text/javascript" src="../../addon/datatables/select/1.2.0/js/dataTables.select.min.js"></script>
-    <script type="text/javascript" src="../../addon/datatables/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
-    <script type="text/javascript" src="../../addon/datatables/buttons/1.2.2/js/buttons.bootstrap.min.js"></script>
-    <script type="text/javascript" src="../../addon/datatables/buttons/1.2.2/js/buttons.html5.min.js"></script>
-    <script type="text/javascript" src="../../addon/datatables/buttons/1.2.2/js/buttons.colVis.min.js"></script>
-
-    <script type="text/javascript" src="../../js/lgu/LGU_js_common.js"></script>
     <script src="../../js/style.js"></script>
     <script type="text/babel">
-         $(document).ready(function() {
-
-             // datatables with checkbox
-            var table1 = $('#datatable1').DataTable({
-                dom: 'R<"dataTables_header"f<"dataTables_toolbar"ilB>>tp', // DOM layout order - (use colResize), filter, info, length, <"toolbar">, (use export Button), table, pagination
-                columnDefs: [{
-                        className: 'dt-checkbox',
-                        targets: 0,
-                        title: '<label><input type="checkbox" class="form-control" /><i class="fa fa-check-square"></i></label>',
-                        data: null,
-                        defaultContent: '<input type="checkbox" class="form-control" />',
-                        orderable: false
-                    }, // set checkbox
-                    {
-                        className: 'dt-center',
-                        targets: [1, 2, 3, 4, 5]
-                    }, // text left align default, set center align columns
-                    {
-                        className: 'dt-right',
-                        targets: 4
-                    } //  set right align columns
-                ],
-                order: [
-                    [1, 'asc']
-                ], // set default sort column
-                buttons: [{
-                    extend: 'colvis', // column toggle menu button
-                    text: '<i class="fa fa-cog"></i>',
-                    postfixButtons: [{
-                        extend: 'colvisRestore',
-                        text: '초기화'
-                    }]
-                }],
-                language: { // customize texts and markup
-                    search: '<i class="fa fa-search"></i>_INPUT_',
-                    info: 'Total: <em>_TOTAL_</em>',
-                    zeroRecords: '찾을 수 없습니다',
-                    lengthMenu: '_MENU_<span>/ page</span>',
-                    infoEmpty: '찾을 수 없습니다',
-                    infoFiltered: "(filtered from _MAX_ total records)",
-                    paginate: {
-                        first: '<i class="fa fa-angle-double-left"></i>',
-                        previous: '<i class="fa fa-angle-left"></i>',
-                        next: '<i class="fa fa-angle-right"></i>',
-                        last: '<i class="fa fa-angle-double-right"></i>',
-                    }
-                },
-                lengthMenu: [
-                    [-1, 10, 30, 50, 100],
-                    ["All", 10, 30, 50, 100]
-                ], // page length option
-                iDisplayLength: 10, // default page length
-                initComplete: function( settings, json ) {
-                    $('table').removeClass('opacity0');
-                },
-                pagingType: 'full_numbers' // add pagination first, last button
-            });
-
-            // module buttons
-            /*new $.fn.dataTable.Buttons(table1, {
-                buttons: [{
-                    className: 'btn-module',
-                    text: '<i class="fa fa-plus"></i><span>추가</span>', // 'add row' favicon
-                    action: function(e, dt, node, conf) { // 'add row' button action
-                        alert('행 추가');
-                    }
-                }, {
-                    className: 'btn-module',
-                    text: '<i class="fa fa-minus"></i><span>삭제</span>', // 'delete row' favicon
-                    action: function(e, dt, node, conf) { // 'delete row' button action
-                        alert('행 삭제');
-                    }
-                }, {
-                    className: 'btn-module',
-                    extend: 'excel', // export button
-                    text: '<i class="fa fa-file-excel-o"></i><span>다운로드</span>' // 'excel' favicon
-                }]
-            });
-            table1.buttons(1, null).container().appendTo($(table1.table().container()).find('div.dataTables_header')).addClass('module-buttons');*/
-
-            // hide paging when not necessary
-            // $(table1.table().container()).find('div.dataTables_paginate').css('display', table1.page.info().pages <= 1 ? 'none' : 'block');
-            // table1.on('length.dt', function(e, settings, len) {
-            //     $(table1.table().container()).find('div.dataTables_paginate').css('display', table1.page.info().pages <= 1 ? 'none' : 'block');
-            // });
-
-            // customize sort arrow
-            table1.columns().iterator('column', function(ctx, idx) {
-                $(table1.column(idx).header()).append('<span class="sort-icon"/>');
-            });
-
-            // th asterisk
-            table1.columns().iterator('column', function(ctx, idx) {
-                if ($(table1.column(idx).header()).hasClass('required')) {
-                    $(table1.column(idx).header()).prepend('<span class="asterisk"/>')
-                };
-            });
-            
-            //버튼 위치 변경
-            table1.table().node().after($(table1.table().node()).parents(".dataTables_wrapper").next().clone()[0]);
-            $(table1.table().node()).parents(".dataTables_wrapper").next().remove();
-            
-
-            var table2 = $('#datatable2').DataTable({
-                dom: 'R<"dataTables_header"f<"dataTables_toolbar"ilB>>tp', // DOM layout order - (use colResize), filter, info, length, <"toolbar">, (use export Button), table, pagination
-                columnDefs: [{
-                        className: 'dt-checkbox',
-                        targets: 0,
-                        title: '<label><input type="checkbox" class="form-control" /><i class="fa fa-check-square"></i></label>',
-                        data: null,
-                        defaultContent: '<input type="checkbox" class="form-control" />',
-                        orderable: false
-                    }, // set checkbox
-                    {
-                        className: 'dt-center',
-                        targets: [1, 2, 3, 4, 5]
-                    }, // text left align default, set center align columns
-                    {
-                        className: 'dt-right',
-                        targets: 4
-                    } //  set right align columns
-                ],
-                order: [
-                    [1, 'asc']
-                ], // set default sort column
-                buttons: [{
-                    extend: 'colvis', // column toggle menu button
-                    text: '<i class="fa fa-cog"></i>',
-                    postfixButtons: [{
-                        extend: 'colvisRestore',
-                        text: '초기화'
-                    }]
-                }],
-                language: { // customize texts and markup
-                    search: '<i class="fa fa-search"></i>_INPUT_',
-                    info: 'Total: <em>_TOTAL_</em>',
-                    zeroRecords: '찾을 수 없습니다',
-                    lengthMenu: '_MENU_<span>/ page</span>',
-                    infoEmpty: '찾을 수 없습니다',
-                    infoFiltered: "(filtered from _MAX_ total records)",
-                    paginate: {
-                        first: '<i class="fa fa-angle-double-left"></i>',
-                        previous: '<i class="fa fa-angle-left"></i>',
-                        next: '<i class="fa fa-angle-right"></i>',
-                        last: '<i class="fa fa-angle-double-right"></i>',
-                    }
-                },
-                lengthMenu: [
-                    [-1, 10, 30, 50, 100],
-                    ["All", 10, 30, 50, 100]
-                ], // page length option
-                iDisplayLength: 10, // default page length
-                initComplete: function( settings, json ) {
-                    $('table').removeClass('opacity0');
-                },
-                pagingType: 'full_numbers' // add pagination first, last button
-            });
-
-            // customize sort arrow
-            table2.columns().iterator('column', function(ctx, idx) {
-                $(table2.column(idx).header()).append('<span class="sort-icon"/>');
-            });
-
-            // th asterisk
-            table2.columns().iterator('column', function(ctx, idx) {
-                if ($(table2.column(idx).header()).hasClass('required')) {
-                    $(table2.column(idx).header()).prepend('<span class="asterisk"/>')
-                };
-            });
-
-            //버튼 위치 변경
-            table2.table().node().after($(table2.table().node()).parents(".dataTables_wrapper").next().clone()[0]);
-            $(table2.table().node()).parents(".dataTables_wrapper").next().remove();
-
-            // checkbox select
-            $('.dt-checkbox input:checkbox').on('click', function() {
-                if ($(this).prop('checked')) {
-                    $(this).parents('tr').addClass('selected');
-                } else {
-                    $(this).parents('tr').removeClass('selected');
-                };
-            });
-
-            // checkbox toggle all
-            $('th.dt-checkbox input:checkbox').change(function() {
-                console.log("aaa");
-                $(this).prop('checked') ? $(this).parents('thead').next('tbody').find('tr').addClass('selected') : $(this).parents('thead').next('tbody').find('tr').removeClass('selected');
-                $("input:checkbox").prop('checked', $(this).prop("checked"));
-            });
-
-         });
+         
     </script>
     
 </body>

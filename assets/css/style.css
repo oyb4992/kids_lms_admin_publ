@@ -96,8 +96,7 @@ table { width:100%; border-collapse:collapse; }
 .cpnt.modal.alert .modal-dialog { position:fixed !important; top:50% !important; left:50% !important; transform:translate(-50%, -50%) !important; }
 .cpnt.modal.alert .modal-body { padding-left:20px; padding-right:20px; }
 .cpnt.table-content {  }
-
-
+.cpnt.modal { display:none; }
 
 
 .lo_frame { height:100%; }

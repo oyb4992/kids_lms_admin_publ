@@ -3,7 +3,7 @@
 //주소 파라미터
 let getUrlParam = (name) => {
     name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
-    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+    let regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
         results = regex.exec(location.search);
     return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
 }
@@ -17,7 +17,9 @@ if(getUrlParam("iframeId")){
 }
 
 //로컬 파비콘
-document.querySelectorAll("link[rel*='icon")[0].setAttribute("href", document.querySelectorAll("link[rel*='icon")[0].getAttribute("href").slice(0,-4) + "_local" + document.querySelectorAll("link[rel*='icon")[0].getAttribute("href").slice(-4));
+if(location.host.indexOf("localhost") > -1){
+    document.querySelectorAll("link[rel*='icon")[0].setAttribute("href", document.querySelectorAll("link[rel*='icon")[0].getAttribute("href").slice(0,-4) + "_local" + document.querySelectorAll("link[rel*='icon")[0].getAttribute("href").slice(-4));
+}
 
 let inputFile = (obj, iv) => {
     let iFile = obj.previousElementSibling.previousElementSibling;
@@ -38,9 +40,3 @@ let inputFile = (obj, iv) => {
         }
     };
 }
-
-
-$(document).ready(function() {
-    
-
-});
