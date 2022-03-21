@@ -121,7 +121,7 @@
     </div>
 
     <!-- modal custom start -->
-    <div class="cpnt modal fade" id="modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="cpnt modal fade in" id="modal-lg" tabindex="-1" role="dialog" aria-hidden="true" style="display:block;">
         <div class="modal-dialog modal-lg modal-default">
             <div class="modal-content">
                 <div class="modal-header">
@@ -137,6 +137,40 @@
                         </colgroup>
                         <tbody>
                             <tr>
+                                <th class="required"><span>유용정보명</span></th>
+                                <td><input type="text" class="form-control" placeholder="필수 사항입니다." required></td>
+                            </tr>
+                            <tr>
+                                <th class="required"><span>유용한정보 링크</span></th>
+                                <td>
+                                    <table class="table-detail">
+                                        <caption>디테일 테이블(1단)</caption>
+                                        <colgroup>
+                                            <col width="25%" />
+                                            <col width="75%" />
+                                        </colgroup>
+                                        <tbody>
+                                            <tr>
+                                                <th class="required"><span>모바일</span></th>
+                                                <td><input type="url" class="form-control input-block" placeholder="필수 사항입니다." required value="https://"></td>
+                                            </tr>
+                                            <tr>
+                                                <th><span>IPTV (QR 이미지)</span></th>
+                                                <td>
+                                                    <div class="input-imgView"></div>
+                                                    <input type="file" class="form-control">
+                                                    <input type="text" class="form-control"><button type="button" class="btn btn-inline" onclick="inputFile(this, 'imgView');"><span>파일선택</span></button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="required"><span>대표 이미지</span></th>
+                                <td><input type="text" class="form-control input-block" placeholder="필수 사항입니다." required></td>
+                            </tr>
+                            <tr>
                                 <th class="required"><span>추천유형명</span></th>
                                 <td><input type="text" class="form-control input-block" placeholder="필수 사항입니다." required></td>
                             </tr>
@@ -149,86 +183,7 @@
                                     </div>
                                 </td>
                             </tr>
-                            <tr>
-                                <th class="required"><span>지면 데이타</span></th>
-                                <td><input type="text" class="form-control input-block" placeholder="필수 사항입니다." required></td>
-                            </tr>
-                            <tr>
-                                <th class="required"><span>오늘의 영어 레벨 카테고리 설정</span></th>
-                                <td>
-                                    <!-- process tab start -->
-                                    <div class="nav-processTabs">
-                                        <ul class="nav nav-tabs">
-                                            <li class="active"><!--clsss: current disabled 사용가능-->
-                                                <button type="button" class="btn" data-toggle="tab" href="#step11"><span>STEP 1</span></button>
-                                            </li>
-                                            <li>
-                                                <button type="button" class="btn" data-toggle="tab" href="#step12"><span>STEP 2</span></button>
-                                            </li>
-                                            <li class="">
-                                                <button type="button" class="btn" data-toggle="tab" href="#step13"><span>STEP 3</span></button>
-                                            </li>
-                                            <li class="">
-                                                <button type="button" class="btn" data-toggle="tab" href="#step14"><span>STEP 4</span></button>
-                                            </li>
-                                            <li class="">
-                                                <button type="button" class="btn" data-toggle="tab" href="#step15"><span>STEP 5</span></button>
-                                            </li>
-                                            <li class="">
-                                                <button type="button" class="btn" data-toggle="tab" href="#step16"><span>STEP 6</span></button>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="tab-content">
-                                        <div id="step11" class="tab-pane fade active in scrollH" style="height:370px;">
-                                            <table class="table-detail">
-                                                <caption>디테일 테이블(1단)</caption>
-                                                <colgroup>
-                                                    <col width="15%" />
-                                                    <col width="85%" />
-                                                </colgroup>
-                                                <tbody>
-                                                    <tr>
-                                                        <th><span>1차수</span></th>
-                                                        <td><input type="text" class="form-control input-block" /></td>
-                                                    </tr>
-                                                    <tr> <th><span>2차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr>
-                                                    <tr> <th><span>3차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr>
-                                                    <tr> <th><span>4차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr>
-                                                    <tr> <th><span>5차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr>
-                                                    <tr> <th><span>6차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr>
-                                                    <tr> <th><span>7차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr>
-                                                    <tr> <th><span>8차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr>
-                                                    <tr> <th><span>9차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr>
-                                                    <tr> <th><span>10차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr>
-                                                    <tr> <th><span>11차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr>
-                                                    <tr> <th><span>12차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr>
-                                                    <tr> <th><span>13차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr>
-                                                    <tr> <th><span>...</span></th> <td><input type="text" class="form-control input-block" /></td> </tr>
-                                                    <tr> <th><span>60차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                        <div id="step12" class="tab-pane fade scrollH" style="height:370px;">
-                                            <table class="table-detail"> <caption>디테일 테이블(1단)</caption> <colgroup> <col width="15%" /> <col width="85%" /> </colgroup> <tbody> <tr> <th><span>1차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>2차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>3차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>4차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>5차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>6차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>7차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>8차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>9차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>10차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>11차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>12차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>13차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>...</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>60차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> </tbody> </table>
-                                        </div>
-                                        <div id="step13" class="tab-pane fade scrollH" style="height:370px;">
-                                            <table class="table-detail"> <caption>디테일 테이블(1단)</caption> <colgroup> <col width="15%" /> <col width="85%" /> </colgroup> <tbody> <tr> <th><span>1차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>2차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>3차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>4차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>5차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>6차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>7차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>8차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>9차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>10차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>11차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>12차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>13차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>...</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>60차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> </tbody> </table>
-                                        </div>
-                                        <div id="step14" class="tab-pane fade scrollH" style="height:370px;">
-                                            <table class="table-detail"> <caption>디테일 테이블(1단)</caption> <colgroup> <col width="15%" /> <col width="85%" /> </colgroup> <tbody> <tr> <th><span>1차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>2차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>3차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>4차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>5차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>6차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>7차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>8차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>9차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>10차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>11차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>12차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>13차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>...</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>60차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> </tbody> </table>
-                                        </div>
-                                        <div id="step15" class="tab-pane fade scrollH" style="height:370px;">
-                                            <table class="table-detail"> <caption>디테일 테이블(1단)</caption> <colgroup> <col width="15%" /> <col width="85%" /> </colgroup> <tbody> <tr> <th><span>1차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>2차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>3차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>4차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>5차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>6차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>7차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>8차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>9차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>10차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>11차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>12차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>13차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>...</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>60차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> </tbody> </table>
-                                        </div>
-                                        <div id="step16" class="tab-pane fade scrollH" style="height:370px;">
-                                            <table class="table-detail"> <caption>디테일 테이블(1단)</caption> <colgroup> <col width="15%" /> <col width="85%" /> </colgroup> <tbody> <tr> <th><span>1차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>2차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>3차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>4차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>5차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>6차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>7차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>8차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>9차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>10차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>11차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>12차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>13차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>...</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> <tr> <th><span>60차수</span></th> <td><input type="text" class="form-control input-block" /></td> </tr> </tbody> </table>
-                                        </div>
-                                    </div>
-                                    <!-- //process tab end -->
-
-                                </td>
-                            </tr>
+                            
                         </tbody>
                     </table>
                     <div class="btn-block">
@@ -305,6 +260,7 @@
     <script type="text/javascript" src="../../addon/datatables/buttons/1.2.2/js/buttons.colVis.min.js"></script>
 
     <script type="text/javascript" src="../../js/lgu/LGU_js_common.js"></script>
+    <script src="../../js/style.js"></script>
     <script type="text/babel">
          $(document).ready(function() {
 
