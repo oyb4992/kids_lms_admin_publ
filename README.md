@@ -1,7 +1,7 @@
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).\
-url - iframe demo page https://mz-fivestring.github.io/kids_lms_admin_publ/assets/iframe_demo.html
+Url - iframe demo page https://mz-fivestring.github.io/kids_lms_admin_publ/assets/iframe_demo.html
 
 ## Available Scripts
 
