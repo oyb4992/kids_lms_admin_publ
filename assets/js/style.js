@@ -22,42 +22,20 @@ document.querySelectorAll("link[rel*='icon")[0].setAttribute("href", document.qu
 let inputFile = (obj, iv) => {
     let iFile = obj.previousElementSibling.previousElementSibling;
     iFile.click();
-
     iFile.onchange = function(event){
-        //iFile.nextElementSibling.value = this.value;
+        iFile.nextElementSibling.value = this.value;
         if(iv = "imgView" && (iFile.files && iFile.files[0])){
-            //iFile.parentNode;
-            //console.log(iFile.parentNode.querySelectorAll(".input-imgView"));
-            //const reader = new FileReader();
-            //let imgTag = document.createElement("img");
-            //imgTag.setAttribute.src = this.value;
-            //console.log(this.value);
-            //imgTag.setAttribute.src = this.value;
-            //console.log(imgTag);
             const reader = new FileReader();
-            //console.log(event);
-            //console.log(reader);console.log(reader);
-            reader.readAsText(iFile.files[0], "UTF-8");
+            reader.readAsDataURL(iFile.files[0]);
             reader.onload = function(e) {
-                console.log(event);
-                console.log("aaaaa");
-                // let imgTag = document.createElement("img");
-                // imgTag.setAttribute("src", "aa");
-                console.log(e);
-                iFile.nextElementSibling.value = e.target.result;
-
-                //console.log(imgTag);
-                // iFile.nextElementSibling.value = e.target.result;
-                // imgTag.setAttribute.src = e.target.result;
-                // iFile.parentNode.querySelectorAll(".input-imgView").appendChild(imgTag);
+                const imgTag = document.createElement("img");
+                imgTag.setAttribute("src", e.target.result);
+                iFile.previousElementSibling.appendChild(imgTag);
             }
             reader.onerror = function() {
-                console.log("error");
+                console.log("file img load error");
             }
-
-            //input-imgView  
         }
-        //input-imgView
     };
 }
 
