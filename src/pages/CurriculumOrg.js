@@ -1,6 +1,8 @@
 import { useCallback, useEffect, useState } from "react";
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 import { List } from "immutable";
+import { Tab, Tabs } from "@mui/material";
+import { Box } from "@mui/system";
 import API from "../components/axios/api";
 import { useToast } from "../components/hooks";
 import ConfirmDialog from "../components/confirmDialog/ConfirmDialog";
@@ -269,100 +271,162 @@ const CurriculumOrg = () => {
     updateData(index.toJS());
   }, [data, checkItems, updateData, showToast]);
 
+  const TabPanel = (props) => {
+    const { children, value, index, ...other } = props;
+  
+    return (
+      <div
+        role="tabpanel"
+        hidden={value !== index}
+        id={`simple-tabpanel-${index}`}
+        aria-labelledby={`simple-tab-${index}`}
+        {...other}
+      >
+        {value === index && <Box>{children}</Box>}
+      </div>
+    );
+  };
+
+  const a11yProps = (index) => {
+    return {
+      id: `simple-tab-${index}`,
+      "aria-controls": `simple-tabpanel-${index}`,
+    };
+  };
+
   const handleDelete = useCallback(() => {
     console.log(checkItems);
   }, [checkItems]);
+
+  const [value, setValue] = useState(0);
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+
   return (
     <>
-      <DragDropContext onDragEnd={handleDragEnd}>
-        <table border="1">
-          <thead>
-            <tr>
-              <th>
-                <input
-                  name="checkAll"
-                  type={"checkbox"}
-                  onChange={(e) => handleAllCheck(e.target.checked)}
-                  checked={checkItems.length === data.length ? true : false}
-                />
-              </th>
-              <th>순서</th>
-              <th>추천유형명</th>
-              <th>타입</th>
-              <th>추천코드/편성정보</th>
-              <th>사용여부</th>
-            </tr>
-          </thead>
-          <Droppable droppableId="droppable-1" direction="vertical">
-            {(provider) => (
-              <tbody ref={provider.innerRef} {...provider.droppableProps}>
-                {data?.map((data, index) => (
-                  <Draggable
-                    key={`${data.crcmPrgmNo}`}
-                    draggableId={`${data.crcmPrgmNo}`}
-                    index={index}
-                  >
-                    {(provider) => (
-                      <tr {...provider.draggableProps} ref={provider.innerRef}>
-                        <td {...provider.dragHandleProps}>
-                          <input
-                            type={"checkbox"}
-                            onChange={(e) =>
-                              handleSingleCheck(
-                                e.target.checked,
-                                data.crcmPrgmNo
-                              )
-                            }
-                            checked={
-                              checkItems.includes(data.crcmPrgmNo)
-                                ? true
-                                : false
-                            }
-                          />
-                        </td>
-                        <td {...provider.dragHandleProps}>{index + 1}</td>
-                        <td {...provider.dragHandleProps}>{data.rcmTypNm}</td>
-                        <td {...provider.dragHandleProps}>{data.prgmTypCd}</td>
-                        <td {...provider.dragHandleProps}>{data.paperId}</td>
-                        <td {...provider.dragHandleProps}>
-                          <select
-                            name="useStsCd"
-                            onChange={(e) => {
-                              handleUseSelect(e, data.crcmPrgmNo);
-                            }}
-                            value={data.useStsCd}
-                          >
-                            <option value={"사용"}>사용</option>
-                            <option value={"미사용"}>미사용</option>
-                            <option value={"검수"}>검수</option>
-                          </select>
-                        </td>
-                      </tr>
-                    )}
-                  </Draggable>
-                ))}
-                {provider.placeholder}
-              </tbody>
-            )}
-          </Droppable>
-        </table>
-      </DragDropContext>
-      <button onClick={handleButtonClick}>적용</button>
-      <button onClick={handleDelete}>삭제</button>
-      <button>등록</button>
+      <div className="cpnt_pageSearch Fms at-r">
+        <select class="fm">
+            <option>아이진단 미완료</option>
+            <option>온순한 기질</option>
+            <option>고집있는 기질</option>
+            <option>변화무쌍한 기질</option>
+            <option>섬세한 기질</option>
+        </select>
 
-      <ConfirmDialog
-        title={`confirm dialog`}
-        open={isOpenConfirm}
-        setOpen={setOpenConfirm}
-        onConfirm={handleApply}
-      >
-        <div>
-          커리큘럼 스케쥴을 적용하겠습니까? 단, 이미 생성된 커리큘럼이 있는
-          프로필은 즉시 적용되지 않으며 다음날 커리큘럼 생성 시 적용 및 확인이
-          가능합니다.
+      </div>
+      <Box className="cpnt_pageTab">
+        <Tabs value={value} onChange={handleChange} aria-label="basic tabs">
+          <Tab label="아이진단 미완료" {...a11yProps(0)} />
+          <Tab label="온순한 기질 미완료" {...a11yProps(1)} />
+          <Tab label="고집있는 기질 미완료" {...a11yProps(2)} />
+        </Tabs>
+      </Box>
+      <TabPanel value={value} index={0}>
+        <div className="cpnt_table">
+          <DragDropContext onDragEnd={handleDragEnd}>
+            <table className="table-default">
+              <caption><strong className="blind">커리큘럼 편성 테이블</strong> <span className="total">Total: <b>{data.length}</b></span></caption>
+              <thead>
+                <tr>
+                  <th>
+                    <input
+                      name="checkAll"
+                      type={"checkbox"}
+                      onChange={(e) => handleAllCheck(e.target.checked)}
+                      checked={checkItems.length === data.length ? true : false}
+                    />
+                  </th>
+                  <th>순서</th>
+                  <th>추천유형명</th>
+                  <th>타입</th>
+                  <th>추천코드/편성정보</th>
+                  <th>사용여부</th>
+                </tr>
+              </thead>
+              <Droppable droppableId="droppable-1" direction="vertical">
+                {(provider) => (
+                  <tbody ref={provider.innerRef} {...provider.droppableProps}>
+                    {data?.map((data, index) => (
+                      <Draggable
+                        key={`${data.crcmPrgmNo}`}
+                        draggableId={`${data.crcmPrgmNo}`}
+                        index={index}
+                      >
+                        {(provider) => (
+                          <tr {...provider.draggableProps} ref={provider.innerRef} className={`  `} >
+                            <td {...provider.dragHandleProps}>
+                              <input
+                                type={"checkbox"}
+                                onChange={(e) =>
+                                  handleSingleCheck(
+                                    e.target.checked,
+                                    data.crcmPrgmNo
+                                  )
+                                }
+                                checked={
+                                  checkItems.includes(data.crcmPrgmNo)
+                                    ? true
+                                    : false
+                                }
+                              />
+                            </td>
+                            <td {...provider.dragHandleProps}>{index + 1}</td>
+                            <td {...provider.dragHandleProps}>{data.rcmTypNm}</td>
+                            <td {...provider.dragHandleProps}>{data.prgmTypCd}</td>
+                            <td {...provider.dragHandleProps}>{data.paperId}</td>
+                            <td {...provider.dragHandleProps}>
+                              <select
+                                name="useStsCd"
+                                onChange={(e) => {
+                                  handleUseSelect(e, data.crcmPrgmNo);
+                                }}
+                                value={data.useStsCd}
+                              >
+                                <option value={"사용"}>사용</option>
+                                <option value={"미사용"}>미사용</option>
+                                <option value={"검수"}>검수</option>
+                              </select>
+                            </td>
+                          </tr>
+                        )}
+                      </Draggable>
+                    ))}
+                    {provider.placeholder}
+                  </tbody>
+                )}
+              </Droppable>
+            </table>
+          </DragDropContext>
+
+          <div className="cpnt_btns">
+              <button type="button" onClick={handleButtonClick}>적용</button>
+              <button type="button" onClick={handleDelete}>삭제</button>
+              <button type="button" className="sb af-r">등록</button>
+          </div>
         </div>
-      </ConfirmDialog>
+
+        <ConfirmDialog
+          title={`confirm dialog`}
+          open={isOpenConfirm}
+          setOpen={setOpenConfirm}
+          onConfirm={handleApply}
+        >
+          <div>
+            커리큘럼 스케쥴을 적용하겠습니까? 단, 이미 생성된 커리큘럼이 있는
+            프로필은 즉시 적용되지 않으며 다음날 커리큘럼 생성 시 적용 및 확인이
+            가능합니다.
+          </div>
+        </ConfirmDialog>
+      </TabPanel>
+      <TabPanel value={value} index={1}>
+        Item Two
+      </TabPanel>
+      <TabPanel value={value} index={2}>
+        Item Three
+      </TabPanel>
+      
     </>
   );
 };

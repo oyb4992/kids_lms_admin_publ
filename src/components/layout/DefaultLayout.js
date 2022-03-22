@@ -2,6 +2,7 @@ import { Container, Divider, Grid } from "@mui/material";
 import { useCallback, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 
+
 export const DefaultLayout = ({ children }) => {
   const location = useLocation();
   const [middlePath, setMiddlePath] = useState("");
@@ -40,13 +41,14 @@ export const DefaultLayout = ({ children }) => {
   }, [changeHeaderPath, location]);
 
   return (
-    <Container disableGutters maxWidth={false} style={{ marginLeft: "240px" }}>
-      {`홈 > ${middlePath} > ${lastPath} `}
-
-      <h2>{lastPath}</h2>
-      <Divider />
-      <Grid container justify={`center`} alignItems={`flex-start`}>
-        {children}
+    <Container disableGutters maxWidth={false} className="cpnt_contents">
+      <div className="cpnt_title">
+        <h1>{lastPath}</h1>
+        <span className="path">{`홈 > ${middlePath} > ${lastPath} `}</span>
+      </div>
+      {/* <Divider /> */}
+      <Grid className="cpnt_conts">
+          {children}
       </Grid>
     </Container>
   );

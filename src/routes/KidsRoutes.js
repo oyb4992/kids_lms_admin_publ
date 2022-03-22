@@ -10,7 +10,7 @@ import Banners from "../pages/Banners";
 const KidsRoutes = () => {
   return (
     <Router>
-      <Sidebar />
+      <Sidebar element={<SampleTab />} />
       <DefaultLayout>
         <Routes>
           <Route path="/" element={<SampleTab />} />

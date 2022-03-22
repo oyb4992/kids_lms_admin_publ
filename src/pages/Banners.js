@@ -174,78 +174,86 @@ const Banners = () => {
 
   return (
     <>
-      <table border="1">
-        <thead>
-          <tr>
-            <th>
-              <input
-                name="checkAll"
-                type={"checkbox"}
-                onChange={(e) => handleAllCheck(e.target.checked)}
-                checked={checkItems.length === data.length ? true : false}
-              />
-            </th>
-            <th>배너명</th>
-            <th>게시기간</th>
-            <th>사용여부</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          {data?.map((data, index) => (
-            <tr key={data.bnrNo}>
-              <td>
+      <div className="cpnt_table">
+        <table className="table-default">
+          <caption><strong className="blind">커리큘럼 편성 테이블</strong> <span className="total">Total: <b>{data.length}</b></span></caption>
+          <thead>
+            <tr>
+              <th>
                 <input
+                  name="checkAll"
                   type={"checkbox"}
-                  onChange={(e) =>
-                    handleSingleCheck(e.target.checked, data.bnrNo)
-                  }
-                  checked={checkItems.includes(data.bnrNo) ? true : false}
+                  onChange={(e) => handleAllCheck(e.target.checked)}
+                  checked={checkItems.length === data.length ? true : false}
                 />
-              </td>
-              <td>{data.bnrNm}</td>
-              <td>
-                {data.dspStartDtt} ~ {data.dspStopDtt}
-              </td>
-              <td>
-                <select
-                  name="useStsCd"
-                  onChange={(e) => {
-                    handleUseSelect(e, data.bnrNo, data.dspStopDtt);
-                  }}
-                  value={data.useStsCd}
-                >
-                  <option value={"사용"}>사용</option>
-                  <option value={"미사용"}>미사용</option>
-                  <option value={"검수"}>검수</option>
-                </select>
-              </td>
+              </th>
+              <th>배너명</th>
+              <th>게시기간</th>
+              <th>사용여부</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
 
-      <Grid container item>
-        <Button
-          variant="contained"
-          color="success"
-          onClick={handleButtonUpdate}
-        >
-          적용
-        </Button>
+          <tbody>
+            {data?.map((data, index) => (
+              <tr key={data.bnrNo}>
+                <td>
+                  <input
+                    type={"checkbox"}
+                    onChange={(e) =>
+                      handleSingleCheck(e.target.checked, data.bnrNo)
+                    }
+                    checked={checkItems.includes(data.bnrNo) ? true : false}
+                  />
+                </td>
+                <td>{data.bnrNm}</td>
+                <td>
+                  {data.dspStartDtt} ~ {data.dspStopDtt}
+                </td>
+                <td>
+                  <select
+                    name="useStsCd"
+                    onChange={(e) => {
+                      handleUseSelect(e, data.bnrNo, data.dspStopDtt);
+                    }}
+                    value={data.useStsCd}
+                  >
+                    <option value={"사용"}>사용</option>
+                    <option value={"미사용"}>미사용</option>
+                    <option value={"검수"}>검수</option>
+                  </select>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        <div className="cpnt_btns">
+          <button type="button" onClick={handleButtonUpdate} >적용</button>
+          <button type="button" onClick={handleButtonDelete} > 삭제 </button>
 
-        <Button
-          variant="contained"
-          color="success"
-          onClick={handleButtonDelete}
-        >
-          삭제
-        </Button>
+          <button type="button" onClick={openPopUp} className="sb af-r"> 등록 </button>
+        </div>
+        {/* <Grid container item>
+          <Button
+            variant="contained"
+            color="success"
+            onClick={handleButtonUpdate}
+          >
+            적용
+          </Button>
 
-        <Button variant="contained" color="success" onClick={openPopUp}>
-          등록
-        </Button>
-      </Grid>
+          <Button
+            variant="contained"
+            color="success"
+            onClick={handleButtonDelete}
+          >
+            삭제
+          </Button>
+
+          <Button variant="contained" color="success" onClick={openPopUp}>
+            등록
+          </Button>
+        </Grid> */}
+      </div>
 
       <ConfirmDialog
         open={updateConfirm}

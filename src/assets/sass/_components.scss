@@ -1,0 +1,74 @@
+@charset "utf-8";
+/**
+ conponents collection
+
+ */
+
+
+/* component : lnb */
+.cpnt_lnb { flex:none; width:300px; /*float:left;*/ padding:0 50px; }
+.cpnt_lnb * { font-family:Dotum,'돋움',tahoma,sans-serif; }
+.cpnt_lnb h1 { height:34px; line-height:22px; font-size:16px; font-weight:700; }
+.cpnt_lnb > ul { border-top:2px solid #4f576a; }
+.cpnt_lnb > ul > li { line-height:36px; }
+.cpnt_lnb > ul > li > a { display:block; border-bottom:1px solid #e6eaeb; color:#858c8f; }
+.cpnt_lnb > ul > li ul { padding:10px 10px 7px 10px; background-color:#f5f7f7; border-bottom:1px solid #e6eaeb; }
+.cpnt_lnb > ul > li ul li { height:20px; line-height:normal; font-size:11px; }
+.cpnt_lnb > ul > li ul li a { display:inline-block; padding-left:10px; color:#9e9fa2; }
+.cpnt_lnb > ul > li.active > a { position:relative; color:$c-mi; font-weight:700; }
+.cpnt_lnb > ul > li.active > a::after { content:""; display:inline-block; position:absolute; right:15px; top:15px; border-width:3px 0 3px 5px; border-style:solid; border-color:transparent transparent transparent #494d4e; }
+.cpnt_lnb > ul > li ul li.active a { color:#494d4e; font-weight:700; }
+
+
+/* component : title */
+.cpnt_title { display:flex; flex-flow:nowrap row; align-items:center; padding-bottom:15px; }
+.cpnt_title h1 { line-height:35px; font-size:$fs-t; font-weight:500; }
+.cpnt_title .path { display:block; margin-left:auto; color:$c-ts; }
+
+
+/* component : conts - body */
+.cpnt_conts {  }
+
+
+/* component : page search */
+.cpnt_pageSearch { margin-bottom:20px; padding:5px 15px; border-radius:6px; background-color:#eee; }
+.cpnt_pageSearch { }
+
+
+/* component : tab */
+.cpnt_pageTab {  }
+.cpnt_pageTab .MuiTabs-flexContainer { position:relative; }
+.cpnt_pageTab .MuiTabs-flexContainer .MuiButtonBase-root { margin-left:-1px; padding:11px 20px; background-color:#f8f8f8; border:1px solid #ddd; border-bottom:transparent; border-radius:4px 4px 0 0; font-size:1.1rem; color:#555; }
+.cpnt_pageTab .MuiTabs-flexContainer::after { content:""; display:block; position:absolute; left:0; bottom:0; z-index:1; width:100%; height:1px; border-bottom:1px solid #ddd; line-height:1px; font-size:1px; }
+.cpnt_pageTab .MuiTabs-flexContainer .MuiButtonBase-root:first-child { margin-left:0; }
+.cpnt_pageTab .MuiTabs-flexContainer .MuiButtonBase-root.Mui-selected { position:relative; z-index:2; background-color:#fff; font-weight:700; color:#1b252e; }
+.cpnt_pageTab .MuiTabs-indicator { display:none !important; }
+.cpnt_pageTab + div[role="tabpanel"] { padding-top:30px; }
+
+
+/*component : table (default: table-default) */
+.cpnt_table {  }
+.table-default { width:100%; border:0; border-top:2px solid #4d5762; border-collapse:collapse; }
+.table-default caption { caption-side:top; text-align:left; }
+.table-default caption .total { display:inline-block; margin-bottom:5px; color:#747474; }
+.table-default caption .total b { font-weight:700; color:$c-mi; }
+.table-default th, .table-default td { border-right:1px solid #eaeaea; border-bottom:1px solid #eaeaea; }
+.table-default thead tr > * { padding:6px 10px; background-color:#f8f8f8; text-align:center;  }
+.table-default tbody tr > * { padding:4px 10px; background-color:#fff; text-align:center;  }
+.table-default thead tr > *:first-child, .table-default tbody tr > *:first-child { border-left:1px solid #eaeaea; }
+.table-default tbody tr:hover > * { background-color:#fefbf1; }
+.table-default tbody tr[style|="position"] { width:100%; background-color:#fefbf1; }
+
+
+/*component : button (default: table-default) */
+.cpnt_btns { display:flex; text-align:left; padding:20px 0 0 0; }
+.cpnt_btns button { display:inline-block; align-items:center; justify-content:center; height:30px; margin-left:4px; padding:0 10px; background-color:#f2f2f2; border-radius:3px; color:$c-tm; }
+.cpnt_btns button:first-child { margin-left:0; }
+.cpnt_btns button.mi { background:$c-mi; color:$c-wt; }
+.cpnt_btns button.sb { background:$c-sb; color:$c-wt; }
+.cpnt_btns button.sb2 { background:$c-sb2; color:$c-wt; }
+
+
+/*component : form (selcect, ) */
+.Fms {}
+.fm { height:30px; padding:0 12px; }

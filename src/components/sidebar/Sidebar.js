@@ -9,6 +9,7 @@ import {
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 //import styles from "./Sidebar.module.css";
+import { useLocation } from "react-router-dom";
 
 const StyledLink = styled(Link)`
   text-decoration: none;
@@ -25,16 +26,19 @@ const StyledLink = styled(Link)`
 const drawerWidth = 200;
 
 const PersistentDrawerLeft = () => {
+  const location = useLocation();
+  const urlpath = location.pathname.split(`/`);
+
   const itemslist = [
     {
-      text: "커리큘럼 편성관리",
+      text: "커리큘럼 편성관리", path: "/curr/org",
       sub: [
         { text: "커리큘럼편성", path: "/curr/org" },
         { text: "커리큘럼설정", path: "/curr/setting" },
       ],
     },
     {
-      text: "부모알림장 관리",
+      text: "부모알림장 관리", path: "/parents/banners",
       sub: [
         { text: "학부모 유용정보", path: "/" },
         { text: "배너", path: "/parents/banners" },
@@ -42,7 +46,7 @@ const PersistentDrawerLeft = () => {
       ],
     },
     {
-      text: "펫 관리",
+      text: "펫 관리", path: "/pet/petsetting",
       sub: [
         { text: "펫 설정", path: "/pet/petsetting" },
         { text: "펫 목록", path: "/pet/petlist" },
@@ -55,15 +59,15 @@ const PersistentDrawerLeft = () => {
       <h1>LMS 어드민</h1>
       <ul>
         {itemslist.map((item, index) => {
-          const { text, sub } = item;
+          const { text, path ,sub } = item;
           return (
-            <li key={text}>
-              <a key={`${text}`}>{`${text}`}</a>
+            <li key={text} className={` ${ path.indexOf(urlpath[1]) > -1 && 'active'} `}>
+              <a key={`${text}`} href={`${path}`}>{`${text}`}</a>
               {sub.map((subItem) => {
                 const { text, path } = subItem;
                 return (
                   <ul key={`${text}`}>
-                    <li>
+                    <li className={` ${ path.indexOf(urlpath[2]) > -1 && 'active'} `}>
                       <a key={`${text}`} href={path}>
                         {text}
                       </a>
