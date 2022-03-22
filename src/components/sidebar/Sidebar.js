@@ -8,6 +8,7 @@ import {
 } from "@mui/material";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+//import styles from "./Sidebar.module.css";
 
 const StyledLink = styled(Link)`
   text-decoration: none;
@@ -21,7 +22,7 @@ const StyledLink = styled(Link)`
   }
 `;
 
-const drawerWidth = 240;
+const drawerWidth = 200;
 
 const PersistentDrawerLeft = () => {
   const itemslist = [
@@ -49,48 +50,76 @@ const PersistentDrawerLeft = () => {
     },
   ];
   return (
-    <Drawer
-      sx={{
-        width: drawerWidth,
-        flexShrink: 0,
-        "& .MuiDrawer-paper": {
-          width: drawerWidth,
-          boxSizing: "border-box",
-        },
-      }}
-      variant="persistent"
-      anchor="left"
-      open={true}
-    >
-      <Divider />
-      <List
-        sx={{
-          "& ul": { padding: 0 },
-        }}
-        subheader={<li />}
-      >
+  // <div className={styles.cpnt_lnb}>
+  <div className="cpnt_lnb">
+      <h1>LMS 어드민</h1>
+      <ul>
         {itemslist.map((item, index) => {
           const { text, sub } = item;
           return (
             <li key={text}>
-              <ul>
-                <ListSubheader>{`${text}`}</ListSubheader>
+                
+                <a key={`${text}`}>{`${text}`}</a>
                 {sub.map((subItem) => {
                   const { text, path } = subItem;
                   return (
-                    <StyledLink key={`${text}`} to={path}>
-                      <ListItem button key={`${text}`}>
-                        <ListItemText key={`${text}`} primary={text} />
-                      </ListItem>
-                    </StyledLink>
+                    <ul key={`${text}`}>
+                      <li>
+                      
+                        <a key={`${text}`} href={path}>{text}</a>
+                      </li>
+                    </ul>
                   );
                 })}
-              </ul>
+              
             </li>
           );
         })}
-      </List>
-    </Drawer>
+      </ul>
+    </div>
+  // <Drawer
+  //     sx={{
+  //       width: drawerWidth,
+  //       flexShrink: 0,
+  //       "& .MuiDrawer-paper": {
+  //         width: drawerWidth,
+  //         boxSizing: "border-box",
+  //       },
+  //     }}
+  //     variant="persistent"
+  //     anchor="left"
+  //     open={true}
+  //   >
+  //     <Divider />
+  //     <List
+  //       sx={{
+  //         "& ul": { padding: 0 },
+  //       }}
+  //       subheader={<li />}
+  //     >
+  //       {itemslist.map((item, index) => {
+  //         const { text, sub } = item;
+  //         return (
+  //           <li key={text}>
+  //             <ul>
+  //               <ListSubheader>{`${text}`}</ListSubheader>
+  //               {sub.map((subItem) => {
+  //                 const { text, path } = subItem;
+  //                 return (
+  //                   <StyledLink key={`${text}`} to={path}>
+  //                     <ListItem button key={`${text}`}>
+  //                       <ListItemText key={`${text}`} primary={text} />
+  //                     </ListItem>
+  //                   </StyledLink>
+  //                 );
+  //               })}
+  //             </ul>
+  //           </li>
+  //         );
+  //       })}
+  //     </List>
+  //   </Drawer>
+    
   );
 };
 

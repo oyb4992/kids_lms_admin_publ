@@ -1,4 +1,5 @@
-import "./assets/css/App.css";
+import "./assets/sass/style.css";
+//import "./assets/css/App.css";
 import KidsRoutes from "./routes/KidsRoutes";
 import { Provider } from "react-redux";
 import configureStore from "./store/configureStore";

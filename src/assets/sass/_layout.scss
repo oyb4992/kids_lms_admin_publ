@@ -10,7 +10,7 @@ div { scrollbar-color: #dadce0 rgba(255,255,255,.2); }
 :root { --color-mi:#ec017e; --color-mi2:#7b558d; --color-mi3:#264180; --color-pit:#2fb8a8; --color-pit2:#ffcd66;
     --color-gry:#333333; --color-gry2:#888888; --color-gry3:#aaaaaa; --color-bg:#f1f1f1;
     --fsize-d:13px; }
-html, body { height:100%; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:auto; text-rendering:geometricPrecision; /*color:var(--color-gry); font-size:13px;*/ }
+html, body { height:100%; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:auto; text-rendering:geometricPrecision; color:var(--color-gry); font-size:13px; }
 .blind { position:absolute !important; width:1px !important; height:1px !important; padding:0 !important; margin:-1px !important; border:0px solid transparent !important; line-height:0 !important; font-size:0 !important; white-space:nowrap !important; overflow:hidden !important; clip:rect(0,0,0,0) !important; clip-path:inset(50%) !important; }
 .none { display:none !important; }
 /* input { width:auto; height:30px; padding:0 8px; background-color:var(--color-wit); border:1px solid #e0e0e0; border-radius:5px; line-height:30px; }
@@ -54,27 +54,27 @@ table { width:100%; border-collapse:collapse; }
 .header .nav > ul > li:hover ul { display:block; }
 .header .nav > ul > li ul li:hover { background-color:#ff6ab7; }
 
-.wrap_container { padding-top:43px; width:1650px; margin:0 auto; }
+.wrap_container { display:flex; flex-flow:nowrap row; width:1650px; padding-top:43px; margin:0 auto; }
 .wrap_container:after { content:""; display:block; width:100%; height:0; padding:0; margin:0; background:none; border:0 solid transparent; overflow:hidden; }
-.cpnt_contents { float:left; width:1350px; margin-left:50px; }
+.cpnt_contents { /*float:left; width:1350px; margin-left:50px;*/ }
 
 /**
  conponents 모음
  */
 
  /* cpnt : lnb */
-.cpnt_lnb { width:200px; float:left; margin-left:50px; font:12px/18px Dotum,'돋움',tahoma,sans-serif; }
-.cpnt_lnb * { font-family:Dotum,'돋움',tahoma,sans-serif; }
-.cpnt_lnb h1 { height:34px; line-height:22px; font-size:16px; font-weight:700; }
-.cpnt_lnb > ul { border-top:2px solid #4f576a; }
-.cpnt_lnb > ul > li { line-height:36px; }
-.cpnt_lnb > ul > li > a { display:block; border-bottom:1px solid #e6eaeb; color:#858c8f; }
-.cpnt_lnb > ul > li ul { padding:10px 10px 7px 10px; background-color:#f5f7f7; border-bottom:1px solid #e6eaeb; }
-.cpnt_lnb > ul > li ul li { height:20px; line-height:normal; font-size:11px; }
-.cpnt_lnb > ul > li ul li a { display:inline-block; padding-left:10px; color:#9e9fa2; }
-.cpnt_lnb > ul > li.active > a { position:relative; color:#c6266a; font-weight:700; }
-.cpnt_lnb > ul > li.active > a::after { content:""; display:inline-block; position:absolute; right:15px; top:15px; border-width:3px 0 3px 5px; border-style:solid; border-color:transparent transparent transparent #494d4e; }
-.cpnt_lnb > ul > li ul li.active a { color:#494d4e; font-weight:700; }
+ .cpnt_lnb { flex:none; width:200px; /*float:left;*/ margin-left:50px; }
+ .cpnt_lnb * { font-family:Dotum,'돋움',tahoma,sans-serif; }
+ .cpnt_lnb h1 { height:34px; line-height:22px; font-size:16px; font-weight:700; }
+ .cpnt_lnb > ul { border-top:2px solid #4f576a; }
+ .cpnt_lnb > ul > li { line-height:36px; }
+ .cpnt_lnb > ul > li > a { display:block; border-bottom:1px solid #e6eaeb; color:#858c8f; }
+ .cpnt_lnb > ul > li ul { padding:10px 10px 7px 10px; background-color:#f5f7f7; border-bottom:1px solid #e6eaeb; }
+ .cpnt_lnb > ul > li ul li { height:20px; line-height:normal; font-size:11px; }
+ .cpnt_lnb > ul > li ul li a { display:inline-block; padding-left:10px; color:#9e9fa2; }
+ .cpnt_lnb > ul > li.active > a { position:relative; color:#c6266a; font-weight:700; }
+ .cpnt_lnb > ul > li.active > a::after { content:""; display:inline-block; position:absolute; right:15px; top:15px; border-width:3px 0 3px 5px; border-style:solid; border-color:transparent transparent transparent #494d4e; }
+ .cpnt_lnb > ul > li ul li.active a { color:#494d4e; font-weight:700; }
 
 /* cpnt : title */
 .cpnt_title { padding-bottom:15px; }
