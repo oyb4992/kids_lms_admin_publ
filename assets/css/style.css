@@ -7,10 +7,8 @@ html { font-family: 'Spoqa Han Sans Neo', 'sans-serif'; }
 div { scrollbar-color: #dadce0 rgba(255,255,255,.2); }
 ::-webkit-scrollbar { background:rgba(255,255,255,.2); height:8px; width:8px; }
 ::-webkit-scrollbar-thumb { border:none; -webkit-box-shadow:none; box-shadow:none; background:#dadce0; -webkit-border-radius:8px; border-radius:8px; min-height:40px; }
-:root { --color-mi:#ec017e; --color-mi2:#7b558d; --color-mi3:#264180; --color-pit:#2fb8a8; --color-pit2:#ffcd66;
-    --color-gry:#333333; --color-gry2:#888888; --color-gry3:#aaaaaa; --color-bg:#f1f1f1;
-    --fsize-d:13px; }
-html, body { height:100%; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:auto; text-rendering:geometricPrecision; /*color:var(--color-gry); font-size:13px;*/ }
+:root { --color-mi:#F53A1F; --color-sb:#FF8A15; --color-txm:#333; --color-txs:#828282; --color-wit:#fff; --color-bl:#000; --color-bgc:#fff8e6; --color-bg:#F7F7F7; --color-bd:#eee; --color-gap:#e0e0e0; --color-bb:#FFF143; --fsize-d:14px; --fsize-s:12px; --fsize-pt:18px; --fsize-p:17px; --fsize-pp:16px; --fsize-po:15px; --fsize-ps:13px; --fsize-pw:11px; }
+html, body { height:100%; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:auto; text-rendering:geometricPrecision; color:var(--color-txm); }
 .blind { position:absolute !important; width:1px !important; height:1px !important; padding:0 !important; margin:-1px !important; border:0px solid transparent !important; line-height:0 !important; font-size:0 !important; white-space:nowrap !important; overflow:hidden !important; clip:rect(0,0,0,0) !important; clip-path:inset(50%) !important; }
 .none { display:none !important; }
 /* input { width:auto; height:30px; padding:0 8px; background-color:var(--color-wit); border:1px solid #e0e0e0; border-radius:5px; line-height:30px; }
@@ -99,7 +97,6 @@ table { width:100%; border-collapse:collapse; }
 .cpnt.modal.alert .modal-body { padding-left:20px; padding-right:20px; }
 .cpnt.table-content {  }
 .cpnt.modal { display:none; }
-.opacity0 { opacity:100% !important; }
 
 
 .lo_frame { height:100%; }
