@@ -31,10 +31,10 @@ const PersistentDrawerLeft = () => {
 
   const itemslist = [
     {
-      text: "커리큘럼 편성관리1", path: "/curr/org",
+      text: "커리큘럼 편성관리", path: "/curr/org",
       sub: [
-        { text: "커리큘럼편성", path: "/curr/org" },
-        { text: "커리큘럼설정", path: "/curr/setting" },
+        { text: "커리큘럼 편성", path: "/curr/org" },
+        { text: "커리큘럼 설정", path: "/curr/setting" },
       ],
     },
     {
@@ -42,7 +42,7 @@ const PersistentDrawerLeft = () => {
       sub: [
         { text: "학부모 유용정보", path: "/" },
         { text: "배너", path: "/parents/banners" },
-        { text: "문구", path: "/" },
+        // { text: "문구", path: "/" },
       ],
     },
     {
@@ -52,6 +52,13 @@ const PersistentDrawerLeft = () => {
         { text: "펫 목록", path: "/pet/petlist" },
       ],
     },
+    { text: "문구 관리", path: "/parents/banners",
+      sub: [
+
+      ],
+    }
+
+    
   ];
   return (
     // <div className={styles.cpnt_lnb}>

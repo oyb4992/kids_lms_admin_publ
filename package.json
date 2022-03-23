@@ -49,15 +49,12 @@
     "start:dev": "env-cmd -f .env.development react-scripts start ",
     "start:prod": "env-cmd -f .env.production react-scripts start",
     
-
     "build": "cross-env GENERATE_SOURCEMAP=false react-scripts build",
-
     "build:dev": "env-cmd -f .env.development react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
-    "windeploy": "gh-pages -d winBuild"
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
