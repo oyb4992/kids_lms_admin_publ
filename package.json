@@ -49,8 +49,8 @@
     "start:dev": "env-cmd -f .env.development react-scripts start ",
     "start:prod": "env-cmd -f .env.production react-scripts start",
     
-    "build": "GENERATE_SOURCEMAP=false react-scripts build",
-    "winBuild": "set \"GENERATE_SOURCEMAP=false\" && react-scripts build",
+
+    "build": "cross-env GENERATE_SOURCEMAP=false react-scripts build",
 
     "build:dev": "env-cmd -f .env.development react-scripts build",
     "test": "react-scripts test",

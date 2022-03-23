@@ -31,7 +31,7 @@ const PersistentDrawerLeft = () => {
 
   const itemslist = [
     {
-      text: "커리큘럼 편성관리", path: "/curr/org",
+      text: "커리큘럼 편성관리1", path: "/curr/org",
       sub: [
         { text: "커리큘럼편성", path: "/curr/org" },
         { text: "커리큘럼설정", path: "/curr/setting" },
