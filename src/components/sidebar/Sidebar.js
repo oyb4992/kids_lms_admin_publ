@@ -62,15 +62,15 @@ const PersistentDrawerLeft = () => {
           const { text, path ,sub } = item;
           return (
             <li key={text} className={` ${ path.indexOf(urlpath[1]) > -1 && 'active'} `}>
-              <a key={`${text}`} href={`${path}`}>{`${text}`}</a>
+              <Link key={`${text}`} to={`${path}`}>{`${text}`}</Link>
               {sub.map((subItem) => {
                 const { text, path } = subItem;
                 return (
                   <ul key={`${text}`}>
                     <li className={` ${ path.indexOf(urlpath[2]) > -1 && 'active'} `}>
-                      <a key={`${text}`} href={path}>
+                      <Link key={`${text}`} to={path}>
                         {text}
-                      </a>
+                      </Link>
                     </li>
                   </ul>
                 );
