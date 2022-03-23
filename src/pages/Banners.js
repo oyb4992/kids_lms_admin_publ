@@ -6,7 +6,7 @@ import {
   Grid,
 } from "@mui/material";
 import { useEffect, useState, useCallback } from "react";
-import axios from "axios";
+import API from "../components/axios/api";
 import { useToast } from "../components/hooks";
 import { List } from "immutable";
 import ConfirmDialog from "../components/confirmDialog/ConfirmDialog";
@@ -86,14 +86,10 @@ const Banners = () => {
     },
   ]);
 
-  // const API = axios.create({
-  //   baseURL: "http://localhost:7074/kids-lms-parents/",
-  // });
-
   // const [data, setData] = useState([]);
 
   // const getData = async () => {
-  //   await API.get("/api/v1/lms/admin/banners").then((res) => {
+  //   await API.get("kids-lms-parents/api/v1/lms/admin/banners").then((res) => {
   //     setData(res.data.data);
   //   });
   // };
@@ -104,23 +100,25 @@ const Banners = () => {
 
   const [dateConfirm, setDateConfirm] = useState(false);
 
-  const handleUseSelect = useCallback((e, key, date) => {
-    const today = moment().format("YYYY. MM. DD HH:mm");
-    const endDate = moment(date).format("YYYY. MM. DD HH:mm");
+  const handleUseSelect = useCallback(
+    (e, key, date) => {
+      const today = moment().format("YYYY. MM. DD HH:mm");
+      const endDate = moment(date).format("YYYY. MM. DD HH:mm");
+      if (endDate < today) {
+        setDateConfirm(true);
+        return;
+      }
 
-    if (endDate < today) {
-      setDateConfirm(true);
-      return;
-    }
-
-    const selected = e.target.value;
-    const list = List(data);
-    const index = list.findIndex((i) => i.bnrNo === key);
-    const newArr = list.update(index, (item) =>
-      Object.assign({}, item, { useStsCd: selected })
-    );
-    setData(newArr);
-  });
+      const selected = e.target.value;
+      const list = List(data);
+      const index = list.findIndex((i) => i.bnrNo === key);
+      const newArr = list.update(index, (item) =>
+        Object.assign({}, item, { useStsCd: selected })
+      );
+      setData(newArr);
+    },
+    [setDateConfirm, setData, data]
+  );
 
   const [checkItems, setCheckItems] = useState([]);
 
@@ -176,7 +174,12 @@ const Banners = () => {
     <>
       <div className="cpnt_table">
         <table className="table-default">
-          <caption><strong className="blind">커리큘럼 편성 테이블</strong> <span className="total">Total: <b>{data.length}</b></span></caption>
+          <caption>
+            <strong className="blind">커리큘럼 편성 테이블</strong>{" "}
+            <span className="total">
+              Total: <b>{data.length}</b>
+            </span>
+          </caption>
           <thead>
             <tr>
               <th>
@@ -227,32 +230,18 @@ const Banners = () => {
           </tbody>
         </table>
         <div className="cpnt_btns">
-          <button type="button" onClick={handleButtonUpdate} >적용</button>
-          <button type="button" onClick={handleButtonDelete} > 삭제 </button>
-
-          <button type="button" onClick={openPopUp} className="sb af-r"> 등록 </button>
-        </div>
-        {/* <Grid container item>
-          <Button
-            variant="contained"
-            color="success"
-            onClick={handleButtonUpdate}
-          >
+          <button type="button" onClick={handleButtonUpdate}>
             적용
-          </Button>
-
-          <Button
-            variant="contained"
-            color="success"
-            onClick={handleButtonDelete}
-          >
-            삭제
-          </Button>
-
-          <Button variant="contained" color="success" onClick={openPopUp}>
-            등록
-          </Button>
-        </Grid> */}
+          </button>
+          <button type="button" onClick={handleButtonDelete}>
+            {" "}
+            삭제{" "}
+          </button>
+          <button type="button" onClick={openPopUp} className="sb af-r">
+            {" "}
+            등록{" "}
+          </button>
+        </div>
       </div>
 
       <ConfirmDialog
