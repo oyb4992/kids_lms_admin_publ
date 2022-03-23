@@ -42,9 +42,9 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "build:sass": "sass ./src/assets/sass/style.scss:./src/assets/sass/style.css",
-    "watch:sass": "sass --watch ./src/assets/sass/style.scss:./src/assets/sass/style.css",
-    "start": "react-scripts start && npm run watch:sass",
+    "build:sass": "sass ./src/assets/sass/style.scss:./src/assets/sass/style.css  --style compressed",
+    "watch:sass": "sass --watch ./src/assets/sass/style.scss:./src/assets/sass/style.css  --style compressed",
+    "start": "react-scripts start",
     "pub": "npm-run-all --parallel start watch:sass",
     "start:dev": "env-cmd -f .env.development react-scripts start ",
     "start:prod": "env-cmd -f .env.production react-scripts start",
