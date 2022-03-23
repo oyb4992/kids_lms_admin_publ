@@ -48,12 +48,16 @@
     "pub": "npm-run-all --parallel start watch:sass",
     "start:dev": "env-cmd -f .env.development react-scripts start ",
     "start:prod": "env-cmd -f .env.production react-scripts start",
+    
     "build": "GENERATE_SOURCEMAP=false react-scripts build && npm run build:sass",
-    "build:dev": "env-cmd -f .env.development react-scripts build",
+    "winBuild": "set \"GENERATE_SOURCEMAP=false\" && react-scripts build",
+
+    "build:dev": "env-cmd -f .env.development react-scripts build && npm run build:sass",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "windeploy": "gh-pages -d winBuild"
   },
   "eslintConfig": {
     "extends": [

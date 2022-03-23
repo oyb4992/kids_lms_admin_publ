@@ -927,6 +927,7 @@ input[type=file].form-control + input[type=text] {
 
 .table-default caption .total {
   display: inline-block;
+  margin-left: 10px;
   margin-bottom: 5px;
   color: #747474;
 }
@@ -934,6 +935,13 @@ input[type=file].form-control + input[type=text] {
 .table-default caption .total b {
   font-weight: 700;
   color: #ec017e;
+}
+
+.table-default caption .title {
+  display: inline-block;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #8b669d;
 }
 
 .table-default th, .table-default td {

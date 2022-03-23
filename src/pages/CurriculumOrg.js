@@ -307,7 +307,7 @@ const CurriculumOrg = () => {
   return (
     <>
       <div className="cpnt_pageSearch Fms at-r">
-        <select class="fm">
+        <select className="fm">
             <option>아이진단 미완료</option>
             <option>온순한 기질</option>
             <option>고집있는 기질</option>
@@ -316,18 +316,11 @@ const CurriculumOrg = () => {
         </select>
 
       </div>
-      <Box className="cpnt_pageTab">
-        <Tabs value={value} onChange={handleChange} aria-label="basic tabs">
-          <Tab label="아이진단 미완료" {...a11yProps(0)} />
-          <Tab label="온순한 기질 미완료" {...a11yProps(1)} />
-          <Tab label="고집있는 기질 미완료" {...a11yProps(2)} />
-        </Tabs>
-      </Box>
-      <TabPanel value={value} index={0}>
+      
         <div className="cpnt_table">
           <DragDropContext onDragEnd={handleDragEnd}>
             <table className="table-default">
-              <caption><strong className="blind">커리큘럼 편성 테이블</strong> <span className="total">Total: <b>{data.length}</b></span></caption>
+              <caption><strong className="title">커리큘럼 편성 테이블</strong> <span className="total">Total: <b>{data.length}</b></span></caption>
               <thead>
                 <tr>
                   <th>
@@ -419,13 +412,7 @@ const CurriculumOrg = () => {
             가능합니다.
           </div>
         </ConfirmDialog>
-      </TabPanel>
-      <TabPanel value={value} index={1}>
-        Item Two
-      </TabPanel>
-      <TabPanel value={value} index={2}>
-        Item Three
-      </TabPanel>
+
       
     </>
   );
