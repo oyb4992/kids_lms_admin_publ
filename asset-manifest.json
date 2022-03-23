@@ -1,11 +1,11 @@
 {
   "files": {
-    "main.css": "/kids_lms_admin_publ/static/css/main.31d6cfe0.css",
-    "main.js": "/kids_lms_admin_publ/static/js/main.b7f44a7b.js",
+    "main.css": "/kids_lms_admin_publ/static/css/main.d34cf1b9.css",
+    "main.js": "/kids_lms_admin_publ/static/js/main.51f5f068.js",
     "index.html": "/kids_lms_admin_publ/index.html"
   },
   "entrypoints": [
-    "static/css/main.31d6cfe0.css",
-    "static/js/main.b7f44a7b.js"
+    "static/css/main.d34cf1b9.css",
+    "static/js/main.51f5f068.js"
   ]
 }
