@@ -240,6 +240,23 @@ const CurriculumOrg = () => {
     console.log(result);
     deleteData(result);
   }, [checkItems, data, deleteData]);
+
+  const getRowColorFromUseSts = useCallback((useStsCd) => {
+    switch (useStsCd) {
+      case `사용`:
+        return `enabled`;
+        break;
+      case `검수`:
+        return `validate`;
+        break;
+      case `미사용`:
+        return `disabled`;
+        break;
+      default:
+        return "default";
+        break;
+    }
+  });
   return (
     <>
       <div className="cpnt_pageSearch Fms at-r">
@@ -292,22 +309,7 @@ const CurriculumOrg = () => {
                         <tr
                           {...provider.draggableProps}
                           ref={provider.innerRef}
-                          className={() => {
-                            switch (data.useStsCd) {
-                              case `사용`:
-                                return ``;
-                                break;
-                              case `검수`:
-                                return ``;
-                                break;
-                              case `미사용`:
-                                return ``;
-                                break;
-                              default:
-                                return ``;
-                                break;
-                            }
-                          }}
+                          className={getRowColorFromUseSts(data.useStsCd)}
                         >
                           <td {...provider.dragHandleProps}>
                             <input
