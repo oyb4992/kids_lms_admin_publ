@@ -2,7 +2,6 @@ import { Container, Divider, Grid } from "@mui/material";
 import { useCallback, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 
-
 export const DefaultLayout = ({ children }) => {
   const location = useLocation();
   const [middlePath, setMiddlePath] = useState("");
@@ -18,6 +17,9 @@ export const DefaultLayout = ({ children }) => {
       case `parents`:
         setMiddlePath(`부모알림장 관리`);
         break;
+      case `pet`:
+        setMiddlePath(`펫 관리`);
+        break;
       default:
         break;
     }
@@ -31,6 +33,9 @@ export const DefaultLayout = ({ children }) => {
         break;
       case `banners`:
         setLastPath(`배너`);
+        break;
+      case `petlist`:
+        setLastPath(`펫 목록`);
         break;
       default:
         break;
@@ -47,9 +52,7 @@ export const DefaultLayout = ({ children }) => {
         <span className="path">{`홈 > ${middlePath} > ${lastPath} `}</span>
       </div>
       {/* <Divider /> */}
-      <Grid className="cpnt_conts">
-          {children}
-      </Grid>
+      <Grid className="cpnt_conts">{children}</Grid>
     </Container>
   );
 };
