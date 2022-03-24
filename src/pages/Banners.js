@@ -1,18 +1,14 @@
-import {
-  Button,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  Grid,
-} from "@mui/material";
+import { DialogContent } from "@mui/material";
 import { useEffect, useState, useCallback } from "react";
 import API from "../components/axios/api";
 import { useToast } from "../components/hooks";
 import { List } from "immutable";
 import ConfirmDialog from "../components/confirmDialog/ConfirmDialog";
 import moment from "moment";
+import WarningDialog from "../components/warningDialog/WarningDialog";
 
 const Banners = () => {
+  const { showToast } = useToast();
   const [data, setData] = useState([
     {
       bnrNo: 1,
@@ -85,20 +81,60 @@ const Banners = () => {
       useStsCd: "사용",
     },
   ]);
+  const [tempData, setTempData] = useState([]);
+  const [checkItems, setCheckItems] = useState([]);
 
-  // const [data, setData] = useState([]);
+  const [updateConfirm, setUpdateConfirm] = useState(false);
+  const handleButtonUpdate = useCallback(() => {
+    setUpdateConfirm(true);
+  }, [setUpdateConfirm]);
 
-  // const getData = async () => {
-  //   await API.get("kids-lms-parents/api/v1/lms/admin/banners").then((res) => {
-  //     setData(res.data.data);
-  //   });
-  // };
-
-  // useEffect(() => {
-  //   getData();
-  // }, []);
+  const [deleteConfirm, setDeleteConfirm] = useState(false);
+  const handleButtonDelete = useCallback(() => {
+    setDeleteConfirm(true);
+  }, [setDeleteConfirm]);
 
   const [dateConfirm, setDateConfirm] = useState(false);
+
+  const getData = useCallback(async () => {
+    await API.get("kids-lms-parents/api/v1/lms/admin/banners").then((res) => {
+      setData(res.data.data);
+      setTempData(res.data.data);
+    });
+  }, [setData]);
+
+  const updateData = useCallback(
+    async (data) => {
+      await API.put("kids-lms-parents/api/v1/lms/admin/banners", data)
+        .then((res) => {
+          setCheckItems([]);
+          showToast(`<strong>등록이 완료되었습니다.</strong><br>`, `success`);
+        })
+        .catch((err) => {
+          showToast(`<strong>등록 실패하였습니다.</strong><br>`, `error`);
+        });
+    },
+    [setCheckItems, showToast]
+  );
+
+  const deleteData = useCallback(
+    async (checkItems) => {
+      await API.post("kids-lms-parents/api/v1/lms/admin/banners", checkItems)
+        .then((res) => {
+          setCheckItems([]);
+          getData();
+          showToast(`<strong>삭제되었습니다.</strong><br>`, `success`);
+        })
+        .catch((err) => {
+          showToast(`<strong>삭제 실패하였습니다.</strong><br>`, `error`);
+        });
+    },
+    [setCheckItems, showToast, getData]
+  );
+
+  useEffect(() => {
+    getData();
+  }, [getData, updateData, deleteData]);
 
   const handleUseSelect = useCallback(
     (e, key, date) => {
@@ -115,12 +151,10 @@ const Banners = () => {
       const newArr = list.update(index, (item) =>
         Object.assign({}, item, { useStsCd: selected })
       );
-      setData(newArr);
+      setData(newArr.toJS());
     },
-    [setDateConfirm, setData, data]
+    [data, setData]
   );
-
-  const [checkItems, setCheckItems] = useState([]);
 
   const handleSingleCheck = useCallback(
     (checked, id) => {
@@ -138,6 +172,7 @@ const Banners = () => {
       if (checked) {
         const idArray = [];
         data.forEach((el) => idArray.push(el.bnrNo));
+
         setCheckItems(idArray);
       } else {
         setCheckItems([]);
@@ -146,29 +181,43 @@ const Banners = () => {
     [data, setCheckItems]
   );
 
-  const { showToast } = useToast();
-  const [updateConfirm, setUpdateConfirm] = useState(false);
-  const [deleteConfirm, setDeleteConfirm] = useState(false);
-
   const handleUpdateClick = useCallback(() => {
-    showToast(`<strong>등록이 완료되었습니다.</strong><br>`, `success`);
-  }, [showToast]);
+    var modData = [];
+
+    data.map((item, index) => {
+      if (item.useStsCd !== tempData[index].useStsCd) {
+        modData.push({ bnrNo: item.bnrNo, useStsCd: item.useStsCd });
+      }
+      return modData;
+    });
+
+    if (modData.length === 0) {
+      showToast(`<strong>적용할 데이터가 없습니다.</strong><br>`, `warning`);
+      return;
+    }
+
+    updateData(modData);
+  }, [showToast, data, tempData, updateData]);
 
   const handleDeleteClick = useCallback(() => {
-    showToast(`<strong>삭제되었습니다.</strong><br>`, `success`);
-  }, [showToast]);
+    const list = List(data);
+    const checkedData = list.filter((i) => checkItems.includes(i.bnrNo)).toJS();
 
-  const handleButtonUpdate = useCallback(() => {
-    setUpdateConfirm(true);
-  }, [setUpdateConfirm]);
+    const result = checkedData.map((data) => {
+      return { bnrNo: data.bnrNo };
+    });
 
-  const handleButtonDelete = useCallback(() => {
-    setDeleteConfirm(true);
-  }, [setDeleteConfirm]);
+    if (result.length === 0) {
+      showToast(`<strong>삭제할 데이터가 없습니다.</strong><br>`, `warning`);
+      return;
+    }
+
+    deleteData(result);
+  }, [showToast, data, checkItems, deleteData]);
 
   const openPopUp = useCallback(() => {
     alert("등록 팝업");
-  }, []);
+  });
 
   return (
     <>
@@ -197,7 +246,7 @@ const Banners = () => {
           </thead>
 
           <tbody>
-            {data?.map((data, index) => (
+            {data?.map((data) => (
               <tr key={data.bnrNo}>
                 <td>
                   <input
@@ -234,12 +283,10 @@ const Banners = () => {
             적용
           </button>
           <button type="button" onClick={handleButtonDelete}>
-            {" "}
-            삭제{" "}
+            삭제
           </button>
           <button type="button" onClick={openPopUp} className="sb af-r">
-            {" "}
-            등록{" "}
+            등록
           </button>
         </div>
       </div>
@@ -260,20 +307,15 @@ const Banners = () => {
         <div>삭제하시겠습니까?</div>
       </ConfirmDialog>
 
-      <Dialog
+      <WarningDialog
         open={dateConfirm}
-        onClose={() => setDateConfirm(false)}
-        aria-labelledby="confirm-dialog"
+        setOpen={setDateConfirm}
+        onConfirm={false}
       >
         <DialogContent>
           <div>게시 기간을 확인해주세요.</div>
         </DialogContent>
-        <DialogActions>
-          <Button variant="contained" onClick={() => setDateConfirm(false)}>
-            확인
-          </Button>
-        </DialogActions>
-      </Dialog>
+      </WarningDialog>
     </>
   );
 };
