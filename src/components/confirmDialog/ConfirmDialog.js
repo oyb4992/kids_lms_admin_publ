@@ -16,19 +16,15 @@ const ConfirmDialog = (props) => {
     >
       <DialogTitle id="confirm-dialog">{title}</DialogTitle>
       <DialogContent>{children}</DialogContent>
-      <DialogActions>
-        <Button variant="contained" onClick={() => setOpen(false)}>
-          No
-        </Button>
-        <Button
-          variant="contained"
+      <DialogActions className="cpnt_btns df-f">
+        <button className="bt" type="button" onClick={() => setOpen(false)}>취소</button>
+        <button className="bt sb" type="button"
           onClick={() => {
             setOpen(false);
             onConfirm();
           }}
         >
-          Yes
-        </Button>
+          확인</button>
       </DialogActions>
     </Dialog>
   );

@@ -39,7 +39,16 @@ html, body { height:100%; -webkit-font-smoothing:antialiased; -moz-osx-font-smoo
 .blind { position:absolute !important; width:1px !important; height:1px !important; padding:0 !important; margin:-1px !important; border:0px solid transparent !important; line-height:0 !important; font-size:0 !important; white-space:nowrap !important; overflow:hidden !important; clip:rect(0,0,0,0) !important; clip-path:inset(50%) !important; }
 .none { display:none !important; }
 
+//정렬 align(text, flex) - (left, right)
 .at-l { text-align:left !important; }
 .at-r { text-align:right !important; }
 .af-l { margin-right:auto !important; }
 .af-r { margin-left:auto !important; }
+
+//디스플레이 display(flex, block, inlineblock) - 기본값(full, auto)
+.df-a { display:flex; }
+.df-f { display:flex; width:100%; 
+    >button, a { flex:1; }
+}
+.db-f { display:block; }
+.di-a { display:inline-block; }

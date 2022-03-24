@@ -52,7 +52,7 @@ const PersistentDrawerLeft = () => {
         { text: "펫 목록", path: "/pet/petlist" },
       ],
     },
-    { text: "문구 관리", path: "/parents/banners",
+    { text: "문구 관리", path: "/phrase/setting",
       sub: [
 
       ],
