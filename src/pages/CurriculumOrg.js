@@ -7,7 +7,62 @@ import ConfirmDialog from "../components/confirmDialog/ConfirmDialog";
 
 const CurriculumOrg = () => {
   const { showToast } = useToast();
-  const [data, setData] = useState([]);
+  const [data, setData] = useState([
+    {
+      crcmPrgmNo: 8000068,
+      snrDvsCd: "아이진단 미완료",
+      prgmNum: 1,
+      oriNum: 0,
+      prgmTypCd: "추천",
+      rcmTypNm: "아이진단미완료",
+      paperId: "M012564130PPV00",
+      useStsCd: "사용",
+      regDtt: null,
+      regrId: null,
+      modDtt: null,
+      modfId: null,
+      engLvl: 0,
+      odNum: 0,
+      albumId: null,
+      engData: null,
+    },
+    {
+      crcmPrgmNo: 8000100,
+      snrDvsCd: "아이진단 미완료",
+      prgmNum: 2,
+      oriNum: 0,
+      prgmTypCd: "추천",
+      rcmTypNm: "아이진단2",
+      paperId: "M012564130PPV00",
+      useStsCd: "사용",
+      regDtt: null,
+      regrId: null,
+      modDtt: null,
+      modfId: null,
+      engLvl: 0,
+      odNum: 0,
+      albumId: null,
+      engData: null,
+    },
+    {
+      crcmPrgmNo: 8000101,
+      snrDvsCd: "아이진단 미완료",
+      prgmNum: 3,
+      oriNum: 0,
+      prgmTypCd: "추천",
+      rcmTypNm: "아이진단미완료",
+      paperId: "M012564130PPV00",
+      useStsCd: "사용",
+      regDtt: null,
+      regrId: null,
+      modDtt: null,
+      modfId: null,
+      engLvl: 0,
+      odNum: 0,
+      albumId: null,
+      engData: null,
+    },
+  ]);
   const [checkItems, setCheckItems] = useState([]);
 
   const [isOpenApplyConfirm, setOpenApplyConfirm] = useState(false);
@@ -44,7 +99,10 @@ const CurriculumOrg = () => {
 
   const updateData = useCallback(
     async (data) => {
-      await API.put("/api/v1/lms/admin/curriculum-programming/containers", data)
+      await API.put(
+        "/kids-lms-play/api/v1/lms/admin/curriculum-programming/containers",
+        data
+      )
         .then((res) => {
           setCheckItems([]);
           showToast(`적용이 완료되었습니다.`, `success`);
@@ -74,9 +132,9 @@ const CurriculumOrg = () => {
     },
     [setCheckItems, showToast, getData]
   );
-  useEffect(() => {
-    getData();
-  }, [getData, updateData, deleteData]);
+  // useEffect(() => {
+  //   getData();
+  // }, [getData, updateData, deleteData]);
 
   const handleDragEnd = useCallback(
     (e) => {
@@ -136,10 +194,19 @@ const CurriculumOrg = () => {
       const selected = e.target.value;
       const list = List(data);
       const index = list.findIndex((i) => i.crcmPrgmNo === key);
-      const newArr = list.update(index, (item) =>
-        Object.assign({}, item, { useStsCd: selected })
-      );
-      setData(newArr);
+      const newArr = list.update(index, (item) => {
+        if (!item.oriUse) {
+          return Object.assign(
+            {},
+            item,
+            { useStsCd: selected },
+            { oriUse: item.useStsCd }
+          );
+        }
+        return Object.assign({}, item, { useStsCd: selected });
+      });
+      console.log(newArr.toJS());
+      setData(newArr.toJS());
     },
     [data, setData]
   );
@@ -151,13 +218,14 @@ const CurriculumOrg = () => {
         (typeof i.oriNum !== "undefined" &&
           i.prgmNum !== i.oriNum &&
           i.oriNum !== 0) ||
-        checkItems.includes(i.crcmPrgmNo)
+        (typeof i.oriUse !== "undefined" && i.oriUse !== i.useStsCd)
     );
-    console.log(index.toJS());
+    // console.log(index.toJS());
     if (index.size === 0) {
       showToast(`적용할 데이터가 없습니다.`, `warning`);
       return;
     }
+
     updateData(index.toJS());
   }, [data, checkItems, updateData, showToast]);
 
@@ -190,7 +258,8 @@ const CurriculumOrg = () => {
             <caption>
               <strong className="title">{selected}</strong>{" "}
               <span className="total">
-                Total: <b>{data.length}</b>
+                {`Total: `}
+                <b>{data.length}</b>
               </span>
             </caption>
             <thead>
@@ -223,7 +292,22 @@ const CurriculumOrg = () => {
                         <tr
                           {...provider.draggableProps}
                           ref={provider.innerRef}
-                          className={`  `}
+                          className={() => {
+                            switch (data.useStsCd) {
+                              case `사용`:
+                                return ``;
+                                break;
+                              case `검수`:
+                                return ``;
+                                break;
+                              case `미사용`:
+                                return ``;
+                                break;
+                              default:
+                                return ``;
+                                break;
+                            }
+                          }}
                         >
                           <td {...provider.dragHandleProps}>
                             <input

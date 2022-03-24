@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "http://localhost:7074/kids-lms-play/",
+  baseURL: process.env.REACT_APP_API_URL,
 });
 
 API.interceptors.request.use(
