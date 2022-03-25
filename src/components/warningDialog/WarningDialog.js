@@ -16,10 +16,8 @@ const WarningDialog = (props) => {
     >
       <DialogTitle id="confirm-dialog">{title}</DialogTitle>
       <DialogContent>{children}</DialogContent>
-      <DialogActions>
-        <Button variant="contained" onClick={() => setOpen(false)}>
-          {`확인`}
-        </Button>
+      <DialogActions className="cpnt_btns df-f">
+        <button className="bt sb" type="button" onClick={() => setOpen(false)}>{`확인`}</button>
       </DialogActions>
     </Dialog>
   );

@@ -86,12 +86,10 @@
     > .MuiBackdrop-root { background-color:rgba(255,255,255,.8) !important; }
     .MuiDialog-container { 
         .MuiDialog-paper { width: 460px; border:1px solid $c-sb; box-shadow:5px 5px 20px rgba(0,0,0,.3); 
-            .MuiPaper-root { 
-                .MuiTypography-root {  }
-                .MuiDialogContent-root { padding:0 20px 30px 20px; }
-                .MuiDialogActions-root { padding:0;
-                    button { height:40px; margin-left:0; border-radius:0; }
-                }
+            .MuiTypography-root {  }
+            .MuiDialogContent-root { padding:20px 20px 50px 20px; text-align:center; }
+            .MuiDialogActions-root { padding:0 !important;
+                button { height:40px; margin-left:0; border-radius:0 !important; }
             }
         }
     }

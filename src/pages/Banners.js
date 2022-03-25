@@ -312,9 +312,7 @@ const Banners = () => {
         setOpen={setDateConfirm}
         onConfirm={false}
       >
-        <DialogContent>
-          <div>게시 기간을 확인해주세요.</div>
-        </DialogContent>
+        <div>게시 기간을 확인해주세요.</div>
       </WarningDialog>
     </>
   );
