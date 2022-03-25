@@ -296,7 +296,7 @@ const Banners = () => {
         setOpen={setUpdateConfirm}
         onConfirm={handleUpdateClick}
       >
-        <div>적용하시겠습니까?</div>
+        <pending>적용하시겠습니까?</pending>
       </ConfirmDialog>
 
       <ConfirmDialog
@@ -304,7 +304,7 @@ const Banners = () => {
         setOpen={setDeleteConfirm}
         onConfirm={handleDeleteClick}
       >
-        <div>삭제하시겠습니까?</div>
+        <p>삭제하시겠습니까?</p>
       </ConfirmDialog>
 
       <WarningDialog
@@ -312,7 +312,7 @@ const Banners = () => {
         setOpen={setDateConfirm}
         onConfirm={false}
       >
-        <div>게시 기간을 확인해주세요.</div>
+        <p>게시 기간을 확인해주세요.</p>
       </WarningDialog>
     </>
   );

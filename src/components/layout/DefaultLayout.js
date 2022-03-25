@@ -1,6 +1,7 @@
 import { Container, Divider, Grid } from "@mui/material";
 import { useCallback, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import HomeIcon from '@mui/icons-material/Home';
 
 export const DefaultLayout = ({ children }) => {
   const location = useLocation();
@@ -49,7 +50,7 @@ export const DefaultLayout = ({ children }) => {
     <Container disableGutters maxWidth={false} className="cpnt_contents">
       <div className="cpnt_title">
         <h1>{lastPath}</h1>
-        <span className="path">{`홈 > ${middlePath} > ${lastPath} `}</span>
+        <span className="path"><HomeIcon></HomeIcon> 	&gt; {`LMS 어드민 > ${middlePath} > ${lastPath} `}</span>
       </div>
       {/* <Divider /> */}
       <Grid className="cpnt_conts">{children}</Grid>

@@ -4,6 +4,9 @@ import { List } from "immutable";
 import API from "../components/axios/api";
 import { useToast } from "../components/hooks";
 import ConfirmDialog from "../components/confirmDialog/ConfirmDialog";
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
+import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 
 const CurriculumOrg = () => {
   const { showToast } = useToast();
@@ -34,7 +37,7 @@ const CurriculumOrg = () => {
       prgmTypCd: "추천",
       rcmTypNm: "아이진단2",
       paperId: "M012564130PPV00",
-      useStsCd: "사용",
+      useStsCd: "검수",
       regDtt: null,
       regrId: null,
       modDtt: null,
@@ -44,6 +47,9 @@ const CurriculumOrg = () => {
       albumId: null,
       engData: null,
     },
+    { crcmPrgmNo: 8000068, snrDvsCd: "아이진단 완료1", prgmNum: 1, oriNum: 0, prgmTypCd: "추천", rcmTypNm: "아이진단미완료", paperId: "M012564130PPV00", useStsCd: "사용", regDtt: null, regrId: null, modDtt: null, modfId: null, engLvl: 0, odNum: 0, albumId: null, engData: null, },
+    { crcmPrgmNo: 8000068, snrDvsCd: "아이진단 완료2", prgmNum: 1, oriNum: 0, prgmTypCd: "추천", rcmTypNm: "아이진단미완료", paperId: "M012564130PPV00", useStsCd: "사용", regDtt: null, regrId: null, modDtt: null, modfId: null, engLvl: 0, odNum: 0, albumId: null, engData: null, },
+    { crcmPrgmNo: 8000068, snrDvsCd: "아이진단 완료3", prgmNum: 1, oriNum: 0, prgmTypCd: "추천", rcmTypNm: "아이진단미완료", paperId: "M012564130PPV00", useStsCd: "사용", regDtt: null, regrId: null, modDtt: null, modfId: null, engLvl: 0, odNum: 0, albumId: null, engData: null, },
     {
       crcmPrgmNo: 8000101,
       snrDvsCd: "아이진단 미완료",
@@ -52,7 +58,7 @@ const CurriculumOrg = () => {
       prgmTypCd: "추천",
       rcmTypNm: "아이진단미완료",
       paperId: "M012564130PPV00",
-      useStsCd: "사용",
+      useStsCd: "미사용",
       regDtt: null,
       regrId: null,
       modDtt: null,
@@ -293,7 +299,9 @@ const CurriculumOrg = () => {
                 <th>추천유형명</th>
                 <th>타입</th>
                 <th>추천코드/편성정보</th>
-                <th>사용여부</th>
+                <th>
+                    사용여부
+                </th>
               </tr>
             </thead>
             <Droppable droppableId="droppable-1" direction="vertical">
@@ -359,13 +367,13 @@ const CurriculumOrg = () => {
 
         <div className="cpnt_btns">
           <button type="button" onClick={handleApplyButton}>
-            적용
+          <CheckCircleOutlineIcon></CheckCircleOutlineIcon> 적용
           </button>
           <button type="button" onClick={handleDeleteButton}>
-            삭제
+          <DeleteOutlineIcon></DeleteOutlineIcon> 삭제
           </button>
           <button type="button" className="sb af-r">
-            등록
+            <AddCircleOutlineIcon></AddCircleOutlineIcon> 등록
           </button>
         </div>
       </div>
@@ -375,10 +383,10 @@ const CurriculumOrg = () => {
         setOpen={setOpenApplyConfirm}
         onConfirm={handleApply}
       >
-        <div>
-          {`커리큘럼 스케쥴을 적용하겠습니까? 
-          a단, 이미 생성된 커리큘럼이 있는 프로필은 즉시 적용되지 않으며 다음날 커리큘럼 생성 시 적용 및 확인이 가능합니다.`}
-        </div>
+        <p>
+          {`커리큘럼 스케쥴을 적용하겠습니까?`}<br />
+          {`단, 이미 생성된 커리큘럼이 있는 프로필은 즉시 적용되지 않으며 다음날 커리큘럼 생성 시 적용 및 확인이 가능합니다.`}
+        </p>
       </ConfirmDialog>
 
       <ConfirmDialog
@@ -386,8 +394,8 @@ const CurriculumOrg = () => {
         setOpen={setOpenDeleteConfirm}
         onConfirm={handleDelete}
       >
-        <div>{`삭제하시겠습니까? 
-        삭제 후 복구가 불가능합니다.`}</div>
+        <p>{`삭제하시겠습니까?`}<br />
+        {`삭제 후 복구가 불가능합니다.`}</p>
       </ConfirmDialog>
     </>
   );
