@@ -1,78 +1,17 @@
 import { useCallback, useEffect, useState } from "react";
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { List } from "immutable";
 import API from "../components/axios/api";
 import { useToast } from "../components/hooks";
 import ConfirmDialog from "../components/confirmDialog/ConfirmDialog";
+import CurriculumOrgDetail from "./CurriculumOrgDetail";
+import PlaylistAddCheckIcon from "@mui/icons-material/PlaylistAddCheck";
+import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
+import AddIcon from "@mui/icons-material/Add";
 import TooltipText from "../components/tooltip/TooltipText";
-//import Tooltip from "@material-ui/core/Tooltip";
-import AddIcon from '@mui/icons-material/Add';
-import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
-import PlaylistAddCheckIcon from '@mui/icons-material/PlaylistAddCheck';
-// import { Button } from "@mui/material";
-
 const CurriculumOrg = () => {
   const { showToast } = useToast();
-  const [data, setData] = useState([
-    {
-      crcmPrgmNo: 8000068,
-      snrDvsCd: "아이진단 미완료",
-      prgmNum: 1,
-      oriNum: 0,
-      prgmTypCd: "추천",
-      rcmTypNm: "아이진단미완료",
-      paperId: "M012564130PPV00",
-      useStsCd: "사용",
-      regDtt: null,
-      regrId: null,
-      modDtt: null,
-      modfId: null,
-      engLvl: 0,
-      odNum: 0,
-      albumId: null,
-      engData: null,
-    },
-    {
-      crcmPrgmNo: 8000100,
-      snrDvsCd: "아이진단 미완료",
-      prgmNum: 2,
-      oriNum: 0,
-      prgmTypCd: "추천",
-      rcmTypNm: "아이진단2",
-      paperId: "M012564130PPV00",
-      useStsCd: "검수",
-      regDtt: null,
-      regrId: null,
-      modDtt: null,
-      modfId: null,
-      engLvl: 0,
-      odNum: 0,
-      albumId: null,
-      engData: null,
-    },
-    { crcmPrgmNo: 8000068, snrDvsCd: "아이진단 완료1", prgmNum: 1, oriNum: 0, prgmTypCd: "추천", rcmTypNm: "아이진단미완료", paperId: "M012564130PPV00", useStsCd: "사용", regDtt: null, regrId: null, modDtt: null, modfId: null, engLvl: 0, odNum: 0, albumId: null, engData: null, },
-    { crcmPrgmNo: 8000068, snrDvsCd: "아이진단 완료2", prgmNum: 1, oriNum: 0, prgmTypCd: "추천", rcmTypNm: "아이진단미완료", paperId: "M012564130PPV00", useStsCd: "사용", regDtt: null, regrId: null, modDtt: null, modfId: null, engLvl: 0, odNum: 0, albumId: null, engData: null, },
-    { crcmPrgmNo: 8000068, snrDvsCd: "아이진단 완료3", prgmNum: 1, oriNum: 0, prgmTypCd: "추천", rcmTypNm: "아이진단미완료", paperId: "M012564130PPV00", useStsCd: "사용", regDtt: null, regrId: null, modDtt: null, modfId: null, engLvl: 0, odNum: 0, albumId: null, engData: null, },
-    {
-      crcmPrgmNo: 8000101,
-      snrDvsCd: "아이진단 미완료",
-      prgmNum: 3,
-      oriNum: 0,
-      prgmTypCd: "추천",
-      rcmTypNm: "아이진단미완료",
-      paperId: "M012564130PPV00",
-      useStsCd: "미사용",
-      regDtt: null,
-      regrId: null,
-      modDtt: null,
-      modfId: null,
-      engLvl: 0,
-      odNum: 0,
-      albumId: null,
-      engData: null,
-    },
-  ]);
+  const [data, setData] = useState([]);
   const [checkItems, setCheckItems] = useState([]);
 
   const [isOpenApplyConfirm, setOpenApplyConfirm] = useState(false);
@@ -84,6 +23,11 @@ const CurriculumOrg = () => {
   const handleDeleteButton = useCallback(() => {
     setOpenDeleteConfirm(true);
   }, [setOpenDeleteConfirm]);
+
+  const [isOpenDetail, setOpenDetail] = useState(false);
+  const handleDetailButton = useCallback(() => {
+    setOpenDetail(true);
+  }, [setOpenDetail]);
 
   const [selected, setSelected] = useState("아이진단 미완료");
   const handleSelectBox = useCallback(
@@ -128,7 +72,7 @@ const CurriculumOrg = () => {
     async (data) => {
       console.log(data);
       await API.post(
-        "/api/v1/lms/admin/curriculum-programming/containers/delete",
+        "/kids-lms-play/api/v1/lms/admin/curriculum-programming/containers/delete",
         data
       )
         .then((res) => {
@@ -142,9 +86,9 @@ const CurriculumOrg = () => {
     },
     [setCheckItems, showToast, getData]
   );
-  // useEffect(() => {
-  //   getData();
-  // }, [getData, updateData, deleteData]);
+  useEffect(() => {
+    getData();
+  }, [getData, updateData, deleteData]);
 
   const handleDragEnd = useCallback(
     (e) => {
@@ -237,7 +181,7 @@ const CurriculumOrg = () => {
     }
 
     updateData(index.toJS());
-  }, [data, checkItems, updateData, showToast]);
+  }, [data, updateData, showToast]);
 
   const handleDelete = useCallback(() => {
     const list = List(data);
@@ -245,28 +189,34 @@ const CurriculumOrg = () => {
       .filter((i) => checkItems.includes(i.crcmPrgmNo))
       .toJS();
     const result = checkedData.map((data) => {
-      return { crcmPrgmNo: data.crcmPrgmNo, prgmNum: data.prgmNum };
+      return {
+        crcmPrgmNo: data.crcmPrgmNo,
+        prgmNum: data.prgmNum,
+        snrDvsCd: selected,
+      };
     });
     console.log(result);
     deleteData(result);
-  }, [checkItems, data, deleteData]);
+  }, [checkItems, data, deleteData, selected]);
 
-  const getRowColorFromUseSts = useCallback((useStsCd) => {
+  const getRowColorFromUseSts = (useStsCd) => {
+    let className;
     switch (useStsCd) {
       case `사용`:
-        return `enabled`;
+        className = `enabled`;
         break;
       case `검수`:
-        return `validate`;
+        className = `validate`;
         break;
       case `미사용`:
-        return `disabled`;
+        className = `disabled`;
         break;
       default:
-        return "default";
+        className = "default";
         break;
     }
-  });
+    return className;
+  };
   return (
     <>
       <div className="cpnt_pageSearch Fms at-r">
@@ -278,7 +228,7 @@ const CurriculumOrg = () => {
           <option value={`섬세한 기질`}>섬세한 기질</option>
         </select>
       </div>
-     
+
       <div className="cpnt_table">
         <DragDropContext onDragEnd={handleDragEnd}>
           <table className="table-default">
@@ -304,7 +254,9 @@ const CurriculumOrg = () => {
                 <th>타입</th>
                 <th>추천코드/편성정보</th>
                 <th>
-                  <TooltipText title="사용여부 설정 후 하단의 적용버튼을 클릭하여야 적용이 됩니다.">사용여부</TooltipText>
+                  <TooltipText title="사용여부 설정 후 하단의 적용버튼을 클릭하여야 적용이 됩니다.">
+                    사용여부
+                  </TooltipText>
                 </th>
               </tr>
             </thead>
@@ -370,14 +322,18 @@ const CurriculumOrg = () => {
         </DragDropContext>
 
         <div className="cpnt_btns">
-          <button type="button" onClick={handleDeleteButton}>
-            <DeleteOutlineIcon></DeleteOutlineIcon> 삭제
-          </button>
           <button type="button" onClick={handleApplyButton}>
-            <PlaylistAddCheckIcon></PlaylistAddCheckIcon> 적용
+            <PlaylistAddCheckIcon /> 적용
           </button>
-          <button type="button" className="sb af-r">
-            <AddIcon></AddIcon> 등록
+          <button type="button" onClick={handleDeleteButton}>
+            <DeleteOutlineIcon /> 삭제
+          </button>
+          <button
+            type="button"
+            onClick={handleDetailButton}
+            className="sb af-r"
+          >
+            <AddIcon /> 등록
           </button>
         </div>
       </div>
@@ -388,7 +344,8 @@ const CurriculumOrg = () => {
         onConfirm={handleApply}
       >
         <p>
-          {`커리큘럼 스케쥴을 적용하겠습니까?`}<br />
+          {`커리큘럼 스케쥴을 적용하겠습니까?`}
+          <br />
           {`단, 이미 생성된 커리큘럼이 있는 프로필은 즉시 적용되지 않으며 다음날 커리큘럼 생성 시 적용 및 확인이 가능합니다.`}
         </p>
       </ConfirmDialog>
@@ -398,9 +355,14 @@ const CurriculumOrg = () => {
         setOpen={setOpenDeleteConfirm}
         onConfirm={handleDelete}
       >
-        <p>{`삭제하시겠습니까?`}<br />
-        {`삭제 후 복구가 불가능합니다.`}</p>
+        <p>
+          {`삭제하시겠습니까?`}
+          <br />
+          {`삭제 후 복구가 불가능합니다.`}
+        </p>
       </ConfirmDialog>
+
+      <CurriculumOrgDetail open={isOpenDetail} setOpen={setOpenDetail} />
     </>
   );
 };
