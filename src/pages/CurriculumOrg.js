@@ -1,12 +1,16 @@
 import { useCallback, useEffect, useState } from "react";
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { List } from "immutable";
 import API from "../components/axios/api";
 import { useToast } from "../components/hooks";
 import ConfirmDialog from "../components/confirmDialog/ConfirmDialog";
-import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import TooltipText from "../components/tooltip/TooltipText";
+//import Tooltip from "@material-ui/core/Tooltip";
+import AddIcon from '@mui/icons-material/Add';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
-import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
+import PlaylistAddCheckIcon from '@mui/icons-material/PlaylistAddCheck';
+// import { Button } from "@mui/material";
 
 const CurriculumOrg = () => {
   const { showToast } = useToast();
@@ -274,12 +278,12 @@ const CurriculumOrg = () => {
           <option value={`섬세한 기질`}>섬세한 기질</option>
         </select>
       </div>
-
+     
       <div className="cpnt_table">
         <DragDropContext onDragEnd={handleDragEnd}>
           <table className="table-default">
             <caption>
-              <strong className="title">{selected}</strong>{" "}
+              <strong className="title">{selected}</strong>
               <span className="total">
                 {`Total: `}
                 <b>{data.length}</b>
@@ -300,7 +304,7 @@ const CurriculumOrg = () => {
                 <th>타입</th>
                 <th>추천코드/편성정보</th>
                 <th>
-                    사용여부
+                  <TooltipText title="사용여부 설정 후 하단의 적용버튼을 클릭하여야 적용이 됩니다.">사용여부</TooltipText>
                 </th>
               </tr>
             </thead>
@@ -366,14 +370,14 @@ const CurriculumOrg = () => {
         </DragDropContext>
 
         <div className="cpnt_btns">
-          <button type="button" onClick={handleApplyButton}>
-          <CheckCircleOutlineIcon></CheckCircleOutlineIcon> 적용
-          </button>
           <button type="button" onClick={handleDeleteButton}>
-          <DeleteOutlineIcon></DeleteOutlineIcon> 삭제
+            <DeleteOutlineIcon></DeleteOutlineIcon> 삭제
+          </button>
+          <button type="button" onClick={handleApplyButton}>
+            <PlaylistAddCheckIcon></PlaylistAddCheckIcon> 적용
           </button>
           <button type="button" className="sb af-r">
-            <AddCircleOutlineIcon></AddCircleOutlineIcon> 등록
+            <AddIcon></AddIcon> 등록
           </button>
         </div>
       </div>

@@ -4,6 +4,9 @@ import { useToast } from "../components/hooks";
 import { List } from "immutable";
 import API from "../components/axios/api";
 import ConfirmDialog from "../components/confirmDialog/ConfirmDialog";
+import TooltipText from "../components/tooltip/TooltipText";
+import AddIcon from '@mui/icons-material/Add';
+import PlaylistAddCheckIcon from '@mui/icons-material/PlaylistAddCheck';
 
 const PetList = () => {
   const DEFAULT_IMAGE = `http://ukidsdev.uplus.co.kr/ukids-lms/PetDefaultImage.png`;
@@ -237,7 +240,9 @@ const PetList = () => {
                 <th>{`펫명`}</th>
                 <th>{`노출아이콘`}</th>
                 <th>{`사용여부`}</th>
-                <th>{`수정일`}</th>
+                <th>
+                  <TooltipText title="사용여부 설정 후 하단의 적용버튼을 클릭하여야 적용이 됩니다.">사용여부</TooltipText>
+                </th>
                 <th>{`등록일`}</th>
               </tr>
             </thead>
@@ -305,10 +310,10 @@ const PetList = () => {
 
         <div className="cpnt_btns">
           <button type="button" onClick={handleApplyButton}>
-            {`적용`}
+            <PlaylistAddCheckIcon></PlaylistAddCheckIcon> 적용
           </button>
           <button type="button" className="sb af-r">
-            {`등록`}
+          <AddIcon></AddIcon> 등록
           </button>
         </div>
       </div>

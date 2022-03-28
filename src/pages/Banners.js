@@ -6,6 +6,10 @@ import { List } from "immutable";
 import ConfirmDialog from "../components/confirmDialog/ConfirmDialog";
 import moment from "moment";
 import WarningDialog from "../components/warningDialog/WarningDialog";
+import TooltipText from "../components/tooltip/TooltipText";
+import AddIcon from '@mui/icons-material/Add';
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
+import PlaylistAddCheckIcon from '@mui/icons-material/PlaylistAddCheck';
 
 const Banners = () => {
   const { showToast } = useToast();
@@ -241,7 +245,9 @@ const Banners = () => {
               </th>
               <th>배너명</th>
               <th>게시기간</th>
-              <th>사용여부</th>
+              <th>
+                <TooltipText title="사용여부 설정 후 하단의 적용버튼을 클릭하여야 적용이 됩니다.">사용여부</TooltipText>
+              </th>
             </tr>
           </thead>
 
@@ -279,14 +285,14 @@ const Banners = () => {
           </tbody>
         </table>
         <div className="cpnt_btns">
-          <button type="button" onClick={handleButtonUpdate}>
-            적용
-          </button>
           <button type="button" onClick={handleButtonDelete}>
-            삭제
+            <DeleteOutlineIcon></DeleteOutlineIcon> 삭제
+          </button> 
+          <button type="button" onClick={handleButtonUpdate}>
+            <PlaylistAddCheckIcon></PlaylistAddCheckIcon> 적용
           </button>
           <button type="button" onClick={openPopUp} className="sb af-r">
-            등록
+          <AddIcon></AddIcon> 등록
           </button>
         </div>
       </div>

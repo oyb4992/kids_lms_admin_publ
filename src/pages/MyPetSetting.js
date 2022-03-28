@@ -2,6 +2,7 @@ import { Button, Grid, Paper, TextField } from "@mui/material";
 import { useCallback } from "react";
 import styled from "styled-components";
 import { useToast } from "../components/hooks";
+import PlaylistAddCheckIcon from '@mui/icons-material/PlaylistAddCheck';
 
 const Item = styled(Paper)`
   padding: theme.spacing(1);
@@ -31,6 +32,10 @@ const MyPetSetting = () => {
 
   return (
     <>
+      <div className="cpnt_tableDl">
+        
+        <table className="table-default"></table>
+      </div>
       <Grid container rowSpacing={4}>
         <Grid container item rowSpacing={3} columnSpacing={4}>
           <Grid container item>
@@ -219,11 +224,12 @@ const MyPetSetting = () => {
             </Grid>
           </Grid>
         </Grid>
-        <Grid container item>
-          <Button variant="contained" color="success" onClick={handleClick}>
-            적용
-          </Button>
-        </Grid>
+        <div className="cpnt_btns">
+          <button type="button" onClick={handleClick}>
+            <PlaylistAddCheckIcon></PlaylistAddCheckIcon> 적용
+          </button>
+        </div>
+
       </Grid>
     </>
   );

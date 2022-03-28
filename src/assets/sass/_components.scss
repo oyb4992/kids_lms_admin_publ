@@ -50,11 +50,10 @@
 .cpnt_table { 
     .table-default { width:100%; border:0; border-top:2px solid #4d5762; border-collapse:collapse; 
         caption { caption-side:top; text-align:left; 
-            .total { display:inline-block; margin-left:10px; margin-bottom:5px; color:#747474; 
+            .title { display:inline-block; margin-right:10px; font-size:1.3rem; font-weight:700; color:$c-sb; }
+            .total { display:inline-block; margin-bottom:5px; color:#747474; 
                 b { font-weight:700; color:$c-mi; }
             }
-            .title { display:inline-block; font-size:1.3rem; font-weight:700; color:$c-sb; }
-
         }
         th, td {border-right:1px solid #eaeaea; border-bottom:1px solid #eaeaea; }
         thead tr > *:first-child, tbody tr > *:first-child { border-left:1px solid #eaeaea; }
@@ -123,11 +122,25 @@
  /* component : dialog (confirm) */
 .SnackbarContainer-root { 
     .dmatzn { 
-        .MuiAlert-root { 
-            .MuiAlert-icon {  }
-            .MuiAlert-message { padding:0 20px 30px 20px; }
-            .MuiAlert-action {  }
+        .MuiAlert-root { background-color:#323232;
+            .MuiAlert-icon { padding:2px 0 0 0; }
+            .MuiAlert-message { padding:2px 0 0 0; }
+            .MuiAlert-action { padding:0 0 0 16px; opacity:.7; }
         }
     
     }
- }
+}
+
+
+
+/* component : tooltip (text, ) */
+.cpnt_tooltip {
+    &.target { cursor:help;
+        svg { width:1rem; height:1rem; margin-left:.1rem; border-radius:50%; background-color:$c-sb; vertical-align:baseline; color:#fff; }
+    }
+}
+.MuiTooltip-popper {
+    .MuiTooltip-tooltip { padding:8px 8px;
+        .MuiTooltip-arrow {  }
+    }
+}
