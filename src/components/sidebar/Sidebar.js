@@ -56,6 +56,7 @@ const PersistentDrawerLeft = () => {
       ],
     },
     { text: "문구 관리", path: "/phrase/setting", sub: [] },
+    { text: "샘플 페이지(퍼블용)", path: "/sample/info", sub: [] },
   ];
   return (
     // <div className={styles.cpnt_lnb}>

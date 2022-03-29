@@ -71,7 +71,7 @@ const CurriculumOrgDetail = (props) => {
   };
   return (
     <>
-      <PopupDialog open={open} setOpen={setOpen} title={`커리큘럼 등록`}>
+      <PopupDialog open={open} setOpen={setOpen} title={`샘플 등록`}>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="cpnt_dlForm">
             <dl className="dlForm-default">

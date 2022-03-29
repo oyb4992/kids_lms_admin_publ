@@ -230,11 +230,13 @@
 /* component : tooltip (text, ) */
 .cpnt_tooltip {
     &.target { cursor:help;
-        svg { width:1rem; height:1rem; margin-left:.1rem; border-radius:50%; background-color:$c-sb; vertical-align:baseline; color:#fff; }
+        svg { width:1rem; height:1rem; margin-left:.1rem; margin-bottom:-2px; border-radius:50%; background-color:$c-sb; vertical-align:baseline; color:#fff; }
     }
 }
 .MuiTooltip-popper {
-    .MuiTooltip-tooltip { padding:8px 8px;
-        .MuiTooltip-arrow {  }
+    .MuiTooltip-tooltip { padding:8px 8px; background-color:#3e4d5a;
+        .MuiTooltip-arrow { 
+            &::before { background-color:#3e4d5a; }
+         }
     }
 }

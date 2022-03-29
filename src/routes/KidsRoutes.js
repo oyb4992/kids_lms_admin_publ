@@ -7,6 +7,7 @@ import CurriculumOrg from "../pages/CurriculumOrg";
 import Banners from "../pages/Banners";
 import PetList from "../pages/PetList";
 import CurriculumSetting from "../pages/CurriculumSetting";
+import SampleInfo from "../pages/SampleInfo";
 const KidsRoutes = () => {
   return (
     <Router>
@@ -19,6 +20,7 @@ const KidsRoutes = () => {
           <Route path="/pet/petlist" element={<PetList />} />
           <Route path="/pet/petsetting" element={<MyPetSetting />} />
           <Route path="/parents/banners" element={<Banners />} />
+          <Route path="/sample/info" element={<SampleInfo />} />
         </Routes>
       </DefaultLayout>
     </Router>

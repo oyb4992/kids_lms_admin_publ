@@ -236,7 +236,9 @@ const PetList = () => {
                     checked={checkItems.length === data.length ? true : false}
                   />
                 </th>
-                <th>{`노출순서`}</th>
+                <th>
+                  <TooltipText title="노출순서 변경 후 하단의 적용버튼을 클릭하여야 적용이 됩니다.">노출순서</TooltipText>
+                </th>
                 <th>{`펫명`}</th>
                 <th>{`노출아이콘`}</th>
                 <th>

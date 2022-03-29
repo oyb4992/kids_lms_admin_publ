@@ -45,10 +45,10 @@ const MyPetSetting = () => {
               <span>4단계<ArrowForwardIcon></ArrowForwardIcon>5단계</span>
             </dt>
             <dd className="tbody-tr">
-              <span><input class="field-input" type="number" /> 개</span>
-              <span><input class="field-input" type="number" /> 개</span>
-              <span><input class="field-input" type="number" /> 개</span>
-              <span><input class="field-input" type="number" /> 개</span>
+              <span><input className="field-input" type="number" /> 개</span>
+              <span><input className="field-input" type="number" /> 개</span>
+              <span><input className="field-input" type="number" /> 개</span>
+              <span><input className="field-input" type="number" /> 개</span>
             </dd>
           </div>
         </dl>
@@ -63,10 +63,10 @@ const MyPetSetting = () => {
               <span>행복<ArrowForwardIcon></ArrowForwardIcon>배부름</span>
             </dt>
             <dd className="tbody-tr">
-              <span><input class="field-input" type="number" /> 개</span>
-              <span><input class="field-input" type="number" /> 개</span>
-              <span><input class="field-input" type="number" /> 개</span>
-              <span><input class="field-input" type="number" /> 개</span>
+              <span><input className="field-input" type="number" /> 개</span>
+              <span><input className="field-input" type="number" /> 개</span>
+              <span><input className="field-input" type="number" /> 개</span>
+              <span><input className="field-input" type="number" /> 개</span>
             </dd>
           </div>
         </dl>
@@ -81,10 +81,10 @@ const MyPetSetting = () => {
               <span>보통<ArrowForwardIcon></ArrowForwardIcon>배고픔</span>
             </dt>
             <dd className="tbody-tr">
-              <span><input class="field-input" type="number" /> 일</span>
-              <span><input class="field-input" type="number" /> 시간</span>
-              <span><input class="field-input" type="number" /> 시간</span>
-              <span><input class="field-input" type="number" /> 시간</span>
+              <span><input className="field-input" type="number" /> 일</span>
+              <span><input className="field-input" type="number" /> 시간</span>
+              <span><input className="field-input" type="number" /> 시간</span>
+              <span><input className="field-input" type="number" /> 시간</span>
             </dd>
           </div>
         </dl>
@@ -285,7 +285,7 @@ const MyPetSetting = () => {
           onClick={handleClick}
           className="sb af-r"
         >
-          <AddIcon /> 등록
+          <PlaylistAddCheckIcon /> 적용
         </button>
       </div>
     </>

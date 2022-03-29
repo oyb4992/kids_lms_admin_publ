@@ -66,10 +66,11 @@ export const DefaultLayout = ({ children }) => {
           { text: "펫 목록", path: "/pet/petlist" },
         ],
       },
-      { text: "문구 관리", path: "/phrase/setting",
-        sub: [
-  
-        ],
+      { text: "문구 관리", path: "/phrase/setting", 
+        sub: [ { text: "문구 관리", path: "/phrase/setting" } ] 
+      },
+      { text: "샘플페이지 (퍼블용)", path: "/sample/info", 
+        sub: [ { text: "샘플페이지 (퍼블용)", path: "/sample/info" } ] 
       }
     ];
     for(let i=0;i<category.length;i++){

@@ -249,7 +249,11 @@ const CurriculumOrg = () => {
                     checked={checkItems.length === data.length ? true : false}
                   />
                 </th>
-                <th>순서</th>
+                <th>
+                  <TooltipText title="노출순서 변경 후 하단의 적용버튼을 클릭하여야 적용이 됩니다.">
+                    순서
+                  </TooltipText>
+                </th>
                 <th>추천유형명</th>
                 <th>타입</th>
                 <th>추천코드/편성정보</th>
@@ -322,11 +326,11 @@ const CurriculumOrg = () => {
         </DragDropContext>
 
         <div className="cpnt_btns">
-          <button type="button" onClick={handleApplyButton}>
-            <PlaylistAddCheckIcon /> 적용
-          </button>
           <button type="button" onClick={handleDeleteButton}>
             <DeleteOutlineIcon /> 삭제
+          </button>
+          <button type="button" onClick={handleApplyButton}>
+            <PlaylistAddCheckIcon /> 적용
           </button>
           <button
             type="button"
