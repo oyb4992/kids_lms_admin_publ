@@ -14,6 +14,7 @@ const PopupDialog = (props) => {
       open={open}
       onClose={() => setOpen(false)}
       aria-labelledby="confirm-dialog"
+      className="cpnt_dialog_page"
     >
       <DialogTitle>
         {title}
@@ -31,16 +32,24 @@ const PopupDialog = (props) => {
         </IconButton>
       </DialogTitle>
       <DialogContent>{children}</DialogContent>
-      <DialogActions>
-        <Button
-          variant="contained"
+      <DialogActions className="cpnt_btns">
+        <button
+          className="bt" type="button"
+          onClick={() => {
+            setOpen(false);
+          }}
+        >
+          취소
+        </button>
+        <button
+          className="bt sb" type="button"
           onClick={() => {
             setOpen(false);
             onSubmit();
           }}
         >
           등록
-        </Button>
+        </button>
       </DialogActions>
     </Dialog>
   );

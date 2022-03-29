@@ -239,10 +239,10 @@ const PetList = () => {
                 <th>{`노출순서`}</th>
                 <th>{`펫명`}</th>
                 <th>{`노출아이콘`}</th>
-                <th>{`사용여부`}</th>
                 <th>
                   <TooltipText title="사용여부 설정 후 하단의 적용버튼을 클릭하여야 적용이 됩니다.">사용여부</TooltipText>
                 </th>
+                <th>{`수정일`}</th>
                 <th>{`등록일`}</th>
               </tr>
             </thead>
@@ -310,10 +310,10 @@ const PetList = () => {
 
         <div className="cpnt_btns">
           <button type="button" onClick={handleApplyButton}>
-            <PlaylistAddCheckIcon></PlaylistAddCheckIcon> 적용
+            <PlaylistAddCheckIcon /> 적용
           </button>
           <button type="button" className="sb af-r">
-          <AddIcon></AddIcon> 등록
+          <AddIcon /> 등록
           </button>
         </div>
       </div>

@@ -48,94 +48,108 @@ const CurriculumOrgDetail = (props) => {
 
   const getStepData = (step) => {
     return (
-      <table>
-        <tbody>
-          {watch(step).map((data, index) => (
-            <tr key={step + data.odnum}>
-              <td>{data.odnum + `차수`}</td>
-              <td>
-                <input
-                  name={`${step}[${index}].albumId`}
-                  type={`text`}
-                  defaultValue={data.albumId}
-                  {...register(`${step}[${index}].albumId`)}
-                  //   ref={...register(`${step}[${index}]`)}
-                />
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <dl className="dlForm-default">
+        {watch(step).map((data, index) => (
+        <div className="tr" key={step + data.odnum}>
+          <dt><span>{data.odnum + `차수`}</span></dt>
+          <dd>
+            <div class="field-wrap">
+              <input
+                name={`${step}[${index}].albumId`}
+                type={`text`}
+                defaultValue={data.albumId}
+                {...register(`${step}[${index}].albumId`)}
+                //   ref={...register(`${step}[${index}]`)}
+                placeholder="콤마(,)로 구분하여 여러 앨범명을 등록할 수 있습니다."
+              />
+            </div>
+          </dd>
+        </div>
+        ))}
+      </dl>
     );
   };
   return (
     <>
       <PopupDialog open={open} setOpen={setOpen} title={`커리큘럼 등록`}>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <table>
-            <tbody>
-              <tr>
-                <td>{`추천유형명 *`}</td>
-                <td>
-                  <input
-                    type="text"
-                    placeholder="rcmTypNm"
-                    {...register("rcmTypNm", {
-                      required: true,
-                      maxLength: 100,
-                    })}
-                  />
-                </td>
-              </tr>
+          <div className="cpnt_dlForm">
+            <dl className="dlForm-default">
+              <div className="tr">
+                <dt className="required"><span>{`추천유형명`}</span></dt>
+                <dd>
+                  <div class="field-wrap">
+                    <input type="text" placeholder="rcmTypNm"
+                      {...register("rcmTypNm", {
+                        required: true,
+                        maxLength: 100,
+                      })}
+                      required
+                    />
+                  </div>
+                </dd>
+              </div>
+              <div className="tr">
+                <dt className="required"><span>{`타입`}</span></dt>
+                <dd>
+                  <div class="field-wrap">
+                    <label for="prgmTypCd2">추천</label>
+                    <input
+                      {...register("prgmTypCd", { required: true })}
+                      id="prgmTypCd1"
+                      type="radio"
+                      value="추천"
+                      required
+                    />
+                    <label for="prgmTypCd2">영어유치원</label>
+                    <input
+                      {...register("prgmTypCd", { required: true })}
+                      id="prgmTypCd2"
+                      type="radio"
+                      value="영어유치원"
+                      required
+                    />
+                  </div>
 
-              <tr>
-                <td>{`타입 *`}</td>
-                <td>
-                  추천
-                  <input
-                    {...register("prgmTypCd", { required: true })}
-                    type="radio"
-                    value="추천"
-                  />
-                  영어유치원
-                  <input
-                    {...register("prgmTypCd", { required: true })}
-                    type="radio"
-                    value="영어유치원"
-                  />
-                </td>
-              </tr>
+                  
+                </dd>
+              </div>
               {watch("prgmTypCd") === `추천` && (
-                <tr>
-                  <td>{`지면 데이터 *`}</td>
-                  <td>
+              <div className="tr">
+                <dt className="required"><span>{`지면 데이터`}</span></dt>
+                <dd>
+                  <span className="field-wrap">
                     <input
                       type="text"
                       placeholder="paperId"
                       {...register("paperId", { pattern: /,/i })}
+                      required
                     />
-                  </td>
-                </tr>
+                  </span>
+                </dd>
+              </div>
               )}
               {watch("prgmTypCd") === `영어유치원` && (
-                <tr>
-                  <td>{`오늘의 영어 레벨 카테고리 설정`}</td>
-                  <td>
-                    <Tabs value={engTab} onChange={handleSetEngTab} centered>
-                      <Tab value={`step1`} label="STEP 1" />
-                      <Tab value={`step2`} label="STEP 2" />
-                      <Tab value={`step3`} label="STEP 3" />
-                      <Tab value={`step4`} label="STEP 4" />
-                      <Tab value={`step5`} label="STEP 5" />
-                      <Tab value={`step6`} label="STEP 6" />
-                    </Tabs>
-                    {getStepData(engTab)}
-                  </td>
-                </tr>
+              <div className="tr">
+                <dt>{`오늘의 영어 레벨 카테고리 설정`}</dt>
+                <dd>
+                  <Tabs value={engTab} onChange={handleSetEngTab} centered className="cpnt_contsTab">
+                    <Tab value={`step1`} label="STEP 1" />
+                    <Tab value={`step2`} label="STEP 2" />
+                    <Tab value={`step3`} label="STEP 3" />
+                    <Tab value={`step4`} label="STEP 4" />
+                    <Tab value={`step5`} label="STEP 5" />
+                    <Tab value={`step6`} label="STEP 6" />
+                  </Tabs>
+                  {getStepData(engTab)}
+                </dd>
+              </div>
               )}
-            </tbody>
-          </table>
-          <input type="submit" />
+            </dl>
+
+          </div>
+          
+          {/* <input type="submit" /> */}
         </form>
       </PopupDialog>
     </>

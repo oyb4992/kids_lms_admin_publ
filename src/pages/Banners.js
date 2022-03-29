@@ -286,13 +286,13 @@ const Banners = () => {
         </table>
         <div className="cpnt_btns">
           <button type="button" onClick={handleButtonDelete}>
-            <DeleteOutlineIcon></DeleteOutlineIcon> 삭제
+            <DeleteOutlineIcon /> 삭제
           </button> 
           <button type="button" onClick={handleButtonUpdate}>
-            <PlaylistAddCheckIcon></PlaylistAddCheckIcon> 적용
+            <PlaylistAddCheckIcon /> 적용
           </button>
           <button type="button" onClick={openPopUp} className="sb af-r">
-          <AddIcon></AddIcon> 등록
+          <AddIcon /> 등록
           </button>
         </div>
       </div>

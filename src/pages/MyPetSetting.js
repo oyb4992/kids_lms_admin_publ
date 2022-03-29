@@ -3,6 +3,8 @@ import { useCallback } from "react";
 import styled from "styled-components";
 import { useToast } from "../components/hooks";
 import PlaylistAddCheckIcon from '@mui/icons-material/PlaylistAddCheck';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import AddIcon from "@mui/icons-material/Add";
 
 const Item = styled(Paper)`
   padding: theme.spacing(1);
@@ -32,11 +34,63 @@ const MyPetSetting = () => {
 
   return (
     <>
-      <div className="cpnt_tableDl">
-        
-        <table className="table-default"></table>
+      <div className="cpnt_dlForm">
+        <h2 className="title bg">단계별 펫 성장을 위해 필요한 쿠키</h2>
+        <dl className="dlForm-default">
+          <div>
+            <dt className="thead-tr">
+              <span>1단계<ArrowForwardIcon></ArrowForwardIcon>2단계</span>
+              <span>2단계<ArrowForwardIcon></ArrowForwardIcon>3단계</span>
+              <span>3단계<ArrowForwardIcon></ArrowForwardIcon>4단계</span>
+              <span>4단계<ArrowForwardIcon></ArrowForwardIcon>5단계</span>
+            </dt>
+            <dd className="tbody-tr">
+              <span><input class="field-input" type="number" /> 개</span>
+              <span><input class="field-input" type="number" /> 개</span>
+              <span><input class="field-input" type="number" /> 개</span>
+              <span><input class="field-input" type="number" /> 개</span>
+            </dd>
+          </div>
+        </dl>
+
+        <h2 className="title bg">상위 상태로 올라가기 위해 필요한 쿠키</h2>
+        <dl className="dlForm-default">
+          <div>
+            <dt className="thead-tr">
+              <span>아사직전<ArrowForwardIcon></ArrowForwardIcon>배고픔</span>
+              <span>배고픔<ArrowForwardIcon></ArrowForwardIcon>보통</span>
+              <span>보통<ArrowForwardIcon></ArrowForwardIcon>행복</span>
+              <span>행복<ArrowForwardIcon></ArrowForwardIcon>배부름</span>
+            </dt>
+            <dd className="tbody-tr">
+              <span><input class="field-input" type="number" /> 개</span>
+              <span><input class="field-input" type="number" /> 개</span>
+              <span><input class="field-input" type="number" /> 개</span>
+              <span><input class="field-input" type="number" /> 개</span>
+            </dd>
+          </div>
+        </dl>
+
+        <h2 className="title bg">하위 상태로 변경 되는 조건</h2>
+        <dl className="dlForm-default">
+          <div>
+            <dt className="thead-tr">
+              <span>아사직전</span>
+              <span>배부름<ArrowForwardIcon></ArrowForwardIcon>행복</span>
+              <span>행복<ArrowForwardIcon></ArrowForwardIcon>보통</span>
+              <span>보통<ArrowForwardIcon></ArrowForwardIcon>배고픔</span>
+            </dt>
+            <dd className="tbody-tr">
+              <span><input class="field-input" type="number" /> 일</span>
+              <span><input class="field-input" type="number" /> 시간</span>
+              <span><input class="field-input" type="number" /> 시간</span>
+              <span><input class="field-input" type="number" /> 시간</span>
+            </dd>
+          </div>
+        </dl>
       </div>
-      <Grid container rowSpacing={4}>
+      
+      {/* <Grid container rowSpacing={4}>
         <Grid container item rowSpacing={3} columnSpacing={4}>
           <Grid container item>
             <Grid item xs={4}>
@@ -224,13 +278,16 @@ const MyPetSetting = () => {
             </Grid>
           </Grid>
         </Grid>
-        <div className="cpnt_btns">
-          <button type="button" onClick={handleClick}>
-            <PlaylistAddCheckIcon></PlaylistAddCheckIcon> 적용
-          </button>
-        </div>
-
-      </Grid>
+      </Grid> */}
+      <div className="cpnt_btns">
+        <button
+          type="button"
+          onClick={handleClick}
+          className="sb af-r"
+        >
+          <AddIcon /> 등록
+        </button>
+      </div>
     </>
   );
 };
