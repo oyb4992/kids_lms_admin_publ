@@ -31,14 +31,16 @@ const PersistentDrawerLeft = () => {
 
   const itemslist = [
     {
-      text: "커리큘럼 편성관리", path: "/curr/org",
+      text: "커리큘럼 편성관리",
+      path: "/curr/org",
       sub: [
         { text: "커리큘럼 편성", path: "/curr/org" },
         { text: "커리큘럼 설정", path: "/curr/setting" },
       ],
     },
     {
-      text: "부모알림장 관리", path: "/parents/banners",
+      text: "부모알림장 관리",
+      path: "/parents/banners",
       sub: [
         { text: "학부모 유용정보", path: "/" },
         { text: "배너", path: "/parents/banners" },
@@ -46,19 +48,14 @@ const PersistentDrawerLeft = () => {
       ],
     },
     {
-      text: "펫 관리", path: "/pet/petsetting",
+      text: "펫 관리",
+      path: "/pet/petsetting",
       sub: [
         { text: "펫 설정", path: "/pet/petsetting" },
         { text: "펫 목록", path: "/pet/petlist" },
       ],
     },
-    { text: "문구 관리", path: "/phrase/setting",
-      sub: [
-
-      ],
-    }
-
-    
+    { text: "문구 관리", path: "/phrase/setting", sub: [] },
   ];
   return (
     // <div className={styles.cpnt_lnb}>
@@ -66,15 +63,22 @@ const PersistentDrawerLeft = () => {
       <h1>LMS 어드민</h1>
       <ul>
         {itemslist.map((item, index) => {
-          const { text, path ,sub } = item;
+          const { text, path, sub } = item;
           return (
-            <li key={text} className={` ${ path.indexOf(urlpath[1]) > -1 && 'active'} `}>
+            <li
+              key={text}
+              className={` ${path.indexOf(urlpath[1]) > -1 && "active"} `}
+            >
               <Link key={`${text}`} to={`${path}`}>{`${text}`}</Link>
               {sub.map((subItem) => {
                 const { text, path } = subItem;
                 return (
                   <ul key={`${text}`}>
-                    <li className={` ${ path.indexOf(urlpath[2]) > -1 && 'active'} `}>
+                    <li
+                      className={` ${
+                        path.indexOf(urlpath[2]) > -1 && "active"
+                      } `}
+                    >
                       <Link key={`${text}`} to={path}>
                         {text}
                       </Link>
