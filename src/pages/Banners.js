@@ -1,90 +1,94 @@
-import { DialogContent } from "@mui/material";
+import { Button, Dialog, DialogActions, DialogContent } from "@mui/material";
 import { useEffect, useState, useCallback } from "react";
 import API from "../components/axios/api";
 import { useToast } from "../components/hooks";
 import { List } from "immutable";
 import ConfirmDialog from "../components/confirmDialog/ConfirmDialog";
 import moment from "moment";
+import "moment/locale/ko";
+import TextField from "@mui/material/TextField";
 import WarningDialog from "../components/warningDialog/WarningDialog";
 import TooltipText from "../components/tooltip/TooltipText";
-import AddIcon from '@mui/icons-material/Add';
-import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
-import PlaylistAddCheckIcon from '@mui/icons-material/PlaylistAddCheck';
+import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
+import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
+import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 
 const Banners = () => {
-  const { showToast } = useToast();
   const [data, setData] = useState([
     {
       bnrNo: 1,
       bnrNm: "테스트배너1",
-      dspStartDtt: "2022, 03, 01 0:00",
-      dspStopDtt: "2025, 03, 02 23:59",
+      dspStartDtt: "2022. 03. 01 00:00",
+      dspStopDtt: "2025. 03. 02 23:59",
       bnrImgNo: null,
       ladgDvsCd: "랜딩구분코드1",
       ladgDstVl: "랜딩식별값1",
-      regDtt: "22022, 03, 01 0:00",
+      regDtt: "22022. 03. 01 00:00",
       regrID: "Admin001",
-      modDtt: "2022, 03, 01 0:00",
+      modDtt: "2022. 03. 01 00:00",
       modfId: "Admin001",
       useStsCd: "사용",
     },
     {
       bnrNo: 2,
       bnrNm: "테스트배너2",
-      dspStartDtt: "2022, 03, 01 0:00",
-      dspStopDtt: "2022, 03, 02 23:59",
+      dspStartDtt: "2022. 03. 01 00:00",
+      dspStopDtt: "2022. 03. 02 23:59",
       bnrImgNo: null,
       ladgDvsCd: "랜딩구분코드2",
       ladgDstVl: "랜딩식별값2",
-      regDtt: "2022, 03, 01 0:00",
+      regDtt: "2022. 03. 01 00:00",
       regrID: "Admin001",
-      modDtt: "2022, 03, 01 0:00",
+      modDtt: "2022. 03. 01 00:00",
       modfId: "Admin001",
       useStsCd: "사용",
     },
     {
       bnrNo: 3,
       bnrNm: "테스트배너3",
-      dspStartDtt: "2022, 03, 01 0:00",
-      dspStopDtt: "2025, 03, 02 23:59",
+      dspStartDtt: "2022. 03. 01 00:00",
+      dspStopDtt: "2025. 03. 02 23:59",
       bnrImgNo: null,
       ladgDvsCd: "랜딩구분코드3",
       ladgDstVl: "랜딩식별값3",
-      regDtt: "2022, 03, 01 0:00",
+      regDtt: "2022. 03. 01 00:00",
       regrID: "Admin003",
-      modDtt: "2022, 03, 01 0:00",
+      modDtt: "2022. 03. 01 00:00",
       modfId: "Admin001",
       useStsCd: "사용",
     },
     {
       bnrNo: 4,
       bnrNm: "테스트배너4",
-      dspStartDtt: "2022, 03, 01 0:00",
-      dspStopDtt: "2022, 03, 02 23:59",
+      dspStartDtt: "2022. 03. 01 0:00",
+      dspStopDtt: "2022. 03. 02 23:59",
       bnrImgNo: null,
       ladgDvsCd: "랜딩구분코드4",
       ladgDstVl: "랜딩식별값4",
-      regDtt: "2022, 03, 01 0:00",
+      regDtt: "2022. 03. 01 00:00",
       regrID: "Admin001",
-      modDtt: "2022, 03, 01 0:00",
+      modDtt: "2022. 03. 01 00:00",
       modfId: "Admin001",
       useStsCd: "사용",
     },
     {
       bnrNo: 5,
       bnrNm: "테스트배너5",
-      dspStartDtt: "2022, 03, 01 0:00",
-      dspStopDtt: "2025, 03, 02 23:59",
+      dspStartDtt: "2022. 03. 01 00:00",
+      dspStopDtt: "2025. 03. 02 23:59",
       bnrImgNo: null,
       ladgDvsCd: "랜딩구분코드5",
       ladgDstVl: "랜딩식별값5",
-      regDtt: "2022, 03, 01 0:00",
+      regDtt: "2022. 03. 01 00:00",
       regrID: "Admin001",
-      modDtt: "2022, 03, 01 0:00",
+      modDtt: "2022. 03. 01 00:00",
       modfId: "Admin001",
       useStsCd: "사용",
     },
   ]);
+
+  const { showToast } = useToast();
+  // const [data, setData] = useState([]);
   const [tempData, setTempData] = useState([]);
   const [checkItems, setCheckItems] = useState([]);
 
@@ -100,12 +104,41 @@ const Banners = () => {
 
   const [dateConfirm, setDateConfirm] = useState(false);
 
-  const getData = useCallback(async () => {
-    await API.get("kids-lms-parents/api/v1/lms/admin/banners").then((res) => {
-      setData(res.data.data);
-      setTempData(res.data.data);
+  const [insertConfirm, setInsertConfirm] = useState(false);
+  const handleOpenPopUp = useCallback(() => {
+    setInsertConfirm(true);
+  }, [setInsertConfirm]);
+
+  const nowDate = moment().format("YYYY-MM-DD");
+  const [startDate, setStartDate] = useState(nowDate);
+  const [endDate, setEndDate] = useState(nowDate);
+
+  const [inputs, setInputs] = useState({
+    bnrNm: "",
+    dspStartDtt: "",
+    dspStopDtt: "",
+    bnrImgNo: "",
+    ladgDvsCd: "",
+    ladgDstVl: "",
+  });
+
+  const { bnrNm, dspStartDtt, dspStopDtt, bnrImgNo, ladgDvsCd, ladgDstVl } =
+    inputs;
+
+  const dataChange = (e) => {
+    const { name, value } = e.target;
+    setInputs({
+      ...inputs,
+      [name]: value,
     });
-  }, [setData]);
+  };
+
+  // const getData = useCallback(async () => {
+  //   await API.get("kids-lms-parents/api/v1/lms/admin/banners").then((res) => {
+  //     setData(res.data.data);
+  //     setTempData(res.data.data);
+  //   });
+  // }, [setData]);
 
   const updateData = useCallback(
     async (data) => {
@@ -126,25 +159,23 @@ const Banners = () => {
       await API.post("kids-lms-parents/api/v1/lms/admin/banners", checkItems)
         .then((res) => {
           setCheckItems([]);
-          getData();
           showToast(`<strong>삭제되었습니다.</strong><br>`, `success`);
         })
         .catch((err) => {
           showToast(`<strong>삭제 실패하였습니다.</strong><br>`, `error`);
         });
     },
-    [setCheckItems, showToast, getData]
+    [setCheckItems, showToast]
   );
 
-  useEffect(() => {
-    getData();
-  }, [getData, updateData, deleteData]);
+  useEffect(() => {}, [updateData, deleteData]);
 
   const handleUseSelect = useCallback(
-    (e, key, date) => {
+    (e, key, date, useStsCd) => {
       const today = moment().format("YYYY. MM. DD HH:mm");
       const endDate = moment(date).format("YYYY. MM. DD HH:mm");
-      if (endDate < today) {
+
+      if (e.target.value === "사용" && endDate < today) {
         setDateConfirm(true);
         return;
       }
@@ -219,22 +250,37 @@ const Banners = () => {
     deleteData(result);
   }, [showToast, data, checkItems, deleteData]);
 
-  const openPopUp = useCallback(() => {
-    alert("등록 팝업");
-  });
+  const getRowColorFromUseSts = (useStsCd) => {
+    let className;
+    switch (useStsCd) {
+      case `사용`:
+        className = `enabled`;
+        break;
+      case `검수`:
+        className = `validate`;
+        break;
+      case `미사용`:
+        className = `disabled`;
+        break;
+      default:
+        className = "default";
+        break;
+    }
+    return className;
+  };
 
   return (
     <>
       <div className="cpnt_table">
         <table className="table-default">
           <caption>
-            <strong className="blind">커리큘럼 편성 테이블</strong>{" "}
+            <strong className="blind"></strong>
             <span className="total">
               Total: <b>{data.length}</b>
             </span>
           </caption>
           <thead>
-            <tr>
+            <tr key={data.bnrNo}>
               <th>
                 <input
                   name="checkAll"
@@ -246,14 +292,16 @@ const Banners = () => {
               <th>배너명</th>
               <th>게시기간</th>
               <th>
-                <TooltipText title="사용여부 설정 후 하단의 적용버튼을 클릭하여야 적용이 됩니다.">사용여부</TooltipText>
+                <TooltipText title="사용여부 설정 후 하단의 적용버튼을 클릭하여야 적용이 됩니다.">
+                  사용여부
+                </TooltipText>
               </th>
             </tr>
           </thead>
 
           <tbody>
             {data?.map((data) => (
-              <tr key={data.bnrNo}>
+              <tr className={getRowColorFromUseSts(data.useStsCd)}>
                 <td>
                   <input
                     type={"checkbox"}
@@ -285,14 +333,17 @@ const Banners = () => {
           </tbody>
         </table>
         <div className="cpnt_btns">
-          <button type="button" onClick={handleButtonDelete}>
-            <DeleteOutlineIcon /> 삭제
-          </button> 
           <button type="button" onClick={handleButtonUpdate}>
-            <PlaylistAddCheckIcon /> 적용
+            <CheckCircleOutlineIcon />
+            적용
           </button>
-          <button type="button" onClick={openPopUp} className="sb af-r">
-          <AddIcon /> 등록
+          <button type="button" onClick={handleButtonDelete}>
+            <DeleteOutlineIcon />
+            삭제
+          </button>
+          <button type="button" onClick={handleOpenPopUp} className="sb af-r">
+            <AddCircleOutlineIcon />
+            등록
           </button>
         </div>
       </div>
@@ -302,7 +353,7 @@ const Banners = () => {
         setOpen={setUpdateConfirm}
         onConfirm={handleUpdateClick}
       >
-        <pending>적용하시겠습니까?</pending>
+        <div>적용하시겠습니까?</div>
       </ConfirmDialog>
 
       <ConfirmDialog
@@ -310,16 +361,109 @@ const Banners = () => {
         setOpen={setDeleteConfirm}
         onConfirm={handleDeleteClick}
       >
-        <p>삭제하시겠습니까?</p>
+        <div>삭제하시겠습니까?</div>
       </ConfirmDialog>
 
-      <WarningDialog
-        open={dateConfirm}
-        setOpen={setDateConfirm}
-        onConfirm={false}
-      >
-        <p>게시 기간을 확인해주세요.</p>
+      <WarningDialog open={dateConfirm} setOpen={setDateConfirm}>
+        <DialogContent>
+          <div>게시 기간을 확인해주세요.</div>
+        </DialogContent>
       </WarningDialog>
+
+      <Dialog
+        open={insertConfirm}
+        onClose={() => setInsertConfirm(false)}
+        aria-labelledby="confirm-dialog"
+      >
+        <DialogContent>
+          <div>
+            배너등록
+            <Button onClick={() => setInsertConfirm(false)} margin-left="400px">
+              X
+            </Button>
+          </div>
+          <table className="table-default">
+            <thead></thead>
+            <tbody>
+              <tr>
+                <td>배너명</td>
+                <td>
+                  <input name="bnrNm" onChange={dataChange} value={bnrNm} />
+                </td>
+              </tr>
+              <tr>
+                <td>게시기간</td>
+                <td>
+                  <TextField
+                    id="startDate"
+                    type="datetime-local"
+                    defaultValue={nowDate}
+                    sx={{ width: 160 }}
+                    name="dspStartDtt"
+                    onChange={dataChange}
+                  />
+                  ~
+                  <TextField
+                    id="endDate"
+                    type="datetime-local"
+                    defaultValue={nowDate}
+                    sx={{ width: 160 }}
+                    name="dspStopDtt"
+                    onChange={dataChange}
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td>배너 이미지</td>
+                <td>
+                  <img
+                    src="https://t1.daumcdn.net/cfile/tistory/24283C3858F778CA2E"
+                    width="300px"
+                    height="150px"
+                  />
+                  <input
+                    type="file"
+                    name="bnrImgNo"
+                    onChange={dataChange}
+                    value={bnrImgNo}
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td>배너랜딩 유형</td>
+                <td>
+                  <select
+                  // name="useStsCd"
+                  // onChange={(e) => {
+                  //   handleUseSelect(e, data.bnrNo, data.dspStopDtt);
+                  // }}
+                  // value={data.useStsCd}
+                  >
+                    <option value={"선택"}>선택</option>
+                    <option value={"메뉴(카테고리)랜딩"}>
+                      메뉴(카테고리)랜딩
+                    </option>
+                    <option value={"아이들나라 홈"}>아이들나라 홈</option>
+                    <option value={"대메뉴 랜딩"}>대메뉴 랜딩</option>
+                    <option value={"서비스 랜딩"}>서비스 랜딩</option>
+                    <option value={"콘텐츠 랜딩"}>콘텐츠 랜딩</option>
+                  </select>
+                  <input
+                    name="ladgDstVl"
+                    onChange={dataChange}
+                    value={ladgDstVl}
+                  />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </DialogContent>
+        <DialogActions>
+          <Button variant="contained" onClick={() => setInsertConfirm(false)}>
+            등록
+          </Button>
+        </DialogActions>
+      </Dialog>
     </>
   );
 };
