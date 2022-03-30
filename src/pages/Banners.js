@@ -109,7 +109,7 @@ const Banners = () => {
     setInsertConfirm(true);
   }, [setInsertConfirm]);
 
-  const nowDate = moment().format("YYYY-MM-DD");
+  const nowDate = moment().format("YYYY-MM-DDTHH:mm");
   const [startDate, setStartDate] = useState(nowDate);
   const [endDate, setEndDate] = useState(nowDate);
 
@@ -122,8 +122,7 @@ const Banners = () => {
     ladgDstVl: "",
   });
 
-  const { bnrNm, dspStartDtt, dspStopDtt, bnrImgNo, ladgDvsCd, ladgDstVl } =
-    inputs;
+  const { bnrNm, dspStartDtt, dspStopDtt, ladgDvsCd, ladgDstVl } = inputs;
 
   const dataChange = (e) => {
     const { name, value } = e.target;
@@ -131,6 +130,26 @@ const Banners = () => {
       ...inputs,
       [name]: value,
     });
+  };
+
+  const [imgBase64, setImgBase64] = useState([]);
+  const [imgFile, setImgFile] = useState(null);
+
+  const handleChangeFile = (e) => {
+    setImgFile(e.target.files);
+    setImgBase64([]);
+
+    if (e.target.files[0]) {
+      let reader = new FileReader();
+      reader.readAsDataURL(e.target.files[0]);
+      reader.onloadend = () => {
+        const base64 = reader.result;
+        if (base64) {
+          var base64Sub = base64.toString();
+          setImgBase64((imgBase64) => [...imgBase64, base64Sub]);
+        }
+      };
+    }
   };
 
   // const getData = useCallback(async () => {
@@ -159,6 +178,7 @@ const Banners = () => {
       await API.post("kids-lms-parents/api/v1/lms/admin/banners", checkItems)
         .then((res) => {
           setCheckItems([]);
+
           showToast(`<strong>삭제되었습니다.</strong><br>`, `success`);
         })
         .catch((err) => {
@@ -301,7 +321,10 @@ const Banners = () => {
 
           <tbody>
             {data?.map((data) => (
-              <tr className={getRowColorFromUseSts(data.useStsCd)}>
+              <tr
+                key={data.bnrNo}
+                className={getRowColorFromUseSts(data.useStsCd)}
+              >
                 <td>
                   <input
                     type={"checkbox"}
@@ -382,13 +405,18 @@ const Banners = () => {
               X
             </Button>
           </div>
-          <table className="table-default">
+          <table className="table-default" border="1">
             <thead></thead>
             <tbody>
               <tr>
                 <td>배너명</td>
                 <td>
-                  <input name="bnrNm" onChange={dataChange} value={bnrNm} />
+                  <input
+                    name="bnrNm"
+                    onChange={dataChange}
+                    value={bnrNm}
+                    placeholder="배너명을 입력해주세요~"
+                  />
                 </td>
               </tr>
               <tr>
@@ -416,16 +444,22 @@ const Banners = () => {
               <tr>
                 <td>배너 이미지</td>
                 <td>
-                  <img
-                    src="https://t1.daumcdn.net/cfile/tistory/24283C3858F778CA2E"
-                    width="300px"
-                    height="150px"
-                  />
+                  {imgBase64.map((item) => {
+                    return (
+                      <img
+                        key="0"
+                        className="d-block w-100"
+                        src={item}
+                        alt="First slide"
+                        style={{ width: "300px", height: "150px" }}
+                      />
+                    );
+                  })}
                   <input
                     type="file"
                     name="bnrImgNo"
-                    onChange={dataChange}
-                    value={bnrImgNo}
+                    id="bnrImgNo"
+                    onChange={handleChangeFile}
                   />
                 </td>
               </tr>
@@ -452,6 +486,7 @@ const Banners = () => {
                     name="ladgDstVl"
                     onChange={dataChange}
                     value={ladgDstVl}
+                    placeholder="랜딩명을 입력해주세요~"
                   />
                 </td>
               </tr>
