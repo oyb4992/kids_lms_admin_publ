@@ -38,7 +38,6 @@
 
 /* component : page search */
 .cpnt_pageSearch { margin-bottom:20px; padding:5px 15px; border-radius:6px; background-color:#eee; }
-.cpnt_pageSearch { }
 
 
 /* component : tab - pages change */
@@ -155,7 +154,7 @@
 /*component : button (default: table-default) */
 .cpnt_btns { display:flex; text-align:left; padding:20px 0 0 0; 
     button { 
-        display:inline-block; align-items:center; justify-content:center; height:30px; margin-left:4px; padding:0 10px; background-color:#f2f2f2; border-radius:3px; font-weight:500; color:$c-tm; cursor:pointer; 
+        @include btnDefault;
         &:hover, 
         &:focus{ filter:brightness(95%); }
         &:first-child { margin-left:0; }
@@ -201,8 +200,8 @@
         .MuiDialog-container { 
             .MuiDialog-paper { width:calc(100% - 60px); min-width:800px; max-width:calc(1350px - 60px);
                 .MuiTypography-root {  }
-                .MuiDialogContent-root { padding:30px; }
-                .MuiDialogActions-root { 
+                .MuiDialogContent-root { padding:30px 22px 10px 30px; overflow-y:scroll; }
+                .MuiDialogActions-root { padding:0 30px 30px 30px;
                     button { }
                 }
             }

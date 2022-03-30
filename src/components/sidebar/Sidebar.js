@@ -55,8 +55,16 @@ const PersistentDrawerLeft = () => {
         { text: "펫 목록", path: "/pet/petlist" },
       ],
     },
-    { text: "문구 관리", path: "/phrase/setting", sub: [] },
-    { text: "샘플 페이지(퍼블용)", path: "/sample/info", sub: [] },
+    { text: "문구 관리", 
+      path: "/phrase/setting", 
+      sub: [ 
+        { text: "문구 관리", path: "/phrase/setting" } 
+      ], 
+  },
+    { text: "샘플페이지 (퍼블용)", 
+      path: "/sample/info", 
+      sub: [ { text: "샘플페이지 (퍼블용)", path: "/sample/info" } ] 
+  }
   ];
   return (
     // <div className={styles.cpnt_lnb}>

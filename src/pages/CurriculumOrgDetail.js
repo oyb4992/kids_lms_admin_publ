@@ -118,14 +118,14 @@ const CurriculumOrgDetail = (props) => {
               <div className="tr">
                 <dt className="required"><span>{`지면 데이터`}</span></dt>
                 <dd>
-                  <span className="field-wrap">
+                  <div className="field-wrap">
                     <input
                       type="text"
                       placeholder="paperId"
                       {...register("paperId", { pattern: /,/i })}
                       required
                     />
-                  </span>
+                  </div>
                 </dd>
               </div>
               )}

@@ -20,7 +20,7 @@ const CurriculumSetting = () => {
           <div className="tr">
             <dt><span>{`커리큘럼 신규 생성최소 시청 (비율)`}</span></dt>
             <dd>
-              <div className="field-wrap">
+              <div className="field-wrap cid-auto">
                 <input type="number" placeholder="시청 비율" />
               </div>
             </dd>
@@ -28,7 +28,7 @@ const CurriculumSetting = () => {
           <div className="tr">
             <dt><span>{`커리큘럼 완료 보상`}</span></dt>
             <dd>
-              <div className="field-wrap">
+              <div className="field-wrap cid-auto">
                 <input type="number" placeholder="보상" />
               </div>
             </dd>

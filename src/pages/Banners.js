@@ -9,11 +9,13 @@ import "moment/locale/ko";
 import TextField from "@mui/material/TextField";
 import WarningDialog from "../components/warningDialog/WarningDialog";
 import TooltipText from "../components/tooltip/TooltipText";
-import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
+import PlaylistAddCheckIcon from "@mui/icons-material/PlaylistAddCheck";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
-import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
+import AddIcon from "@mui/icons-material/Add";
+import CloseIcon from '@mui/icons-material/Close';
 import { useForm } from "react-hook-form";
 import PopupDialog from "../components/popupDialog/PopupDialog";
+import { ConnectingAirportsOutlined } from "@mui/icons-material";
 
 const Banners = () => {
   const [data, setData] = useState([
@@ -134,6 +136,10 @@ const Banners = () => {
   const [imgBase64, setImgBase64] = useState([]);
   const [imgFile, setImgFile] = useState(null);
 
+  const handleClickFile = (e) => { // button 클릭으로 file파일 클릭 핸들러
+    e.target.previousElementSibling.previousElementSibling.click();
+  }
+
   const handleChangeFile = (e) => {
     setImgFile(e.target.files);
     setImgBase64([]);
@@ -146,9 +152,16 @@ const Banners = () => {
         if (base64) {
           var base64Sub = base64.toString();
           setImgBase64((imgBase64) => [...imgBase64, base64Sub]);
+          e.target.nextElementSibling.value = e.target.files[0].name; // input에 파일 이름 노출
         }
       };
     }
+  };
+
+  const handleResetFile = (e) => { // 파일 이미지 삭제
+    setImgBase64((imgBase64) => []);
+    e.target.parentNode.parentNode.parentNode.nextElementSibling.childNodes[0].value = "";
+    e.target.parentNode.parentNode.parentNode.nextElementSibling.childNodes[1].value = "";
   };
 
   // const getData = useCallback(async () => {
@@ -356,7 +369,7 @@ const Banners = () => {
         </table>
         <div className="cpnt_btns">
           <button type="button" onClick={handleButtonUpdate}>
-            <CheckCircleOutlineIcon />
+            <PlaylistAddCheckIcon />
             적용
           </button>
           <button type="button" onClick={handleButtonDelete}>
@@ -364,7 +377,7 @@ const Banners = () => {
             삭제
           </button>
           <button type="button" onClick={handleOpenPopUp} className="sb af-r">
-            <AddCircleOutlineIcon />
+            <AddIcon />
             등록
           </button>
         </div>
@@ -399,89 +412,94 @@ const Banners = () => {
         onSubmit={handleSubmit(onSubmit, onInvalid)}
       >
         <form onSubmit={handleSubmit(onSubmit, onInvalid)}>
-          <table className="table-default" border="1">
-            <thead></thead>
-            <tbody>
-              <tr>
-                <td>배너명</td>
-                <td>
+        <div className="cpnt_dlForm">
+            <dl className="dlForm-default">
+              <div className="tr">
+                <dt className="required"><span>배너명</span></dt>
+                <dd><div className="field-wrap">
                   <input
                     {...register("bnrNm", { required: true, minLength: 2 })}
                   />
-                </td>
-              </tr>
-              <tr>
-                <td>게시기간</td>
-                <td>
-                  <TextField
-                    id="startDate"
-                    type="datetime-local"
-                    defaultValue={nowDate}
-                    sx={{ width: 160 }}
-                    name="dspStartDtt"
-                    {...register("dspStartDtt", {
-                      required: true,
-                    })}
-                  />
-                  ~
-                  <TextField
-                    id="endDate"
-                    type="datetime-local"
-                    defaultValue={nowDate}
-                    sx={{ width: 160 }}
-                    name="dspStopDtt"
-                    {...register("dspStopDtt", {
-                      required: true,
-                    })}
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td>배너 이미지</td>
-                <td>
-                  {imgBase64.map((item) => {
-                    return (
-                      <img
-                        key="0"
-                        className="d-block w-100"
-                        src={item}
-                        alt="First slide"
-                        style={{ width: "300px", height: "150px" }}
-                      />
-                    );
-                  })}
-                  <input
-                    type="file"
-                    name="bnrImgNo"
-                    id="bnrImgNo"
-                    onChange={handleChangeFile}
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td>배너랜딩 유형</td>
-                <td>
-                  <select
-                    name="ladgDvsCd"
-                    {...register("ladgDvsCd", { required: true })}
-                  >
-                    <option value={"선택"}>선택</option>
-                    <option value={"메뉴(카테고리)랜딩"}>
-                      메뉴(카테고리)랜딩
-                    </option>
-                    <option value={"아이들나라 홈"}>아이들나라 홈</option>
-                    <option value={"대메뉴 랜딩"}>대메뉴 랜딩</option>
-                    <option value={"서비스 랜딩"}>서비스 랜딩</option>
-                    <option value={"콘텐츠 랜딩"}>콘텐츠 랜딩</option>
-                  </select>
-                  <input
-                    name="ladgDstVl"
-                    {...register("ladgDstVl", { required: true, minLength: 2 })}
-                  />
-                </td>
-              </tr>
-            </tbody>
-          </table>
+                </div></dd>
+              </div>
+              <div className="tr">
+                <dt className="required"><span>게시기간</span></dt>
+                <dd>
+                  <div className="field-wrap cid-auto cid-range">
+                    <input
+                      id="startDate"
+                      type="datetime-local"
+                      defaultValue={nowDate}
+                      sx={{ width: 160 }}
+                      name="dspStartDtt"
+                      {...register("dspStartDtt", {
+                        required: true,
+                      })}
+                    />
+                    ~
+                    <input
+                      id="endDate"
+                      type="datetime-local"
+                      defaultValue={nowDate}
+                      sx={{ width: 160 }}
+                      name="dspStopDtt"
+                      {...register("dspStopDtt", {
+                        required: true,
+                      })}
+                    />
+                  </div>
+                </dd>
+              </div>
+              <div className="tr">
+                <dt className="required"><span>배너 이미지</span></dt>
+                <dd>
+                    {imgBase64.map((item) => {
+                      return (
+                        <div key="1" className="field-input-file-img"><span key="3">
+                          <img
+                            key="0"
+                            src={item}
+                            alt="선택한 이미지"
+                          />
+                          <button key="2" type="button" onClick={handleResetFile}><CloseIcon /> 이미지삭제</button>
+                        </span></div>
+                        )
+                      }
+                    )}
+                  <div className="field-wrap">
+                    <input type="file" name="bnrImgNo" id="bnrImgNo" onChange={handleChangeFile} />
+                    <input className="required" type="text" />
+                    <button type="button" onClick={handleClickFile}>파일선택</button>
+                  </div>
+                </dd>
+              </div>
+              <div className="tr">
+                <dt className="required"><span>배너랜딩 유형</span></dt>
+                <dd>
+                  <div className="field-wrap cid-auto">
+                    <select
+                      name="ladgDvsCd"
+                      {...register("ladgDvsCd", { required: true })}
+                    >
+                      <option value={"선택"}>선택</option>
+                      <option value={"메뉴(카테고리)랜딩"}>
+                        메뉴(카테고리)랜딩
+                      </option>
+                      <option value={"아이들나라 홈"}>아이들나라 홈</option>
+                      <option value={"대메뉴 랜딩"}>대메뉴 랜딩</option>
+                      <option value={"서비스 랜딩"}>서비스 랜딩</option>
+                      <option value={"콘텐츠 랜딩"}>콘텐츠 랜딩</option>
+                    </select>
+                    <input
+                      name="ladgDstVl"
+                      {...register("ladgDstVl", { required: true, minLength: 2 })}
+                    />
+                  </div>
+                </dd>
+              </div>
+        
+            </dl>
+          </div>
         </form>
       </PopupDialog>
     </>
