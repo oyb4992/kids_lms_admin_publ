@@ -1,4 +1,4 @@
-import { Button, Dialog, DialogActions, DialogContent } from "@mui/material";
+import { DialogContent } from "@mui/material";
 import { useEffect, useState, useCallback } from "react";
 import API from "../components/axios/api";
 import { useToast } from "../components/hooks";
@@ -12,6 +12,8 @@ import TooltipText from "../components/tooltip/TooltipText";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
+import { useForm } from "react-hook-form";
+import PopupDialog from "../components/popupDialog/PopupDialog";
 
 const Banners = () => {
   const [data, setData] = useState([
@@ -110,27 +112,24 @@ const Banners = () => {
   }, [setInsertConfirm]);
 
   const nowDate = moment().format("YYYY-MM-DDTHH:mm");
-  const [startDate, setStartDate] = useState(nowDate);
-  const [endDate, setEndDate] = useState(nowDate);
 
-  const [inputs, setInputs] = useState({
-    bnrNm: "",
-    dspStartDtt: "",
-    dspStopDtt: "",
-    bnrImgNo: "",
-    ladgDvsCd: "",
-    ladgDstVl: "",
+  const { register, handleSubmit } = useForm({
+    mode: "onChange",
+    reValidateMode: "onChange",
   });
 
-  const { bnrNm, dspStartDtt, dspStopDtt, ladgDvsCd, ladgDstVl } = inputs;
+  const onSubmit = useCallback(
+    (data) => {
+      showToast(
+        "<strong>등록 완료</strong><br> 배너가 등록 되었습니다.",
+        `success`
+      );
+      setInsertConfirm(false);
+    },
+    [showToast, setInsertConfirm]
+  );
 
-  const dataChange = (e) => {
-    const { name, value } = e.target;
-    setInputs({
-      ...inputs,
-      [name]: value,
-    });
-  };
+  const onInvalid = (errors) => console.log(errors);
 
   const [imgBase64, setImgBase64] = useState([]);
   const [imgFile, setImgFile] = useState(null);
@@ -191,7 +190,7 @@ const Banners = () => {
   useEffect(() => {}, [updateData, deleteData]);
 
   const handleUseSelect = useCallback(
-    (e, key, date, useStsCd) => {
+    (e, key, date) => {
       const today = moment().format("YYYY. MM. DD HH:mm");
       const endDate = moment(date).format("YYYY. MM. DD HH:mm");
 
@@ -393,18 +392,13 @@ const Banners = () => {
         </DialogContent>
       </WarningDialog>
 
-      <Dialog
+      <PopupDialog
         open={insertConfirm}
-        onClose={() => setInsertConfirm(false)}
-        aria-labelledby="confirm-dialog"
+        setOpen={setInsertConfirm}
+        title={`배너 등록`}
+        onSubmit={handleSubmit(onSubmit, onInvalid)}
       >
-        <DialogContent>
-          <div>
-            배너등록
-            <Button onClick={() => setInsertConfirm(false)} margin-left="400px">
-              X
-            </Button>
-          </div>
+        <form onSubmit={handleSubmit(onSubmit, onInvalid)}>
           <table className="table-default" border="1">
             <thead></thead>
             <tbody>
@@ -412,10 +406,7 @@ const Banners = () => {
                 <td>배너명</td>
                 <td>
                   <input
-                    name="bnrNm"
-                    onChange={dataChange}
-                    value={bnrNm}
-                    placeholder="배너명을 입력해주세요~"
+                    {...register("bnrNm", { required: true, minLength: 2 })}
                   />
                 </td>
               </tr>
@@ -428,7 +419,9 @@ const Banners = () => {
                     defaultValue={nowDate}
                     sx={{ width: 160 }}
                     name="dspStartDtt"
-                    onChange={dataChange}
+                    {...register("dspStartDtt", {
+                      required: true,
+                    })}
                   />
                   ~
                   <TextField
@@ -437,7 +430,9 @@ const Banners = () => {
                     defaultValue={nowDate}
                     sx={{ width: 160 }}
                     name="dspStopDtt"
-                    onChange={dataChange}
+                    {...register("dspStopDtt", {
+                      required: true,
+                    })}
                   />
                 </td>
               </tr>
@@ -467,11 +462,8 @@ const Banners = () => {
                 <td>배너랜딩 유형</td>
                 <td>
                   <select
-                  // name="useStsCd"
-                  // onChange={(e) => {
-                  //   handleUseSelect(e, data.bnrNo, data.dspStopDtt);
-                  // }}
-                  // value={data.useStsCd}
+                    name="ladgDvsCd"
+                    {...register("ladgDvsCd", { required: true })}
                   >
                     <option value={"선택"}>선택</option>
                     <option value={"메뉴(카테고리)랜딩"}>
@@ -484,21 +476,14 @@ const Banners = () => {
                   </select>
                   <input
                     name="ladgDstVl"
-                    onChange={dataChange}
-                    value={ladgDstVl}
-                    placeholder="랜딩명을 입력해주세요~"
+                    {...register("ladgDstVl", { required: true, minLength: 2 })}
                   />
                 </td>
               </tr>
             </tbody>
           </table>
-        </DialogContent>
-        <DialogActions>
-          <Button variant="contained" onClick={() => setInsertConfirm(false)}>
-            등록
-          </Button>
-        </DialogActions>
-      </Dialog>
+        </form>
+      </PopupDialog>
     </>
   );
 };
