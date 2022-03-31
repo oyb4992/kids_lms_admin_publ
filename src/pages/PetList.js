@@ -18,8 +18,8 @@ const PetList = () => {
       imgUrl: "https://ukidsdev.uplus.co.kr/null",
       petNm: "귀엽구멍",
       useStsCd: "Y",
-      regDtt: "2021-04-21",
-      modDtt: "2021-05-22",
+      regDtt: "2021.04.21. 12:12",
+      modDtt: "2021.05.22. 09:05",
     },
     {
       petNo: 2,
@@ -27,8 +27,8 @@ const PetList = () => {
       imgUrl: "https://ukidsdev.uplus.co.kr/null",
       petNm: "고양이",
       useStsCd: "N",
-      regDtt: "2021-04-21",
-      modDtt: "2021-05-22",
+      regDtt: "2021.04.21. 12:12",
+      modDtt: "2021.05.22. 09:05",
     },
     {
       petNo: 3,
@@ -36,8 +36,8 @@ const PetList = () => {
       imgUrl: "https://ukidsdev.uplus.co.kr/null",
       petNm: "호랑이",
       useStsCd: "Y",
-      regDtt: "2021-04-21",
-      modDtt: "2021-05-22",
+      regDtt: "2021.04.21. 12:12",
+      modDtt: "2021.05.22. 09:05",
     },
     {
       petNo: 4,
@@ -45,8 +45,8 @@ const PetList = () => {
       imgUrl: "https://ukidsdev.uplus.co.kr/null",
       petNm: "사자",
       useStsCd: "N",
-      regDtt: "2021-04-21",
-      modDtt: "2021-05-22",
+      regDtt: "2021.04.21. 12:12",
+      modDtt: "2021.05.22. 09:05",
     },
     {
       petNo: 5,
@@ -54,8 +54,8 @@ const PetList = () => {
       imgUrl: "https://ukidsdev.uplus.co.kr/null",
       petNm: "원숭이",
       useStsCd: "Y",
-      regDtt: "2021-04-21",
-      modDtt: "2021-05-22",
+      regDtt: "2021.04.21. 12:12",
+      modDtt: "2021.05.22. 09:05",
     },
     {
       petNo: 6,
@@ -63,8 +63,8 @@ const PetList = () => {
       imgUrl: "https://ukidsdev.uplus.co.kr/null",
       petNm: "하마",
       useStsCd: "Y",
-      regDtt: "2021-04-21",
-      modDtt: "2021-05-22",
+      regDtt: "2021.04.21. 12:12",
+      modDtt: "2021.05.22. 09:05",
     },
     {
       petNo: 7,
@@ -72,8 +72,8 @@ const PetList = () => {
       imgUrl: "https://ukidsdev.uplus.co.kr/null",
       petNm: "래서팬더",
       useStsCd: "Y",
-      regDtt: "2021-04-21",
-      modDtt: "2021-05-22",
+      regDtt: "2021.04.21. 12:12",
+      modDtt: "2021.05.22. 09:05",
     },
     {
       petNo: 8,
@@ -81,8 +81,8 @@ const PetList = () => {
       imgUrl: "https://ukidsdev.uplus.co.kr/null",
       petNm: "거미",
       useStsCd: "Y",
-      regDtt: "2021-04-21",
-      modDtt: "2021-05-22",
+      regDtt: "2021.04.21. 12:12",
+      modDtt: "2021.05.22. 09:05",
     },
   ]);
   const [checkItems, setCheckItems] = useState([]);
@@ -285,17 +285,19 @@ const PetList = () => {
                             />
                           </td>
                           <td {...provider.dragHandleProps}>
-                            <select
-                              name="useStsCd"
-                              onChange={(e) => {
-                                handleUseSelect(e, data.petNo);
-                              }}
-                              value={data.useStsCd}
-                            >
-                              <option value={"노출"}>{`노출`}</option>
-                              <option value={"비노출"}>{`비노출`}</option>
-                              <option value={"검수"}>{`검수`}</option>
-                            </select>
+                            <div className="field-wrap cid-center">
+                              <select
+                                name="useStsCd"
+                                onChange={(e) => {
+                                  handleUseSelect(e, data.petNo);
+                                }}
+                                value={data.useStsCd}
+                              >
+                                <option value={"노출"}>{`노출`}</option>
+                                <option value={"비노출"}>{`비노출`}</option>
+                                <option value={"검수"}>{`검수`}</option>
+                              </select>
+                            </div>
                           </td>
                           <td {...provider.dragHandleProps}>{data.modDtt}</td>
                           <td {...provider.dragHandleProps}>{data.regDtt}</td>

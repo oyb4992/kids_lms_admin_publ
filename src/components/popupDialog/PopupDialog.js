@@ -8,13 +8,13 @@ import {
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 const PopupDialog = (props) => {
-  const { title, children, open, setOpen, onSubmit } = props;
+  const { title, children, open, setOpen, onSubmit, optionClass="optionClass" } = props;
   return (
     <Dialog
       open={open}
       onClose={() => setOpen(false)}
       aria-labelledby="confirm-dialog"
-      className="cpnt_dialog_page"
+      className={`cpnt_dialog_page ${optionClass}`}
     >
       <DialogTitle>
         {title}

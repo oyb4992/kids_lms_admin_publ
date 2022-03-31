@@ -48,7 +48,7 @@ const CurriculumOrgDetail = (props) => {
 
   const getStepData = (step) => {
     return (
-      <dl className="dlForm-default">
+      <dl className="dlForm-default curr_org_engKindergarten">
         {watch(step).map((data, index) => (
         <div className="tr" key={step + data.odnum}>
           <dt><span>{data.odnum + `차수`}</span></dt>
@@ -93,7 +93,6 @@ const CurriculumOrgDetail = (props) => {
                 <dt className="required"><span>{`타입`}</span></dt>
                 <dd>
                   <div className="field-wrap">
-                    <label htmlFor="prgmTypCd2">추천</label>
                     <input
                       {...register("prgmTypCd", { required: true })}
                       id="prgmTypCd1"
@@ -101,7 +100,7 @@ const CurriculumOrgDetail = (props) => {
                       value="추천"
                       required
                     />
-                    <label htmlFor="prgmTypCd2">영어유치원</label>
+                    <label htmlFor="prgmTypCd1">추천</label>
                     <input
                       {...register("prgmTypCd", { required: true })}
                       id="prgmTypCd2"
@@ -109,6 +108,7 @@ const CurriculumOrgDetail = (props) => {
                       value="영어유치원"
                       required
                     />
+                    <label htmlFor="prgmTypCd2">영어유치원</label>
                   </div>
 
                   
