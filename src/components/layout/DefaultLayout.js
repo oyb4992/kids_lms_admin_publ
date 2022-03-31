@@ -45,14 +45,16 @@ export const DefaultLayout = ({ children }) => {
     //Sidebar.js 에 있는거 복사해서 사용. 나중에 카테고리 데이터 통합해도 될듯 //스위치문시 2차메뉴중에 동일메뉴 나옴. 관리 어려움
     const category = [
       {
-        text: "커리큘럼 편성관리", path: "/curr/org",
+        text: "커리큘럼 편성관리",
+        path: "/curr/org",
         sub: [
           { text: "커리큘럼 편성", path: "/curr/org" },
           { text: "커리큘럼 설정", path: "/curr/setting" },
         ],
       },
       {
-        text: "부모알림장 관리", path: "/parents/banners",
+        text: "부모알림장 관리",
+        path: "/parents/banners",
         sub: [
           { text: "학부모 유용정보", path: "/" },
           { text: "배너", path: "/parents/banners" },
@@ -60,18 +62,32 @@ export const DefaultLayout = ({ children }) => {
         ],
       },
       {
-        text: "펫 관리", path: "/pet/petsetting",
+        text: "펫 관리",
+        path: "/pet/petsetting",
         sub: [
           { text: "펫 설정", path: "/pet/petsetting" },
           { text: "펫 목록", path: "/pet/petlist" },
         ],
       },
-      { text: "문구 관리", path: "/phrase/setting", 
-        sub: [ { text: "문구 관리", path: "/phrase/setting" } ] 
+      { text: "문구 관리", 
+        path: "/phrase/setting", 
+        sub: [ 
+          { text: "문구 관리", path: "/phrase/setting" } 
+        ], 
       },
-      { text: "샘플페이지 (퍼블용)", path: "/sample/info", 
+      { text: "샘플페이지 (퍼블용)", 
+        path: "/sample/info", 
         sub: [ { text: "샘플페이지 (퍼블용)", path: "/sample/info" } ] 
-      }
+      },
+      {
+        text: "퀴즈백과 관리",
+        path: "/quz/org",
+        sub: [
+          { text: "오늘의 퀴즈 스케쥴링", path: "/quz/schedule" },
+          { text: "퀴즈그룹 관리", path: "/quz/group" },
+          { text: "퀴즈백과 편성/카테고리 관리", path: "/quz/category" },
+        ],
+      },
     ];
     for(let i=0;i<category.length;i++){
       if(path[1] == category[i].path.split("/")[1]){

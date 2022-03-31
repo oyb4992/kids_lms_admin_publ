@@ -8,6 +8,10 @@ import Banners from "../pages/Banners";
 import PetList from "../pages/PetList";
 import CurriculumSetting from "../pages/CurriculumSetting";
 import SampleInfo from "../pages/SampleInfo";
+import QuzSchedule from "../pagesQuz/Schedule";
+import QuzGroup from "../pagesQuz/Group";
+import QuzCategory from "../pagesQuz/Category";
+import QuzContent from "../pagesQuz/Content";
 const KidsRoutes = () => {
   return (
     <Router>
@@ -21,6 +25,10 @@ const KidsRoutes = () => {
           <Route path="/pet/petsetting" element={<MyPetSetting />} />
           <Route path="/parents/banners" element={<Banners />} />
           <Route path="/sample/info" element={<SampleInfo />} />
+          <Route path="/quz/schedule" element={<QuzSchedule />} />
+          <Route path="/quz/group" element={<QuzGroup />} />
+          <Route path="/quz/category" element={<QuzCategory />} />
+          <Route path="/quz/content" element={<QuzContent />} />
         </Routes>
       </DefaultLayout>
     </Router>

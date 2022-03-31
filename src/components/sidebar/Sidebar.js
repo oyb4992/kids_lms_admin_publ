@@ -60,11 +60,20 @@ const PersistentDrawerLeft = () => {
       sub: [ 
         { text: "문구 관리", path: "/phrase/setting" } 
       ], 
-  },
+    },
     { text: "샘플페이지 (퍼블용)", 
       path: "/sample/info", 
       sub: [ { text: "샘플페이지 (퍼블용)", path: "/sample/info" } ] 
-  }
+    },
+    {
+      text: "퀴즈백과 관리",
+      path: "/quz/org",
+      sub: [
+        { text: "퀴즈그룹 관리", path: "/quz/schedule" },
+        { text: "퀴즈백과 편성/카테고리 관리", path: "/quz/category" },
+        { text: "퀴즈콘텐츠 관리", path: "/quz/content" },
+      ],
+    },
   ];
   return (
     // <div className={styles.cpnt_lnb}>
