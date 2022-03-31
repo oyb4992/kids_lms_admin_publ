@@ -1,7 +1,7 @@
 import { Container, Divider, Grid } from "@mui/material";
 import { useCallback, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import HomeIcon from '@mui/icons-material/Home';
+import HomeIcon from "@mui/icons-material/Home";
 
 export const DefaultLayout = ({ children }) => {
   const location = useLocation();
@@ -69,37 +69,27 @@ export const DefaultLayout = ({ children }) => {
           { text: "펫 목록", path: "/pet/petlist" },
         ],
       },
-      { text: "문구 관리", 
-        path: "/phrase/setting", 
-        sub: [ 
-          { text: "문구 관리", path: "/phrase/setting" } 
-        ], 
-      },
-      { text: "샘플페이지 (퍼블용)", 
-        path: "/sample/info", 
-        sub: [ { text: "샘플페이지 (퍼블용)", path: "/sample/info" } ] 
+      {
+        text: "문구 관리",
+        path: "/phrase/setting",
+        sub: [{ text: "문구 관리", path: "/phrase/setting" }],
       },
       {
-        text: "퀴즈백과 관리",
-        path: "/quz/org",
-        sub: [
-          { text: "오늘의 퀴즈 스케쥴링", path: "/quz/schedule" },
-          { text: "퀴즈그룹 관리", path: "/quz/group" },
-          { text: "퀴즈백과 편성/카테고리 관리", path: "/quz/category" },
-        ],
+        text: "샘플페이지 (퍼블용)",
+        path: "/sample/info",
+        sub: [{ text: "샘플페이지 (퍼블용)", path: "/sample/info" }],
       },
     ];
-    for(let i=0;i<category.length;i++){
-      if(path[1] == category[i].path.split("/")[1]){
+    for (let i = 0; i < category.length; i++) {
+      if (path[1] == category[i].path.split("/")[1]) {
         setMiddlePath(category[i].text);
-        for(let j=0;j<category[i].sub.length;j++){
-          if(path[2] == category[i].sub[j].path.split("/")[2]){
+        for (let j = 0; j < category[i].sub.length; j++) {
+          if (path[2] == category[i].sub[j].path.split("/")[2]) {
             setLastPath(category[i].sub[j].text);
           }
         }
       }
     }
-
   }, [location, setMiddlePath, setLastPath]);
   useEffect(() => {
     changeHeaderPath();
@@ -109,7 +99,10 @@ export const DefaultLayout = ({ children }) => {
     <Container disableGutters maxWidth={false} className="cpnt_contents">
       <div className="cpnt_title">
         <h1>{lastPath}</h1>
-        <span className="path"><HomeIcon></HomeIcon> 	&gt; {`LMS 어드민 > ${middlePath} > ${lastPath} `}</span>
+        <span className="path">
+          <HomeIcon></HomeIcon> &gt;{" "}
+          {`LMS 어드민 > ${middlePath} > ${lastPath} `}
+        </span>
       </div>
       {/* <Divider /> */}
       <Grid className="cpnt_conts">{children}</Grid>
