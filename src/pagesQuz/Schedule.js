@@ -6,7 +6,7 @@ import PlaylistAddCheckIcon from "@mui/icons-material/PlaylistAddCheck";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import AddIcon from "@mui/icons-material/Add";
 import TooltipText from "../components/tooltip/TooltipText";
-const QuzGroup = () => {
+const QuzSchedule = () => {
   const { showToast } = useToast();
   const [isOpenApplyConfirm, setOpenApplyConfirm] = useState(false);
   const handleApplyButton = useCallback(() => {
@@ -19,15 +19,6 @@ const QuzGroup = () => {
 
   return (
     <>
-      <div className="cpnt_pageSearch Fms at-r">
-        <select className="fm">
-          <option value={`아이진단 미완료`}>아이진단 미완료</option>
-          <option value={`온순한 기질`}>온순한 기질</option>
-          <option value={`고집있는 기질`}>고집있는 기질</option>
-          <option value={`변화무쌍한 기질`}>변화무쌍한 기질</option>
-          <option value={`섬세한 기질`}>섬세한 기질</option>
-        </select>
-      </div>
       <div className="cpnt_table">
           <table className="table-default">
             <caption>
@@ -39,41 +30,44 @@ const QuzGroup = () => {
             </caption>
             <thead>
               <tr>
+                <th><input name="checkAll" type={"checkbox"} /></th>
+                <th>No.</th>
                 <th>
-                  <input name="checkAll" type={"checkbox"} />
+                  <TooltipText title="클릭 시 등록된 상세내용을 확인 하실 수 잇습니다.">중분류 카테고리</TooltipText>
                 </th>
-                <th>
-                  <TooltipText title="노출순서 변경 후 하단의 적용버튼을 클릭하여야 적용이 됩니다.">
-                    순서
-                  </TooltipText>
-                </th>
-                <th>추천유형명</th>
-                <th>타입</th>
-                <th>추천코드/편성정보</th>
-                <th>
-                  <TooltipText title="사용여부 설정 후 하단의 적용버튼을 클릭하여야 적용이 됩니다.">
-                    사용여부
-                  </TooltipText>
-                </th>
+                <th>오늘의 퀴즈 주제</th>
+                <th>오늘의 퀴즈 배너 이미지</th>
+                <th>제공 문항수</th>
+                <th>제공일</th>
               </tr>
             </thead>
-
             <tbody>
                 <tr>
-                    <td>
-                    <input type={"checkbox"} />
-                    </td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>
-                    <select>
-                        <option value={"사용"}>사용</option>
-                        <option value={"미사용"}>미사용</option>
-                        <option value={"검수"}>검수</option>
-                    </select>
-                    </td>
+                    <td><input type={"checkbox"} /></td>
+                    <td>1</td>
+                    <td>동물</td>
+                    <td>물에서 사는 동룡 퀴즈</td>
+                    <td className="cid-img"><img src={ require('../assets/img/sample_100.png') } /></td>
+                    <td>50</td>
+                    <td>2022-02-09</td>
+                </tr>
+                <tr>
+                    <td><input type={"checkbox"} /></td>
+                    <td>2</td>
+                    <td>식물</td>
+                    <td>식물에 대해서</td>
+                    <td className="cid-img"><img src={ require('../assets/img/sample_100.png') } /></td>
+                    <td>100</td>
+                    <td>2022-02-10</td>
+                </tr>
+                <tr>
+                    <td><input type={"checkbox"} /></td>
+                    <td>3</td>
+                    <td>첨단과학과 태양계</td>
+                    <td className="cid-event">물에서 사는 동룡 퀴즈</td>
+                    <td className="cid-img"><img src={ require('../assets/img/sample_100.png') } /></td>
+                    <td>230</td>
+                    <td>2022-02-01</td>
                 </tr>
             </tbody>
         </table>
@@ -83,11 +77,11 @@ const QuzGroup = () => {
           <button type="button">
             <DeleteOutlineIcon /> 삭제
           </button>
-          {/* <button type="button" onClick={handleApplyButton}>
-            <PlaylistAddCheckIcon /> 적용
-          </button> */}
+          <button type="button" onClick={handleApplyButton}>
+            <PlaylistAddCheckIcon /> 순서변경 적용
+          </button>
           <button type="button" className="sb af-r">
-            <AddIcon /> 등록
+            <AddIcon /> 오늘의 퀴즈 등록
           </button>
         </div>
       </div>
@@ -104,7 +98,7 @@ const QuzGroup = () => {
         </p>
       </ConfirmDialog>
     </>
-  )
+  );
 };
 
-export default QuzGroup;
+export default QuzSchedule;

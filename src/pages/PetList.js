@@ -228,14 +228,14 @@ const PetList = () => {
             </caption>
             <thead>
               <tr>
-                <th>
+                {/* <th>
                   <input
                     name="checkAll"
                     type={"checkbox"}
                     onChange={(e) => handleAllCheck(e.target.checked)}
                     checked={checkItems.length === data.length ? true : false}
                   />
-                </th>
+                </th> */}
                 <th>
                   <TooltipText title="노출순서 변경 후 하단의 적용버튼을 클릭하여야 적용이 됩니다.">노출순서</TooltipText>
                 </th>
@@ -263,7 +263,7 @@ const PetList = () => {
                           ref={provider.innerRef}
                           className={`  `}
                         >
-                          <td {...provider.dragHandleProps}>
+                          {/* <td {...provider.dragHandleProps}>
                             <input
                               type={"checkbox"}
                               onChange={(e) =>
@@ -273,7 +273,7 @@ const PetList = () => {
                                 checkItems.includes(data.petNo) ? true : false
                               }
                             />
-                          </td>
+                          </td> */}
                           <td {...provider.dragHandleProps}>{index + 1}</td>
                           <td {...provider.dragHandleProps}>{data.petNm}</td>
                           <td {...provider.dragHandleProps}>
@@ -315,7 +315,7 @@ const PetList = () => {
             <PlaylistAddCheckIcon /> 적용
           </button>
           <button type="button" className="sb af-r">
-          <AddIcon /> 등록
+            <AddIcon /> 등록
           </button>
         </div>
       </div>

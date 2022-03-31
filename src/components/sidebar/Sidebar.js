@@ -55,11 +55,10 @@ const PersistentDrawerLeft = () => {
         { text: "펫 목록", path: "/pet/petlist" },
       ],
     },
-    { text: "문구 관리", 
-      path: "/phrase/setting", 
-      sub: [ 
-        { text: "문구 관리", path: "/phrase/setting" } 
-      ], 
+    {
+      text: "문구 관리",
+      path: "/phrase/setting",
+      sub: [{ text: "문구 관리", path: "/phrase/setting" }],
     },
     { text: "샘플페이지 (퍼블용)", 
       path: "/sample/info", 
@@ -67,9 +66,10 @@ const PersistentDrawerLeft = () => {
     },
     {
       text: "퀴즈백과 관리",
-      path: "/quz/org",
+      path: "/quz/schedule",
       sub: [
-        { text: "퀴즈그룹 관리", path: "/quz/schedule" },
+        { text: "오늘의 퀴즈 스케쥴링", path: "/quz/schedule" },
+        { text: "퀴즈그룹 관리", path: "/quz/group" },
         { text: "퀴즈백과 편성/카테고리 관리", path: "/quz/category" },
         { text: "퀴즈콘텐츠 관리", path: "/quz/content" },
       ],

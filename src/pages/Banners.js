@@ -368,13 +368,13 @@ const Banners = () => {
           </tbody>
         </table>
         <div className="cpnt_btns">
-          <button type="button" onClick={handleButtonUpdate}>
-            <PlaylistAddCheckIcon />
-            적용
-          </button>
           <button type="button" onClick={handleButtonDelete}>
             <DeleteOutlineIcon />
             삭제
+          </button>
+          <button type="button" onClick={handleButtonUpdate}>
+            <PlaylistAddCheckIcon />
+            적용
           </button>
           <button type="button" onClick={handleOpenPopUp} className="sb af-r">
             <AddIcon />
