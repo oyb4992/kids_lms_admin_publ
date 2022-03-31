@@ -31,7 +31,7 @@
 }
 
 /* component : conts - body */
-.cpnt_conts {  }
+.cpnt_conts { padding-bottom:30px; }
 
 /* component : page search */
 .cpnt_pageSearch { margin-bottom:20px; padding:10px 15px; border-radius:6px; background-color:#eee; 
@@ -140,7 +140,7 @@
                 }
                 dd { flex:1; display:flex; flex-flow:column nowrap; justify-content:center; padding:6px 10px; border-right:1px solid $c-bd-line; border-bottom:1px solid $c-bd-line; text-align:left; 
                     &:first-child { border-left:1px solid $c-bd-line; }
-                    .field-input {  }
+
 
                 }
             }
