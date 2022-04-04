@@ -1,5 +1,4 @@
 import {
-  Button,
   Dialog,
   DialogActions,
   DialogContent,
@@ -8,19 +7,28 @@ import {
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 const PopupDialog = (props) => {
-  const { title, children, open, setOpen, onSubmit, optionClass="optionClass" } = props;
+  const { title, children, open, setOpen, onSubmit, onClose, btnMsg } = props;
   return (
     <Dialog
       open={open}
-      onClose={() => setOpen(false)}
+      onClose={(_, reason) => {
+        if (reason !== `backdropClick`) {
+          setOpen(false);
+          onClose();
+        }
+      }}
       aria-labelledby="confirm-dialog"
-      className={`cpnt_dialog_page ${optionClass}`}
+      className="cpnt_dialog_page"
+      disableEscapeKeyDown
     >
       <DialogTitle>
         {title}
         <IconButton
           aria-label="close"
-          onClick={() => setOpen(false)}
+          onClick={() => {
+            setOpen(false);
+            onClose();
+          }}
           sx={{
             position: "absolute",
             right: 8,
@@ -33,22 +41,23 @@ const PopupDialog = (props) => {
       </DialogTitle>
       <DialogContent>{children}</DialogContent>
       <DialogActions className="cpnt_btns">
-        <button
-          className="bt" type="button"
+        {/* <button
+          className="bt"
+          type="button"
           onClick={() => {
             setOpen(false);
           }}
         >
           취소
-        </button>
+        </button> */}
         <button
-          className="bt sb" type="button"
+          className="bt sb"
+          type="button"
           onClick={() => {
-            setOpen(false);
             onSubmit();
           }}
         >
-          등록
+          {btnMsg}
         </button>
       </DialogActions>
     </Dialog>

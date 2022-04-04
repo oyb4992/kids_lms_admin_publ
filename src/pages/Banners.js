@@ -6,16 +6,16 @@ import { List } from "immutable";
 import ConfirmDialog from "../components/confirmDialog/ConfirmDialog";
 import moment from "moment";
 import "moment/locale/ko";
-import TextField from "@mui/material/TextField";
 import WarningDialog from "../components/warningDialog/WarningDialog";
 import TooltipText from "../components/tooltip/TooltipText";
-import PlaylistAddCheckIcon from "@mui/icons-material/PlaylistAddCheck";
+import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
-import AddIcon from "@mui/icons-material/Add";
-import CloseIcon from '@mui/icons-material/Close';
+import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
+import CloseIcon from "@mui/icons-material/Close";
 import { useForm } from "react-hook-form";
 import PopupDialog from "../components/popupDialog/PopupDialog";
-import { ConnectingAirportsOutlined } from "@mui/icons-material";
+import BannersDetail from "./BannersDetail";
+import { ErrorMessage } from "@hookform/error-message";
 
 const Banners = () => {
   const [data, setData] = useState([
@@ -95,6 +95,12 @@ const Banners = () => {
   // const [data, setData] = useState([]);
   const [tempData, setTempData] = useState([]);
   const [checkItems, setCheckItems] = useState([]);
+  const [selectedBnrNo, setSelectedBnrNo] = useState("");
+
+  const [imgBase64, setImgBase64] = useState([]);
+  const [imgFile, setImgFile] = useState(null);
+
+  const [btnMsg, setBtnMsg] = useState("등록");
 
   const [updateConfirm, setUpdateConfirm] = useState(false);
   const handleButtonUpdate = useCallback(() => {
@@ -110,35 +116,107 @@ const Banners = () => {
 
   const [insertConfirm, setInsertConfirm] = useState(false);
   const handleOpenPopUp = useCallback(() => {
+    setImgBase64([]);
+    setImgFile(null);
     setInsertConfirm(true);
   }, [setInsertConfirm]);
 
   const nowDate = moment().format("YYYY-MM-DDTHH:mm");
 
-  const { register, handleSubmit } = useForm({
+  const { register, handleSubmit, formState, watch, reset } = useForm({
     mode: "onChange",
     reValidateMode: "onChange",
   });
 
+  const handleOnClose = useCallback(() => {
+    reset();
+    setBtnMsg("등록");
+  }, [reset]);
+
+  const { isDirty, errors } = formState;
+
   const onSubmit = useCallback(
     (data) => {
-      showToast(
-        "<strong>등록 완료</strong><br> 배너가 등록 되었습니다.",
-        `success`
-      );
+      // if (data.bnrNm === "") {
+      //   showToast(`<strong>배너명을 입력해주세요.</strong><br>`, `error`);
+      //   return;
+      // } else if (
+      //   (data.dspStartDtt === "" && data.dspStopDtt === "") ||
+      //   moment(data.dspStartDtt).format("YYYY.MM.DD HH:mm") >
+      //     moment(data.dspStopDtt).format("YYYY.MM.DD HH:mm")
+      // ) {
+      //   showToast(`<strong>게시기간을 확인해주세요.</strong><br>`, `error`);
+      //   return;
+      // } else if (imgFile === null) {
+      //   showToast(`<strong>배너 이미지를 선택해주세요.</strong><br>`, `error`);
+      //   return;
+      // } else if (data.ladgDstVl === "" && data.ladgDvsCd === "") {
+      //   showToast(
+      //     `<strong>배너랜딩 유형을 입력해주세요.</strong><br>`,
+      //     `error`
+      //   );
+      //   return;
+      // }
+      // data.bnrImgNo = 12;
+      // console.log(data);
+      // console.log(data.bnrNm);
+      // console.log(data.dspStartDtt);
+      // console.log(data.dspStopDtt);
+      // console.log(data.ladgDstVl);
+      // console.log(data.ladgDvsCd);
+      // console.log(imgFile === null);
+      // console.log(moment(data.dspStartDtt).format("YYYY.MM.DD HH:mm"));
+      // console.log(
+      //   "잘못된 선택",
+      //   moment(data.dspStartDtt).format("YYYY.MM.DD HH:mm") >
+      //     moment(data.dspStopDtt).format("YYYY.MM.DD HH:mm")
+      // );
+
+      API.get("kids-lms-parents/api/v1/admin/comn/upload", {
+        params: {
+          type: 1,
+          fileName: imgFile[0].name,
+        },
+      })
+        .then((res) => {
+          data.bnrImgNo = res.data.data.fileKey;
+          data.dspStartDtt = moment(data.dspStartDtt).format(
+            "YYYY.MM.DD HH:mm"
+          );
+          data.dspStopDtt = moment(data.dspStopDtt).format("YYYY.MM.DD HH:mm");
+          console.log(data);
+          uploadImageToS3(res.data.data.presignedUrl, imgFile);
+          showToast(`<strong>업로드 되었습니다.</strong><br>`, `success`);
+        })
+        .catch((err) => {
+          showToast(`<strong>업로드 실패하였습니다.</strong><br>`, `error`);
+        });
+
       setInsertConfirm(false);
     },
-    [showToast, setInsertConfirm]
+    [showToast, setInsertConfirm, imgFile]
+  );
+
+  const uploadImageToS3 = useCallback(
+    async (presignedUrl, imgFile) => {
+      await API.put(presignedUrl, imgFile)
+        .then((res) => {
+          // showToast(`<strong>등록이 완료되었습니다.</strong><br>`, `success`);
+        })
+        .catch((err) => {
+          console.log(err);
+          // showToast(`<strong>등록 실패하였습니다.</strong><br>`, `error`);
+        });
+    },
+    [imgFile, showToast]
   );
 
   const onInvalid = (errors) => console.log(errors);
 
-  const [imgBase64, setImgBase64] = useState([]);
-  const [imgFile, setImgFile] = useState(null);
-
-  const handleClickFile = (e) => { // button 클릭으로 file파일 클릭 핸들러
+  const handleClickFile = (e) => {
+    // button 클릭으로 file파일 클릭 핸들러
     e.target.previousElementSibling.previousElementSibling.click();
-  }
+  };
 
   const handleChangeFile = (e) => {
     setImgFile(e.target.files);
@@ -152,23 +230,33 @@ const Banners = () => {
         if (base64) {
           var base64Sub = base64.toString();
           setImgBase64((imgBase64) => [...imgBase64, base64Sub]);
-          e.target.nextElementSibling.value = e.target.files[0].name; // input에 파일 이름 노출
+          e.target.nextElementSibling.value = e.target.files[0].name;
         }
       };
     }
   };
 
-  const handleResetFile = (e) => { // 파일 이미지 삭제
-    setImgBase64((imgBase64) => []);
-    e.target.parentNode.parentNode.parentNode.nextElementSibling.childNodes[0].value = "";
-    e.target.parentNode.parentNode.parentNode.nextElementSibling.childNodes[1].value = "";
+  const handleResetFile = (e) => {
+    setImgBase64(() => []);
+    e.target.parentNode.parentNode.parentNode.nextElementSibling.childNodes[0].value =
+      "";
+    e.target.parentNode.parentNode.parentNode.nextElementSibling.childNodes[1].value =
+      "";
   };
 
   // const getData = useCallback(async () => {
-  //   await API.get("kids-lms-parents/api/v1/lms/admin/banners").then((res) => {
-  //     setData(res.data.data);
-  //     setTempData(res.data.data);
-  //   });
+  //   await API.get("kids-lms-parents/api/v1/lms/admin/banners")
+  //     .then((res) => {
+  //       if (res.data.sccsYn === "Y") {
+  //         setData(res.data.data);
+  //         setTempData(res.data.data);
+  //       } else {
+  //         showToast(`에러가 발생하였습니다.`, `error`);
+  //       }
+  //     })
+  //     .catch(() => {
+  //       showToast(`에러가 발생하였습니다.`, `error`);
+  //     });
   // }, [setData]);
 
   const updateData = useCallback(
@@ -190,7 +278,7 @@ const Banners = () => {
       await API.post("kids-lms-parents/api/v1/lms/admin/banners", checkItems)
         .then((res) => {
           setCheckItems([]);
-
+          // getData();
           showToast(`<strong>삭제되었습니다.</strong><br>`, `success`);
         })
         .catch((err) => {
@@ -282,6 +370,15 @@ const Banners = () => {
     deleteData(result);
   }, [showToast, data, checkItems, deleteData]);
 
+  const [isOpenDetail, setOpenDetail] = useState(false);
+  const detailBanner = useCallback(
+    (bnrNo) => {
+      setSelectedBnrNo(bnrNo);
+      setOpenDetail(true);
+    },
+    [setOpenDetail, setSelectedBnrNo]
+  );
+
   const getRowColorFromUseSts = (useStsCd) => {
     let className;
     switch (useStsCd) {
@@ -346,7 +443,7 @@ const Banners = () => {
                     checked={checkItems.includes(data.bnrNo) ? true : false}
                   />
                 </td>
-                <td>{data.bnrNm}</td>
+                <td onClick={() => detailBanner(data.bnrNo)}>{data.bnrNm}</td>
                 <td>
                   {data.dspStartDtt} ~ {data.dspStopDtt}
                 </td>
@@ -368,16 +465,16 @@ const Banners = () => {
           </tbody>
         </table>
         <div className="cpnt_btns">
+          <button type="button" onClick={handleButtonUpdate}>
+            <CheckCircleOutlineIcon />
+            적용
+          </button>
           <button type="button" onClick={handleButtonDelete}>
             <DeleteOutlineIcon />
             삭제
           </button>
-          <button type="button" onClick={handleButtonUpdate}>
-            <PlaylistAddCheckIcon />
-            적용
-          </button>
           <button type="button" onClick={handleOpenPopUp} className="sb af-r">
-            <AddIcon />
+            <AddCircleOutlineIcon />
             등록
           </button>
         </div>
@@ -409,21 +506,43 @@ const Banners = () => {
         open={insertConfirm}
         setOpen={setInsertConfirm}
         title={`배너 등록`}
+        onClose={handleOnClose}
+        btnMsg={btnMsg}
         onSubmit={handleSubmit(onSubmit, onInvalid)}
       >
         <form onSubmit={handleSubmit(onSubmit, onInvalid)}>
-        <div className="cpnt_dlForm">
+          <div className="cpnt_dlForm">
             <dl className="dlForm-default">
               <div className="tr">
-                <dt className="required"><span>배너명</span></dt>
-                <dd><div className="field-wrap">
-                  <input
-                    {...register("bnrNm", { required: true, minLength: 2 })}
+                <dt className="required">
+                  <span>배너명</span>
+                </dt>
+                <dd>
+                  <div className="field-wrap">
+                    <input
+                      {...register("bnrNm", {
+                        required: {
+                          value: true,
+                          message: "배너명을 입력해 주세요.",
+                        },
+                        minLength: {
+                          value: 3,
+                          message: "3자 이상 입력해주세요",
+                        },
+                      })}
+                    />
+                  </div>
+                  <ErrorMessage
+                    errors={errors}
+                    name="bnrNm"
+                    render={({ message }) => <p>{message}</p>}
                   />
-                </div></dd>
+                </dd>
               </div>
               <div className="tr">
-                <dt className="required"><span>게시기간</span></dt>
+                <dt className="required">
+                  <span>게시기간</span>
+                </dt>
                 <dd>
                   <div className="field-wrap cid-auto cid-range">
                     <input
@@ -445,43 +564,72 @@ const Banners = () => {
                       name="dspStopDtt"
                       {...register("dspStopDtt", {
                         required: true,
+                        validate: {
+                          check: (v) =>
+                            v > watch(`dspStartDtt`) ||
+                            "게시기간을 확인해주세요.",
+                        },
                       })}
                     />
                   </div>
+                  <ErrorMessage
+                    errors={errors}
+                    name="dspStopDtt"
+                    render={({ message }) => <p>{message}</p>}
+                  />
                 </dd>
               </div>
               <div className="tr">
-                <dt className="required"><span>배너 이미지</span></dt>
+                <dt className="required">
+                  <span>배너 이미지</span>
+                </dt>
                 <dd>
-                    {imgBase64.map((item) => {
-                      return (
-                        <div key="1" className="field-input-file-img"><span key="3">
-                          <img
-                            key="0"
-                            src={item}
-                            alt="선택한 이미지"
-                          />
-                          <button key="2" type="button" onClick={handleResetFile}><CloseIcon /> 이미지삭제</button>
-                        </span></div>
-                        )
-                      }
-                    )}
+                  {imgBase64.map((item) => {
+                    return (
+                      <div key="1" className="field-input-file-img">
+                        <span key="3">
+                          <img key="0" src={item} alt="선택한 이미지" />
+                          <button
+                            key="2"
+                            type="button"
+                            onClick={handleResetFile}
+                          >
+                            <CloseIcon /> 이미지삭제
+                          </button>
+                        </span>
+                      </div>
+                    );
+                  })}
                   <div className="field-wrap">
-                    <input type="file" name="bnrImgNo" id="bnrImgNo" onChange={handleChangeFile} />
-                    <input className="required" type="text" />
-                    <button type="button" onClick={handleClickFile}>파일선택</button>
+                    <input
+                      type="file"
+                      name="bnrImgNo"
+                      id="bnrImgNo"
+                      onChange={handleChangeFile}
+                    />
+                    <input className="required" type="text" readOnly />
+                    <button type="button" onClick={handleClickFile}>
+                      파일선택
+                    </button>
                   </div>
                 </dd>
               </div>
               <div className="tr">
-                <dt className="required"><span>배너랜딩 유형</span></dt>
+                <dt className="required">
+                  <span>배너랜딩 유형</span>
+                </dt>
                 <dd>
                   <div className="field-wrap cid-auto">
                     <select
                       name="ladgDvsCd"
-                      {...register("ladgDvsCd", { required: true })}
+                      {...register("ladgDvsCd", {
+                        required: {
+                          value: true,
+                          message: "배너랜딩유형명을 선택해 주세요.",
+                        },
+                      })}
                     >
-                      <option value={"선택"}>선택</option>
+                      <option value={""}>선택</option>
                       <option value={"메뉴(카테고리)랜딩"}>
                         메뉴(카테고리)랜딩
                       </option>
@@ -492,16 +640,40 @@ const Banners = () => {
                     </select>
                     <input
                       name="ladgDstVl"
-                      {...register("ladgDstVl", { required: true, minLength: 2 })}
+                      {...register("ladgDstVl", {
+                        required: {
+                          value: true,
+                          message: "배너랜딩유형명을 입력해주세요.",
+                        },
+                        minLength: {
+                          value: 3,
+                          message: "3자 이상 입력해주세요",
+                        },
+                      })}
                     />
                   </div>
+                  <ErrorMessage
+                    errors={errors}
+                    name={"ladgDvsCd"}
+                    render={({ message }) => <p>{message}</p>}
+                  />
+                  <ErrorMessage
+                    errors={errors}
+                    name={"ladgDstVl"}
+                    render={({ message }) => <p>{message}</p>}
+                  />
                 </dd>
               </div>
-        
             </dl>
           </div>
         </form>
       </PopupDialog>
+
+      <BannersDetail
+        open={isOpenDetail}
+        setOpen={setOpenDetail}
+        bnrNo={selectedBnrNo}
+      />
     </>
   );
 };
