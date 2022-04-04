@@ -198,12 +198,13 @@ const BannersDetail = (props) => {
                           message: "3자 이상 입력해주세요",
                         },
                       })}
+                      data-error={errors.bnrNm && "error"}
                     />
                   </div>
                   <ErrorMessage
                     errors={errors}
                     name="bnrNm"
-                    render={({ message }) => <p>{message}</p>}
+                    render={({ message }) => <div className="cpnt_errorMessage"><p>{message}</p></div>}
                   />
                 </dd>
               </div>
@@ -236,12 +237,13 @@ const BannersDetail = (props) => {
                             "게시기간을 확인해주세요.",
                         },
                       })}
+                      data-error={errors.dspStopDtt && "error"}
                     />
                   </div>
                   <ErrorMessage
                     errors={errors}
                     name="dspStopDtt"
-                    render={({ message }) => <p>{message}</p>}
+                    render={({ message }) => <div className="cpnt_errorMessage"><p>{message}</p></div>}
                   />
                 </dd>
               </div>
@@ -299,8 +301,9 @@ const BannersDetail = (props) => {
                           message: "배너랜딩유형명을 선택해 주세요.",
                         },
                       })}
+                      data-error={errors.ladgDvsCd && "error"}
                     >
-                      <option value={"선택"}>선택</option>
+                      <option value={""}>선택</option>
                       <option value={"메뉴(카테고리)랜딩"}>
                         메뉴(카테고리)랜딩
                       </option>
@@ -321,18 +324,23 @@ const BannersDetail = (props) => {
                           message: "3자 이상 입력해주세요",
                         },
                       })}
+                      data-error={errors.ladgDstVl && "error"}
                     />
                   </div>
-                  <ErrorMessage
-                    errors={errors}
-                    name={"ladgDvsCd"}
-                    render={({ message }) => <p>{message}</p>}
-                  />
-                  <ErrorMessage
-                    errors={errors}
-                    name={"ladgDstVl"}
-                    render={({ message }) => <p>{message}</p>}
-                  />
+                  { (errors.ladgDvsCd || errors.ladgDstVl) &&
+                    <div className="cpnt_errorMessage">
+                      <ErrorMessage
+                        errors={errors}
+                        name={"ladgDvsCd"}
+                        render={({ message }) => <p>{message}</p>}
+                      />
+                      <ErrorMessage
+                        errors={errors}
+                        name={"ladgDstVl"}
+                        render={({ message }) => <p>{message}</p>}
+                      />
+                    </div>
+                  }
                 </dd>
               </div>
             </dl>

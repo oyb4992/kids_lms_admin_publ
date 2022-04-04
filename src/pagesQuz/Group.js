@@ -178,7 +178,7 @@ const QuzGroup = () => {
                     </TooltipBox>
                   </td>
                   <td><button className="field-button detail" type="button"><PageviewIcon /> 상세보기</button></td>
-                  <td><button className="field-button add" type="button" onClick={handleOpenGroupContent}>추가</button></td>
+                  <td><button className="field-button add" type="button" onClick={handleOpenGroupContent}><AddIcon />추가</button></td>
               </tr>
               <tr>
               <td><input type={"checkbox"} /></td>
@@ -196,7 +196,7 @@ const QuzGroup = () => {
                     </TooltipBox>
                   </td>
                   <td><button className="field-button detail" type="button"><PageviewIcon /> 상세보기</button></td>
-                  <td><button className="field-button add" type="button" onClick={handleOpenGroupContent}>추가</button></td>
+                  <td><button className="field-button add" type="button" onClick={handleOpenGroupContent}><AddIcon /> 추가</button></td>
               </tr>
               <tr>
                   <td><input type={"checkbox"} /></td>
@@ -214,7 +214,7 @@ const QuzGroup = () => {
                     </TooltipBox>
                   </td>
                   <td><button className="field-button detail" type="button"><PageviewIcon /> 상세보기</button></td>
-                  <td><button className="field-button add" type="button" onClick={handleOpenGroupContent}>추가</button></td>
+                  <td><button className="field-button add" type="button" onClick={handleOpenGroupContent}><AddIcon /> 추가</button></td>
               </tr>
           </tbody>
         </table>
@@ -393,99 +393,24 @@ const QuzGroup = () => {
               </tbody>
             </table>
           </div>
-
-          {/* <div className="cpnt_dlForm">
-            <h2 className="title dp-blind">퀴즈그룹 내 퀴즈콘텐츠 리스트</h2>
-            <dl className="dlForm-default">
-              <div className="tr">
-                <dt className="required"><span>카테고리 분류</span></dt>
-                <dd>
-                  <div className="field-wrap">
-                    <input type="radio" name="sort" id="sort1" required /><label htmlFor="sort1">대분류</label>
-                    <input type="radio" name="sort" id="sort2" required defaultChecked /><label htmlFor="sort2">중분류</label>
-                    <input type="radio" name="sort" id="sort3" required /><label htmlFor="sort3">소분류</label>
-                  </div>
-                </dd>
-              </div>
-              <div className="tr">
-                <dt className="required"><span>카테고리 명</span></dt>
-                <dd>
-                  <div className="field-wrap">
-                    <input type="text" required />
-                  </div>
-                </dd>
-              </div>
-              <div className="tr">
-                <dt className="required"><span>카테고리 설명</span></dt>
-                <dd>
-                  <div className="field-wrap">
-                    <textarea rows={`3`} required />
-                  </div>
-                </dd>
-              </div>
-              <div className="tr">
-                <dt className="required"><span>상용 노출 여부</span></dt>
-                <dd>
-                  <div className="field-wrap">
-                    <input type="radio" name="expose" id="expose1" required defaultChecked /><label htmlFor="expose1">비노출</label>
-                    <input type="radio" name="expose" id="expose2" required /><label htmlFor="expose2">검수</label>
-                    <input type="radio" name="expose" id="expose3" required /><label htmlFor="expose3">비노출</label>
-                  </div>
-                </dd>
-              </div>
-              <div className="tr">
-                <dt className="required"><span>대상 플랫폼</span></dt>
-                <dd>
-                  <div className="field-wrap">
-                    <input type="checkbox" name="platform1" id="platform1" required defaultChecked /><label htmlFor="platform1">공통</label>
-                    <input type="checkbox" name="platform2" id="platform2" disabled /><label htmlFor="platform2">IPTV</label>
-                    <input type="checkbox" name="platform3" id="platform3" disabled /><label htmlFor="platform3">모바일</label>
-                  </div>
-                </dd>
-              </div>
-              <div className="tr">
-                <dt className="required"><span>배너 이미지</span></dt>
-                <dd>
-                    {imgBase64.map((item) => {
-                      return (
-                        <div key="1" className="field-input-file-img"><span key="3">
-                          <img
-                            key="0"
-                            src={item}
-                            alt="선택한 이미지"
-                          />
-                          <button key="2" type="button" onClick={handleResetFile2}><CloseIcon /> 이미지삭제</button>
-                        </span></div>
-                        )
-                      }
-                    )}
-                  <div className="field-wrap">
-                    <input type="file" name="bnrImgNo" id="bnrImgNo" onChange={handleChangeFile2} required />
-                    <input type="text" required />
-                    <button type="button" onClick={handleClickFile}>파일선택</button>
-                  </div>
-                  <div className="text-help"><p>※ size 000x000/ jpg,png/ 최대 0MB 업로드 권장</p></div>
-                </dd>
-              </div>
-              <div className="tr">
-                <dt className="required"><span>카테고리 키워드</span></dt>
-                <dd>
-                  <div className="field-wrap">
-                    <input type="text" required />
-                  </div>
-                </dd>
-              </div>
-              <div className="tr">
-                <dt className="required"><span>카테고리 타입</span></dt>
-                <dd>
-                  <div className="field-wrap">
-                    <input type="radio" name="type" id="type1" required defaultChecked /><label htmlFor="type1">일반타입</label>
-                    <input type="radio" name="type" id="type2" required /><label htmlFor="type2">숨김타입</label>
-                  </div>
-                </dd>
-              </div>
-            </dl>
-          </div> */}
+          <div className="cpnt_paging">
+            <div className="paging-default">
+              <button className="num first" type="button">맨처음으로 이동</button>
+              <button className="num prev" type="button">이전</button>
+              <button className="num active" type="button">1</button>
+              <button className="num" type="button">2</button>
+              <button className="num" type="button">3</button>
+              <button className="num" type="button">4</button>
+              <button className="num" type="button">5</button>
+              <button className="num" type="button">6</button>
+              <button className="num" type="button">7</button>
+              <button className="num" type="button">8</button>
+              <button className="num" type="button">9</button>
+              <button className="num" type="button">10</button>
+              <button className="num next" type="button">다음</button>
+              <button className="num last" type="button">맨끝으로 이동</button>
+            </div>
+          </div>
         </form>
       </PopupDialog>
 

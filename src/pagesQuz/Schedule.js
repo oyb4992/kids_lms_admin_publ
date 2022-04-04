@@ -306,6 +306,7 @@ const QuzSchedule = () => {
         title={`카테고리 속성`}
         onSubmit={handleOpenCategory}
         optionClass={`muiActions-blind`}
+        isBtn={false}
       >
         <form>
           <div className="cpnt_dlForm">

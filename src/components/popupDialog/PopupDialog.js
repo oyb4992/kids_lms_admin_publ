@@ -7,7 +7,7 @@ import {
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 const PopupDialog = (props) => {
-  const { title, children, open, setOpen, onSubmit, onClose, btnMsg } = props;
+  const { title, children, open, setOpen, onSubmit, onClose, onDel=false, btnMsg="등록", isBtn=true, } = props;
   return (
     <Dialog
       open={open}
@@ -20,6 +20,7 @@ const PopupDialog = (props) => {
       aria-labelledby="confirm-dialog"
       className="cpnt_dialog_page"
       disableEscapeKeyDown
+      data-option={!isBtn && "noBtn"}
     >
       <DialogTitle>
         {title}
@@ -40,26 +41,39 @@ const PopupDialog = (props) => {
         </IconButton>
       </DialogTitle>
       <DialogContent>{children}</DialogContent>
-      <DialogActions className="cpnt_btns">
-        {/* <button
-          className="bt"
-          type="button"
-          onClick={() => {
-            setOpen(false);
-          }}
-        >
-          취소
-        </button> */}
-        <button
-          className="bt sb"
-          type="button"
-          onClick={() => {
-            onSubmit();
-          }}
-        >
-          {btnMsg}
-        </button>
-      </DialogActions>
+      {isBtn && 
+        <DialogActions className="cpnt_btns">
+          {onDel &&
+            <button
+              className="bt mg-ra"
+              type="button"
+              onClick={() => {
+                onDel(false);
+              }}
+            >
+              삭제
+            </button>
+          }
+          <button
+            className="bt"
+            type="button"
+            onClick={() => {
+              setOpen(false);
+            }}
+          >
+            취소
+          </button>
+          <button
+            className="bt sb"
+            type="button"
+            onClick={() => {
+              onSubmit();
+            }}
+          >
+            {btnMsg}
+          </button>
+        </DialogActions>
+      }
     </Dialog>
   );
 };

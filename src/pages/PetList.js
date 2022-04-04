@@ -7,6 +7,7 @@ import ConfirmDialog from "../components/confirmDialog/ConfirmDialog";
 import PetListDetail from "./PetListDetail";
 import TooltipText from "../components/tooltip/TooltipText";
 import AddIcon from '@mui/icons-material/Add';
+import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import PlaylistAddCheckIcon from '@mui/icons-material/PlaylistAddCheck';
 
 const PetList = () => {
@@ -199,6 +200,11 @@ const PetList = () => {
     [data, setData]
   );
 
+  const [isOpenDeleteConfirm, setOpenDeleteConfirm] = useState(false);
+  const handleDeleteButton = useCallback(() => {
+    setOpenDeleteConfirm(true);
+  }, [setOpenDeleteConfirm]);
+
   const handleApply = useCallback(() => {
     const list = List(data);
     const index = list.filter(
@@ -319,9 +325,13 @@ const PetList = () => {
         </DragDropContext>
 
         <div className="cpnt_btns">
+        <button type="button" onClick={handleDeleteButton}>
+            <DeleteOutlineIcon /> 삭제
+          </button>
           <button type="button" onClick={handleApplyButton}>
             <PlaylistAddCheckIcon /> 적용
           </button>
+
           <button type="button" className="sb af-r" onClick={handleDetailButton}>
             <AddIcon /> 등록
           </button>
@@ -334,6 +344,18 @@ const PetList = () => {
         onConfirm={handleApply}
       >
         <div>{`펫 설정을 적용하시겠습니까?`}</div>
+      </ConfirmDialog>
+
+      <ConfirmDialog
+        open={isOpenDeleteConfirm}
+        setOpen={setOpenDeleteConfirm}
+        onConfirm={handleDeleteButton}
+      >
+        <p>
+          {`삭제하시겠습니까?`}
+          <br />
+          {`삭제 후 복구가 불가능합니다.`}
+        </p>
       </ConfirmDialog>
 
       <PetListDetail open={isOpenDetail} setOpen={setOpenDetail} />

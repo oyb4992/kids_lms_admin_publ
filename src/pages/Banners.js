@@ -8,10 +8,10 @@ import moment from "moment";
 import "moment/locale/ko";
 import WarningDialog from "../components/warningDialog/WarningDialog";
 import TooltipText from "../components/tooltip/TooltipText";
-import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
+import PlaylistAddCheckIcon from "@mui/icons-material/PlaylistAddCheck";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
-import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
-import CloseIcon from "@mui/icons-material/Close";
+import AddIcon from "@mui/icons-material/Add";
+import CloseIcon from '@mui/icons-material/Close';
 import { useForm } from "react-hook-form";
 import PopupDialog from "../components/popupDialog/PopupDialog";
 import BannersDetail from "./BannersDetail";
@@ -418,7 +418,7 @@ const Banners = () => {
                   checked={checkItems.length === data.length ? true : false}
                 />
               </th>
-              <th>배너명</th>
+              <th><TooltipText title="클릭 시 등록된 '배너 상세'를 확인 하실 수 잇습니다.">배너명</TooltipText></th>
               <th>게시기간</th>
               <th>
                 <TooltipText title="사용여부 설정 후 하단의 적용버튼을 클릭하여야 적용이 됩니다.">
@@ -443,7 +443,7 @@ const Banners = () => {
                     checked={checkItems.includes(data.bnrNo) ? true : false}
                   />
                 </td>
-                <td onClick={() => detailBanner(data.bnrNo)}>{data.bnrNm}</td>
+                <td onClick={() => detailBanner(data.bnrNo)}><button className="text-link" type="button">{data.bnrNm}</button></td>
                 <td>
                   {data.dspStartDtt} ~ {data.dspStopDtt}
                 </td>
@@ -466,7 +466,7 @@ const Banners = () => {
         </table>
         <div className="cpnt_btns">
           <button type="button" onClick={handleButtonUpdate}>
-            <CheckCircleOutlineIcon />
+            <PlaylistAddCheckIcon />
             적용
           </button>
           <button type="button" onClick={handleButtonDelete}>
@@ -474,7 +474,7 @@ const Banners = () => {
             삭제
           </button>
           <button type="button" onClick={handleOpenPopUp} className="sb af-r">
-            <AddCircleOutlineIcon />
+            <AddIcon />
             등록
           </button>
         </div>
@@ -530,12 +530,13 @@ const Banners = () => {
                           message: "3자 이상 입력해주세요",
                         },
                       })}
+                      data-error={errors.bnrNm && "error"}
                     />
                   </div>
                   <ErrorMessage
                     errors={errors}
                     name="bnrNm"
-                    render={({ message }) => <p>{message}</p>}
+                    render={({ message }) => <div className="cpnt_errorMessage"><p>{message}</p></div>}
                   />
                 </dd>
               </div>
@@ -570,12 +571,13 @@ const Banners = () => {
                             "게시기간을 확인해주세요.",
                         },
                       })}
+                      data-error={errors.dspStopDtt && "error"}
                     />
                   </div>
                   <ErrorMessage
                     errors={errors}
                     name="dspStopDtt"
-                    render={({ message }) => <p>{message}</p>}
+                    render={({ message }) => <div className="cpnt_errorMessage"><p>{message}</p></div>}
                   />
                 </dd>
               </div>
@@ -628,6 +630,7 @@ const Banners = () => {
                           message: "배너랜딩유형명을 선택해 주세요.",
                         },
                       })}
+                      data-error={errors.ladgDvsCd && "error"}
                     >
                       <option value={""}>선택</option>
                       <option value={"메뉴(카테고리)랜딩"}>
@@ -650,18 +653,24 @@ const Banners = () => {
                           message: "3자 이상 입력해주세요",
                         },
                       })}
+                      data-error={errors.ladgDstVl && "error"}
                     />
                   </div>
-                  <ErrorMessage
-                    errors={errors}
-                    name={"ladgDvsCd"}
-                    render={({ message }) => <p>{message}</p>}
-                  />
-                  <ErrorMessage
-                    errors={errors}
-                    name={"ladgDstVl"}
-                    render={({ message }) => <p>{message}</p>}
-                  />
+                  { (errors.ladgDvsCd || errors.ladgDstVl) &&
+                    <div className="cpnt_errorMessage">
+                      <ErrorMessage
+                        errors={errors}
+                        name={"ladgDvsCd"}
+                        render={({ message }) => <p>{message}</p>}
+                      />
+                      <ErrorMessage
+                        errors={errors}
+                        name={"ladgDstVl"}
+                        render={({ message }) => <p>{message}</p>}
+                      />
+                    </div>
+                  }
+                  
                 </dd>
               </div>
             </dl>
@@ -673,6 +682,7 @@ const Banners = () => {
         open={isOpenDetail}
         setOpen={setOpenDetail}
         bnrNo={selectedBnrNo}
+        isBtn={false}
       />
     </>
   );

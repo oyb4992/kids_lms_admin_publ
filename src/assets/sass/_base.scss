@@ -119,13 +119,14 @@ html, body { height:100%; -webkit-font-smoothing:antialiased; -moz-osx-font-smoo
     .MuiSvgIcon-root { font-size:1.3rem; }
     &.list { @include btnDefault; padding:0 15px; border:0 solid transparent; height:26px; }
     &.detail { @include btnDefault; padding:0 15px; border:0 solid transparent; height:26px; }
-    &.add { @include btnDefault; padding:0 25px; border:0 solid transparent; height:26px; background-color:$c-sb; color:$c-wt; }
-    &.del { @include btnDefault; padding:0 25px; border:0 solid transparent; height:26px; background-color:$c-gry; color:$c-wt; }
+    &.add { @include btnDefault; padding:0 25px; border:0 solid transparent; height:26px; background-color:$c-sb !important; color:$c-wt !important; }
+    &.del { @include btnDefault; padding:0 25px; border:0 solid transparent; height:26px; background-color:$c-gry !important; color:$c-wt !important; }
     &[type="button"] { @include btnDefault; border:0 solid transparent;
         &.play { width:20px; height:20px; overflow:hidden; margin-left:4px; padding:0; border-radius:50%; text-align:center; line-height:18px; }
         &:hover,
         &:focus { filter:brightness(95%); }
     }
+    &[data-error] { border-color:$c-mi; }
     
     
 }
@@ -220,8 +221,9 @@ html, body { height:100%; -webkit-font-smoothing:antialiased; -moz-osx-font-smoo
 //         }
 //     //이중//}    
 // }
-.mg-t10 { margin-top:10px; } .mg-t20 { margin-top:20px; } .mg-t30 { margin-top:30px; }
-.mg-b10 { margin-bottom:10px; } .mg-b20 { margin-bottom:20px; } .mg-b30 { margin-bottom:30px; }
+.mg-t10 { margin-top:10px !important; } .mg-t20 { margin-top:20px !important; } .mg-t30 { margin-top:30px !important; }
+.mg-b10 { margin-bottom:10px !important; } .mg-b20 { margin-bottom:20px !important; } .mg-b30 { margin-bottom:30px !important; }
+.mg-ra { margin-right:auto !important; } .mg-la { margin-left:auto !important; }
 
 // .pd {
 //     $i: 0;

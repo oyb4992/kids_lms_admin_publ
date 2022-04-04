@@ -97,7 +97,7 @@
             tr > * { padding:6px 10px; background-color:$c-bg2; text-align:center; font-weight:500; }
         }
         tbody {
-            tr{
+            tr {
                 &:hover > * { background-color:#fefbf1; }
                 // &[style|="position"] { width:100%; background-color:#fefbf1; }
                 &.enabled { 
@@ -116,7 +116,31 @@
             } 
         }
     }
+}
 
+/*component : paging (default: paging-default) */
+.cpnt_paging { padding-top:20px;
+    .paging-default { display:flex; flex-flow:nowrap row; justify-content:center; height:28px;
+        .num { display:inline-block; position:relative; margin:0 3px; padding:0 10px; border-radius:4px; cursor:pointer;
+            &:hover,
+            &.active { background-color:$c-bg; font-weight:700; color:$c-mi; }
+            &.prev, &.next, &.first, &.last { overflow:hidden; width:28px; height:28px; padding-top:28px; word-spacing:nowrap; }
+            &.prev { 
+                &::before { content:""; display:inline-block; position:absolute; left:10px; top:10px; transform:rotate(45deg); width:8px; height:8px; border:2px solid $c-gry2; border-width:0 0 1px 1px; }
+            }
+            &.next { 
+                &::before { content:""; display:inline-block; position:absolute; left:10px; top:10px; transform:rotate(45deg); width:8px; height:8px; border:2px solid $c-gry2; border-width:1px 1px 0 0; }
+            }
+            &.first { 
+                &::before { content:""; display:inline-block; position:absolute; left:13px; top:9px; transform:rotate(45deg); width:8px; height:8px; border:2px solid $c-gry2; border-width:0 0 1px 1px; }
+                &::after { content:""; display:inline-block; position:absolute; left:10px; top:9px; transform:rotate(45deg); width:8px; height:8px; border:2px solid $c-gry2; border-width:0 0 1px 1px; }
+            }
+            &.last { 
+                &::before { content:""; display:inline-block; position:absolute; left:13px; top:9px; transform:rotate(45deg); width:8px; height:8px; border:2px solid $c-gry2; border-width:1px 1px 0 0; }
+                &::after { content:""; display:inline-block; position:absolute; left:10px; top:9px; transform:rotate(45deg); width:8px; height:8px; border:2px solid $c-gry2; border-width:1px 1px 0 0; }
+            }
+        }
+    }
 }
 
 /*component : dlForm (default: dlForm-default) */
@@ -210,13 +234,16 @@
     }
     &.cpnt_dialog_page { 
         .MuiDialog-container { 
-            .MuiDialog-paper { width:calc(100% - 60px); min-width:800px; max-width:calc(1350px - 60px);
+            .MuiDialog-paper { width:calc(100% - 60px); min-width:800px; max-width:calc(1350px - 60px); overflow:hidden;
                 .MuiTypography-root {  }
                 .MuiDialogContent-root { padding:30px 22px 10px 30px; overflow-y:scroll; }
                 .MuiDialogActions-root { padding:0 30px 30px 30px;
                     button { }
                 }
             }
+        }
+        &[data-option*="noBtn"] { 
+            .MuiDialogContent-root { padding-bottom:30px !important;  }
         }
     }
     &.muiActions-blind { 
@@ -277,6 +304,12 @@
             }
         }
         
+    }
+}
+
+.cpnt_errorMessage { display:flex;
+    p { flex:0 1 auto; color:$c-mi; 
+    + p { margin-left:10px; }
     }
 }
 
