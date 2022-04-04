@@ -13,6 +13,7 @@ import PageviewIcon from '@mui/icons-material/Pageview';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import RemoveIcon from '@mui/icons-material/Remove';
+import PanoramaFishEyeIcon from '@mui/icons-material/PanoramaFishEye';
 import TooltipText from "../components/tooltip/TooltipText";
 import TooltipBox from "../components/tooltip/TooltipBox";
 import PopupDialog from "../components/popupDialog/PopupDialog";
@@ -516,7 +517,7 @@ const QuzGroup = () => {
                     <dt className="required"><span>퀴즈콘텐츠 명</span></dt>
                     <dd>
                       <div className="field-wrap">
-                        <input type="text" required placeholder="퀴즈제목을 입력해주세요." />
+                        <input type="text" required placeholder="최대 30자 입력가능" />
                       </div>
                     </dd>
                   </div>
@@ -535,6 +536,7 @@ const QuzGroup = () => {
                     <dd>
                       <div className="field-wrap">
                         <select>
+                          <option>선택</option>
                           <option value={`1단계`}>1단계</option>
                           <option value={`2단계`}>2단계</option>
                           <option value={`3단계`}>3단계</option>
@@ -547,6 +549,7 @@ const QuzGroup = () => {
                     <dd>
                       <div className="field-wrap">
                         <select>
+                          <option>선택</option>
                           <option value={`1개`}>1개</option>
                           <option value={`2개`}>2개</option>
                           <option value={`3개`}>3개</option>
@@ -578,17 +581,17 @@ const QuzGroup = () => {
                     <dt className="required"><span>문제</span></dt>
                     <dd>
                       <div className="field-wrap">
-                        <input type="text" required placeholder="문제를 텍스트로 입력해주세요." />
+                        <input type="text" required placeholder="최대 400자 입력가능" />
                       </div>
                       <div className="field-wrap">
                         <input type="file" onChange={handleChangeFile} />
-                        <input type="text" />
+                        <input type="text" placeholder="음성파일 등록" />
                         <button type="button" onClick={handleClickFile}>파일선택</button>
                         <button type="button" className="field-button play"><PlayArrowIcon /> 재생</button>
                       </div>
                       <div className="field-wrap">
                         <input type="file" onChange={handleChangeFile} />
-                        <input type="text" />
+                        <input type="text" placeholder="(음원문제용) 음원파일 등록" />
                         <button type="button" onClick={handleClickFile}>파일선택</button>
                         <button type="button" className="field-button play"><PlayArrowIcon /> 재생</button>
                       </div>
@@ -607,7 +610,7 @@ const QuzGroup = () => {
                         )}
                       <div className="field-wrap">
                         <input type="file" onChange={handleChangeFile} />
-                        <input type="text" />
+                        <input type="text" placeholder="이미지 파일 등록" />
                         <button type="button" onClick={handleClickFile}>파일선택</button>
                       </div>
                     </dd>
@@ -618,7 +621,7 @@ const QuzGroup = () => {
             </div>
           </div>
           
-          {/* (3단) 선택지 및 정답선택 */}
+          {/* (3단) 선택지 및 정답선택 : 다지선다 */}
           <div className="cpnt_title type1 mg-t10">
             <strong>선택지 및 정답선택</strong>
           </div>
@@ -626,13 +629,15 @@ const QuzGroup = () => {
 
             {/* (3단 - 1 ) */}
             <div className="layout_item bd-1 pd-10">
-
               <div className="field-wrap">
-                <textarea rows={`3`} placeholder="선택지 1 내용을 텍스트로 입력해주세요." />
+                <input type="radio" name="selectAnswer_multi" id="selectAnswer_multi1" required defaultChecked /><label htmlFor="selectAnswer_multi1">선택지1</label>
+              </div>
+              <div className="field-wrap">
+                <textarea rows={`3`} placeholder="최대 500자 입력가능" />
               </div>
               <div className="field-wrap">
                 <input type="file" onChange={handleChangeFile} />
-                <input type="text" />
+                <input type="text" placeholder="음성파일 등록" />
                 <button type="button" onClick={handleClickFile}>파일선택</button>
                 <button type="button" className="field-button play"><PlayArrowIcon /> 재생</button>
               </div>
@@ -651,7 +656,7 @@ const QuzGroup = () => {
                 )}
               <div className="field-wrap">
                 <input type="file" onChange={handleChangeFile} />
-                <input type="text" />
+                <input type="text" placeholder="이미지 파일 등록" />
                 <button type="button" onClick={handleClickFile}>파일선택</button>
               </div>
 
@@ -659,13 +664,16 @@ const QuzGroup = () => {
 
             {/* (3단 - 2 ) */}
             <div className="layout_item bd-1 pd-10">
-
+              
               <div className="field-wrap">
-                <textarea rows={`3`} placeholder="선택지 2 내용을 텍스트로 입력해주세요." />
+                  <input type="radio" name="selectAnswer_multi" id="selectAnswer_multi2" required defaultChecked /><label htmlFor="selectAnswer_multi2">선택지2</label>
+              </div>
+              <div className="field-wrap">
+                <textarea rows={`3`} placeholder="최대 500자 입력가능" />
               </div>
               <div className="field-wrap">
                 <input type="file" onChange={handleChangeFile} />
-                <input type="text" />
+                <input type="text" placeholder="음성파일 등록" />
                 <button type="button" onClick={handleClickFile}>파일선택</button>
                 <button type="button" className="field-button play"><PlayArrowIcon /> 재생</button>
               </div>
@@ -684,7 +692,7 @@ const QuzGroup = () => {
                 )}
               <div className="field-wrap">
                 <input type="file" onChange={handleChangeFile} />
-                <input type="text" />
+                <input type="text" placeholder="이미지 파일 등록" />
                 <button type="button" onClick={handleClickFile}>파일선택</button>
               </div>
 
@@ -692,13 +700,16 @@ const QuzGroup = () => {
 
             {/* (3단 - 3 ) */}
             <div className="layout_item bd-1 pd-10">
-
+              
               <div className="field-wrap">
-                <textarea rows={`3`} placeholder="선택지 3 내용을 텍스트로 입력해주세요." />
+                <input type="radio" name="selectAnswer_multi" id="selectAnswer_multi3" required defaultChecked /><label htmlFor="selectAnswer_multi3">선택지3</label>
+              </div>
+              <div className="field-wrap">
+                <textarea rows={`3`} placeholder="최대 500자 입력가능" />
               </div>
               <div className="field-wrap">
                 <input type="file" onChange={handleChangeFile} />
-                <input type="text" />
+                <input type="text" placeholder="음성파일 등록" />
                 <button type="button" onClick={handleClickFile}>파일선택</button>
                 <button type="button" className="field-button play"><PlayArrowIcon /> 재생</button>
               </div>
@@ -717,9 +728,43 @@ const QuzGroup = () => {
                 )}
               <div className="field-wrap">
                 <input type="file" onChange={handleChangeFile} />
-                <input type="text" />
+                <input type="text" placeholder="이미지 파일 등록" />
                 <button type="button" onClick={handleClickFile}>파일선택</button>
               </div>
+
+            </div>
+          </div>
+
+          {/* (3단) 선택지 및 정답선택 : OX */}
+          <div className="cpnt_title type1 mg-t10">
+            <strong>선택지 및 정답선택</strong>
+          </div>
+          <div className="layout_wrap">
+
+            {/* (3단 - 1 ) */}
+            <div className="layout_item bd-1 pd-10">
+              <div className="field-wrap">
+                <input type="radio" name="selectAnswer_OX" id="selectAnswer_OX1" required defaultChecked /><label htmlFor="selectAnswer_OX1">선택지1</label>
+              </div>
+              <div className="item_ox">
+                <CloseIcon />
+              </div>
+
+            </div>
+
+            {/* (3단 - 2 ) */}
+            <div className="layout_item bd-1 pd-10">
+              
+              <div className="field-wrap">
+                  <input type="radio" name="selectAnswer_OX" id="selectAnswer_OX2" required defaultChecked /><label htmlFor="selectAnswer_OX2">선택지2</label>
+              </div>
+              <div className="item_ox">
+                <PanoramaFishEyeIcon />
+              </div>
+            </div>
+
+            {/* (3단 - 3 ) */}
+            <div className="layout_item bd-1 pd-10">
 
             </div>
           </div>
@@ -733,11 +778,11 @@ const QuzGroup = () => {
             <div className="layout_item bd-1 pd-10">
               
               <div className="field-wrap">
-                <textarea rows={`3`} placeholder="문제를 텍스트로 입력해주세요." />
+                <textarea rows={`3`} placeholder="최대 500자 입력가능" />
               </div>
               <div className="field-wrap">
                 <input type="file" onChange={handleChangeFile} />
-                <input type="text" />
+                <input type="text" placeholder="음성파일 등록" />
                 <button type="button" onClick={handleClickFile}>파일선택</button>
                 <button type="button" className="field-button play"><PlayArrowIcon /> 재생</button>
               </div>
@@ -752,6 +797,7 @@ const QuzGroup = () => {
 
             </div>
           </div>
+
           
           {/* (1단) 해설영상, 연관영상 추천 */}
           <div className="cpnt_dlForm mg-t10">
@@ -760,7 +806,7 @@ const QuzGroup = () => {
                 <dt className="required"><span>해설영상</span></dt>
                 <dd>
                   <div className="field-wrap cid-auto">
-                    <input type="text" required />
+                    <input type="text" required placeholder="해설 영상 매핑" />
                     <button className="field-button" type="button">앨범ID 조회</button>
                   </div>
                 </dd>
@@ -769,7 +815,7 @@ const QuzGroup = () => {
                 <dt className=""><span>얀관영상 추천 (최대 4개)</span></dt>
                 <dd>
                   <div className="field-wrap cid-auto">
-                    <input type="text" />
+                    <input type="text" placeholder="연관 영상 매핑" />
                     <button className="field-button" type="button">앨범ID 조회</button>
                     <button className="field-button" type="button"><AddIcon /> 추가</button>
                     <button className="field-button" type="button"><RemoveIcon /> 삭제</button>
@@ -805,7 +851,7 @@ const QuzGroup = () => {
                       )}
                       <div className="field-wrap">
                         <input type="file" name="bnrImgNo" id="bnrImgNo" onChange={handleChangeFile} required />
-                        <input type="text" required />
+                        <input type="text" required placeholder="이미지 파일 등록" />
                         <button type="button" onClick={handleClickFile}>파일선택</button>
                       </div>
                     </dd>
@@ -824,7 +870,7 @@ const QuzGroup = () => {
                     <dt className="required"><span>다시보기 텍스트</span></dt>
                     <dd>
                       <div className="field-wrap">
-                        <textarea rows={`3`} placeholder="다시보기 내용을 텍스트로 입력해주세요." />
+                        <textarea rows={`3`} placeholder="최대 500자 입력가능" />
                       </div>
                     </dd>
                   </div>
@@ -840,8 +886,8 @@ const QuzGroup = () => {
               <div className="tr">
                 <dt><span>퀴즈콘텐츠 키워드</span></dt>
                 <dd>
-                  <div className="field-wrap cid-auto">
-                    <input type="text" placeholder="콤마(,)로 구분하여 입력해주세요." />
+                  <div className="field-wrap">
+                    <input type="text" placeholder="콤마(,)로 구분하여 입력가능" />
                   </div>
                 </dd>
               </div>

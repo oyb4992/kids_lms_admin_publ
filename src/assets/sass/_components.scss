@@ -257,3 +257,32 @@
         }
     }
 }
+
+.cpnt_tree { padding:0 20px 0 0;
+    .title { display:inline-block; margin-right:10px; margin-bottom:5px; font-size:1.3rem; font-weight:700; color:$c-sb; }
+    .tree-default { line-height:2.2rem; border:1px solid $c-bd-line; padding:10px 0;
+        li {
+            padding-left:20px;
+        }
+
+        > li {
+            > ul {
+                > li {
+                    > ul {
+                        > li {
+
+                        }
+                    }
+                }
+            }
+        }
+        
+    }
+}
+
+.item_ox { text-align:center; 
+    svg { font-size:5rem; 
+        &[data-testid="CloseIcon"] { font-size:6rem; }
+    }
+    
+}
