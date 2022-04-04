@@ -248,11 +248,9 @@ const QuzCategory = () => {
               <button type="button" onClick={handleDeleteButton}>
                 <DeleteOutlineIcon /> 삭제
               </button>
-              <button type="button" onClick={handleApplyButton}>
-                <SimCardDownloadIcon /> 엑셀 다운로드
-              </button>
+
               <button type="button" className="sb af-r" onClick={handleOpenPopUp}>
-                <AddIcon /> 퀴즈그룹 등록
+                <AddIcon /> 퀴즈그룹 추가
               </button>
             </div>
           </div>
