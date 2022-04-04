@@ -105,7 +105,7 @@ export const DefaultLayout = ({ children }) => {
   }, [changeHeaderPath, location]);
 
   return (
-    <Container disableGutters maxWidth={false} className="cpnt_contents">
+    <Container disableGutters maxWidth={false} className="layout_contents">
       <div className="cpnt_title">
         <h1>{lastPath}</h1>
         <span className="path">

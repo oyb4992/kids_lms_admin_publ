@@ -28,7 +28,7 @@ const QuzSchedule = () => {
   //   setOpenApplyConfirm(false);
   // }, [setOpenApplyConfirm, showToast]);
 
-  //파일추가 1단팝업
+  //다이알로그 1
   const [insertConfirm, setInsertConfirm] = useState(false);
   const handleOpenPopUp = useCallback(() => {
     setInsertConfirm(true);
@@ -49,19 +49,21 @@ const QuzSchedule = () => {
   );
   const onInvalid = (errors) => console.log(errors);  
 
-  //파일추가 2단팝업
+  //다이알로그 2
   const [categoryConfirm, setCategoryConfirm] = useState(false);
   const handleOpenCategory = useCallback(() => {
     setCategoryConfirm(true);
   }, [setCategoryConfirm]);
 
-  const [imgBase64, setImgBase64, imgBase642, setImgBase642] = useState([]);
-  const [imgFile, setImgFile, imgFile2, setImgFile2] = useState(null);
+  //파일 추가 공통
+  const [imgBase64, setImgBase64] = useState([]);
+  const [imgFile, setImgFile] = useState(null);
 
   const handleClickFile = (e) => { // button 클릭으로 file파일 클릭 핸들러
     e.target.previousElementSibling.previousElementSibling.click();
   }
 
+  //파일 추가 1
   const handleChangeFile = (e) => {
     setImgFile(e.target.files);
     setImgBase64([]);
@@ -80,32 +82,8 @@ const QuzSchedule = () => {
     }
   };
 
-  const handleChangeFile2 = (e) => {
-    setImgFile2(e.target.files);
-    setImgBase642([]);
-
-    if (e.target.files[0]) {
-      let reader = new FileReader();
-      reader.readAsDataURL(e.target.files[0]);
-      reader.onloadend = () => {
-        const base642 = reader.result;
-        if (base642) {
-          var base64Sub2 = base642.toString();
-          setImgBase642((imgBase642) => [...imgBase642, base64Sub2]);
-          e.target.nextElementSibling.value = e.target.files[0].name; // input에 파일 이름 노출
-        }
-      };
-    }
-  };
-
   const handleResetFile = (e) => { // 파일 이미지 삭제
     setImgBase64((imgBase64) => []);
-    e.target.parentNode.parentNode.parentNode.nextElementSibling.childNodes[0].value = "";
-    e.target.parentNode.parentNode.parentNode.nextElementSibling.childNodes[1].value = "";
-  };
-
-  const handleResetFile2 = (e) => { // 파일 이미지 삭제
-    setImgBase642((imgBase642) => []);
     e.target.parentNode.parentNode.parentNode.nextElementSibling.childNodes[0].value = "";
     e.target.parentNode.parentNode.parentNode.nextElementSibling.childNodes[1].value = "";
   };
@@ -384,19 +362,19 @@ const QuzSchedule = () => {
                 <dd>
                     {imgBase64.map((item) => {
                       return (
-                        <div key="1" className="field-input-file-img"><span key="3">
+                        <div key="11" className="field-input-file-img"><span key="3">
                           <img
-                            key="0"
+                            key="10"
                             src={item}
                             alt="선택한 이미지"
                           />
-                          <button key="2" type="button" onClick={handleResetFile2}><CloseIcon /> 이미지삭제</button>
+                          <button key="12" type="button" onClick={handleResetFile}><CloseIcon /> 이미지삭제</button>
                         </span></div>
                         )
                       }
                     )}
                   <div className="field-wrap">
-                    <input type="file" name="bnrImgNo" id="bnrImgNo" onChange={handleChangeFile2} required />
+                    <input type="file" name="bnrImgNo" id="bnrImgNo" onChange={handleChangeFile} required />
                     <input type="text" required />
                     <button type="button" onClick={handleClickFile}>파일선택</button>
                   </div>

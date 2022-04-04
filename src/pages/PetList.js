@@ -4,6 +4,7 @@ import { useToast } from "../components/hooks";
 import { List } from "immutable";
 import API from "../components/axios/api";
 import ConfirmDialog from "../components/confirmDialog/ConfirmDialog";
+import PetListDetail from "./PetListDetail";
 import TooltipText from "../components/tooltip/TooltipText";
 import AddIcon from '@mui/icons-material/Add';
 import PlaylistAddCheckIcon from '@mui/icons-material/PlaylistAddCheck';
@@ -215,6 +216,11 @@ const PetList = () => {
     updateData(index.toJS());
   }, [data, checkItems, updateData, showToast]);
 
+  const [isOpenDetail, setOpenDetail] = useState(false);
+  const handleDetailButton = useCallback(() => {
+    setOpenDetail(true);
+  }, [setOpenDetail]);
+
   return (
     <>
       <div className="cpnt_table">
@@ -316,7 +322,7 @@ const PetList = () => {
           <button type="button" onClick={handleApplyButton}>
             <PlaylistAddCheckIcon /> 적용
           </button>
-          <button type="button" className="sb af-r">
+          <button type="button" className="sb af-r" onClick={handleDetailButton}>
             <AddIcon /> 등록
           </button>
         </div>
@@ -329,6 +335,8 @@ const PetList = () => {
       >
         <div>{`펫 설정을 적용하시겠습니까?`}</div>
       </ConfirmDialog>
+
+      <PetListDetail open={isOpenDetail} setOpen={setOpenDetail} />
     </>
   );
 };

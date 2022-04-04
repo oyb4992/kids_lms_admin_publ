@@ -170,7 +170,7 @@ const Phrases = () => {
             <dt><span>1단계</span></dt>
             <dd>
               <div className="field-wrap cid-range">
-                <input className="wt-pt-150" type="text" /> 이상 <input type="text" />
+                <input className="wt-pt150" type="text" /> 이상 <input type="text" />
               </div>
             </dd>
           </div>
@@ -178,7 +178,7 @@ const Phrases = () => {
             <dt><span>2단계</span></dt>
             <dd>
               <div className="field-wrap cid-range">
-                <input className="wt-pt-150" type="text" /> 이상 <input type="text" />
+                <input className="wt-pt150" type="text" /> 이상 <input type="text" />
               </div>
             </dd>
           </div>
@@ -186,7 +186,7 @@ const Phrases = () => {
             <dt><span>3단계</span></dt>
             <dd>
               <div className="field-wrap cid-range">
-                <input className="wt-pt-150" type="text" /> 이상 <input type="text" />
+                <input className="wt-pt150" type="text" /> 이상 <input type="text" />
               </div>
             </dd>
           </div>
@@ -194,7 +194,7 @@ const Phrases = () => {
             <dt><span>4단계</span></dt>
             <dd>
               <div className="field-wrap cid-range">
-                <input className="wt-pt-150" type="text" /> 이상 <input type="text" />
+                <input className="wt-pt150" type="text" /> 이상 <input type="text" />
               </div>
             </dd>
           </div>
@@ -202,7 +202,7 @@ const Phrases = () => {
             <dt><span>5단계</span></dt>
             <dd>
               <div className="field-wrap cid-range">
-                <input className="wt-pt-150" type="text" /> 이상 <input type="text" />
+                <input className="wt-pt150" type="text" /> 이상 <input type="text" />
               </div>
             </dd>
           </div>
@@ -210,10 +210,9 @@ const Phrases = () => {
       </div>
 
       <div className="cpnt_dlForm mg-t30">
-        <h2 className="title">우리아이는리포트문구</h2>
+        <h2 className="title">우리아이는 리포트 문구</h2>
         <div className="cpnt_pageSearch mg-b10">
           <div className="field-wrap keyword1">
-              <button type="button">프로필</button>
               <button type="button">아이관심사1</button>
               <button type="button">아이관심사2</button>
               <button type="button">아이관심사3</button>
@@ -228,13 +227,13 @@ const Phrases = () => {
             <dt><span>진단결과</span></dt>
             <dd>
               <div className="field-wrap isBd cid-range">
-                <span className="inTd wt-pc-10">결과 있음</span>
-                <span className="inTd wt-pc-20">수식어 있음</span>
+                <span className="inTd wt-pc10">결과 있음</span>
+                <span className="inTd wt-pc20">수식어 있음</span>
                 <span className="inTd isCol"><input type="text" /></span>
               </div>
               <div className="field-wrap isBd cid-range">
-                <span className="inTd wt-pc-10">결과 없음</span>
-                <span className="inTd wt-pc-20">수식어 없음</span>
+                <span className="inTd wt-pc10">결과 없음</span>
+                <span className="inTd wt-pc20">수식어 없음</span>
                 <span className="inTd isCol"><input type="text" /></span>
               </div>
             </dd>
@@ -244,43 +243,43 @@ const Phrases = () => {
             <dt><span>출석</span></dt>
             <dd>
               <div className="field-wrap isBd">
-                <span className="inTd wt-pc-10">상</span>
-                <span className="inTd wt-pc-20">출석률 80% &#60; a &#8804; 100%</span>
+                <span className="inTd wt-pc10">상</span>
+                <span className="inTd wt-pc20">출석률 80% &#60; a &#8804; 100%</span>
                 <span className="inTd isRow isCol">
                   <span className="field-wrap isFull isBd">
-                    <span className="inTd wt-pc-10">규칙</span>
+                    <span className="inTd wt-pc10">규칙</span>
                     <span className="inTd isCol"><input type="text" /></span>
                   </span>
                   <span className="field-wrap isFull isBd">
-                    <span className="inTd wt-pc-10">불규칙</span>
+                    <span className="inTd wt-pc10">불규칙</span>
                     <span className="inTd isCol"><input type="text" /></span>
                   </span>
                 </span>
               </div>
               <div className="field-wrap isBd">
-                <span className="inTd wt-pc-10">중</span>
-                <span className="inTd wt-pc-20">출석률 40% &#60; a &#8804; 80%</span>
+                <span className="inTd wt-pc10">중</span>
+                <span className="inTd wt-pc20">출석률 40% &#60; a &#8804; 80%</span>
                 <span className="inTd isRow isCol">
                   <span className="field-wrap isFull isBd">
-                    <span className="inTd wt-pc-10">규칙</span>
+                    <span className="inTd wt-pc10">규칙</span>
                     <span className="inTd isCol"><input type="text" /></span>
                   </span>
                   <span className="field-wrap isFull isBd">
-                    <span className="inTd wt-pc-10">불규칙</span>
+                    <span className="inTd wt-pc10">불규칙</span>
                     <span className="inTd isCol"><input type="text" /></span>
                   </span>
                 </span>
               </div>
               <div className="field-wrap isBd">
-                <span className="inTd wt-pc-10">하</span>
-                <span className="inTd wt-pc-20">출석률 0% &#60; a &#8804; 40%</span>
+                <span className="inTd wt-pc10">하</span>
+                <span className="inTd wt-pc20">출석률 0% &#60; a &#8804; 40%</span>
                 <span className="inTd isRow isCol">
                   <span className="field-wrap isFull isBd">
-                    <span className="inTd wt-pc-10">규칙</span>
+                    <span className="inTd wt-pc10">규칙</span>
                     <span className="inTd isCol"><input type="text" /></span>
                   </span>
                   <span className="field-wrap isFull isBd">
-                    <span className="inTd wt-pc-10">불규칙</span>
+                    <span className="inTd wt-pc10">불규칙</span>
                     <span className="inTd isCol"><input type="text" /></span>
                   </span>
                 </span>
@@ -292,18 +291,18 @@ const Phrases = () => {
             <dt><span>시청시간</span></dt>
             <dd>
               <div className="field-wrap isBd cid-range">
-                <span className="inTd wt-pc-10">상</span>
-                <span className="inTd wt-pc-20">일 평균 2시간 초과</span>
+                <span className="inTd wt-pc10">상</span>
+                <span className="inTd wt-pc20">일 평균 2시간 초과</span>
                 <span className="inTd isCol"><input type="text" /></span>
               </div>
               <div className="field-wrap isBd cid-range">
-                <span className="inTd wt-pc-10">중</span>
-                <span className="inTd wt-pc-20">일평균 30분 &#60; a &#8804; 2시간</span>
+                <span className="inTd wt-pc10">중</span>
+                <span className="inTd wt-pc20">일평균 30분 &#60; a &#8804; 2시간</span>
                 <span className="inTd isCol"><input type="text" /></span>
               </div>
               <div className="field-wrap isBd cid-range">
-                <span className="inTd wt-pc-10">하</span>
-                <span className="inTd wt-pc-20">일평균 0분 &#60; a &#8804; 30분</span>
+                <span className="inTd wt-pc10">하</span>
+                <span className="inTd wt-pc20">일평균 0분 &#60; a &#8804; 30분</span>
                 <span className="inTd isCol"><input type="text" /></span>
               </div>
             </dd>
@@ -313,49 +312,49 @@ const Phrases = () => {
             <dt><span>퀴즈내역</span></dt>
             <dd>
               <div className="field-wrap isBd">
-                <span className="inTd wt-pc-10">상</span>
-                <span className="inTd wt-pc-20">출석률 80% &#60; a &#8804; 100%</span>
+                <span className="inTd wt-pc10">상</span>
+                <span className="inTd wt-pc20">출석률 80% &#60; a &#8804; 100%</span>
                 <span className="inTd isRow isCol">
                   <span className="field-wrap isFull isBd">
-                    <span className="inTd wt-pc-20">잘하는 영역 있음</span>
+                    <span className="inTd wt-pc20">잘하는 영역 있음</span>
                     <span className="inTd isCol"><input type="text" /></span>
                   </span>
                   <span className="field-wrap isFull isBd">
-                    <span className="inTd wt-pc-20">잘하는 영역 없음</span>
+                    <span className="inTd wt-pc20">잘하는 영역 없음</span>
                     <span className="inTd isCol"><input type="text" /></span>
                   </span>
                 </span>
               </div>
               <div className="field-wrap isBd">
-                <span className="inTd wt-pc-10">중</span>
-                <span className="inTd wt-pc-20">출석률 40% &#60; a &#8804; 80%</span>
+                <span className="inTd wt-pc10">중</span>
+                <span className="inTd wt-pc20">출석률 40% &#60; a &#8804; 80%</span>
                 <span className="inTd isRow isCol">
                   <span className="field-wrap isFull isBd">
-                    <span className="inTd wt-pc-20">잘하는 영역 있음</span>
+                    <span className="inTd wt-pc20">잘하는 영역 있음</span>
                     <span className="inTd isCol"><input type="text" /></span>
                   </span>
                   <span className="field-wrap isFull isBd">
-                    <span className="inTd wt-pc-20">잘하는 영역 없음</span>
-                    <span className="inTd isCol"><input type="text" /></span>
-                  </span>
-                </span>
-              </div>
-              <div className="field-wrap isBd">
-                <span className="inTd wt-pc-10">하</span>
-                <span className="inTd wt-pc-20">출석률 0% &#60; a &#8804; 40%</span>
-                <span className="inTd isRow isCol">
-                  <span className="field-wrap isFull isBd">
-                    <span className="inTd wt-pc-20"></span>
+                    <span className="inTd wt-pc20">잘하는 영역 없음</span>
                     <span className="inTd isCol"><input type="text" /></span>
                   </span>
                 </span>
               </div>
               <div className="field-wrap isBd">
-                <span className="inTd wt-pc-10">없음</span>
-                <span className="inTd wt-pc-20">정답률 0% &#60; a &#8804; 10%</span>
+                <span className="inTd wt-pc10">하</span>
+                <span className="inTd wt-pc20">출석률 0% &#60; a &#8804; 40%</span>
                 <span className="inTd isRow isCol">
                   <span className="field-wrap isFull isBd">
-                    <span className="inTd wt-pc-20"></span>
+                    <span className="inTd wt-pc20"></span>
+                    <span className="inTd isCol"><input type="text" /></span>
+                  </span>
+                </span>
+              </div>
+              <div className="field-wrap isBd">
+                <span className="inTd wt-pc10">없음</span>
+                <span className="inTd wt-pc20">정답률 0% &#60; a &#8804; 10%</span>
+                <span className="inTd isRow isCol">
+                  <span className="field-wrap isFull isBd">
+                    <span className="inTd wt-pc20"></span>
                     <span className="inTd isCol"><input type="text" disabled /></span>
                   </span>
                 </span>
@@ -367,29 +366,29 @@ const Phrases = () => {
             <dt><span>보상</span></dt>
             <dd>
               <div className="field-wrap isBd">
-                <span className="inTd wt-pc-10">상</span>
-                <span className="inTd wt-pc-20">쿠키 개수 40개 초과</span>
+                <span className="inTd wt-pc10">상</span>
+                <span className="inTd wt-pc20">쿠키 개수 40개 초과</span>
                 <span className="inTd isRow isCol">
                     <input type="text" />
                 </span>
               </div>
               <div className="field-wrap isBd">
-                <span className="inTd wt-pc-10">중</span>
-                <span className="inTd wt-pc-20">쿠키 개수 20개 &#60; a &#8804; 40개</span>
+                <span className="inTd wt-pc10">중</span>
+                <span className="inTd wt-pc20">쿠키 개수 20개 &#60; a &#8804; 40개</span>
                 <span className="inTd isRow isCol">
                     <input type="text" />
                 </span>
               </div>
               <div className="field-wrap isBd">
-                <span className="inTd wt-pc-10">하</span>
-                <span className="inTd wt-pc-20">쿠키 개수 0개 &#60; a &#8804; 10개</span>
+                <span className="inTd wt-pc10">하</span>
+                <span className="inTd wt-pc20">쿠키 개수 0개 &#60; a &#8804; 10개</span>
                 <span className="inTd isRow isCol">
                     <input type="text" />
                 </span>
               </div>
               <div className="field-wrap isBd">
-                <span className="inTd wt-pc-10">없음</span>
-                <span className="inTd wt-pc-20">보상 내역이 없는 경우</span>
+                <span className="inTd wt-pc10">없음</span>
+                <span className="inTd wt-pc20">보상 내역이 없는 경우</span>
                 <span className="inTd isRow isCol">
                     <input type="text" disabled />
                 </span>
@@ -401,13 +400,13 @@ const Phrases = () => {
             <dt><span>관심주제 연계 콘텐츠</span></dt>
             <dd>
               <div className="field-wrap isBd">
-                <span className="inTd wt-pc-30">관심영역 1</span>
+                <span className="inTd wt-pc30">관심영역 1</span>
                 <span className="inTd isRow isCol">
                     <input type="text" />
                 </span>
               </div>
               <div className="field-wrap isBd">
-                <span className="inTd wt-pc-30">없음</span>
+                <span className="inTd wt-pc30">없음</span>
                 <span className="inTd isRow isCol">
                     <input type="text" disabled />
                 </span>
@@ -420,22 +419,22 @@ const Phrases = () => {
             <dt><span>영어레벨</span></dt>
             <dd>
               <div className="field-wrap isBd">
-                <span className="inTd wt-pc-10">상승</span>
-                <span className="inTd wt-pc-20">레벨 단계 상승 &#8805; 1</span>
+                <span className="inTd wt-pc10">상승</span>
+                <span className="inTd wt-pc20">레벨 단계 상승 &#8805; 1</span>
                 <span className="inTd isRow isCol">
                     <input type="text" />
                 </span>
               </div>
               <div className="field-wrap isBd">
-                <span className="inTd wt-pc-10">하락</span>
-                <span className="inTd wt-pc-20">레벨 단계 하락 &#8805; 2</span>
+                <span className="inTd wt-pc10">하락</span>
+                <span className="inTd wt-pc20">레벨 단계 하락 &#8805; 2</span>
                 <span className="inTd isRow isCol">
                     <input type="text" />
                 </span>
               </div>
               <div className="field-wrap isBd">
-                <span className="inTd wt-pc-10">그외</span>
-                <span className="inTd wt-pc-20"></span>
+                <span className="inTd wt-pc10">그외</span>
+                <span className="inTd wt-pc20"></span>
                 <span className="inTd isRow isCol">
                     <input type="text" disabled />
                 </span>

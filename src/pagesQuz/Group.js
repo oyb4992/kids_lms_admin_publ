@@ -11,6 +11,8 @@ import SimCardDownloadIcon from '@mui/icons-material/SimCardDownload';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import PageviewIcon from '@mui/icons-material/Pageview';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import PlayArrowIcon from '@mui/icons-material/PlayArrow';
+import RemoveIcon from '@mui/icons-material/Remove';
 import TooltipText from "../components/tooltip/TooltipText";
 import TooltipBox from "../components/tooltip/TooltipBox";
 import PopupDialog from "../components/popupDialog/PopupDialog";
@@ -314,82 +316,82 @@ const QuzGroup = () => {
           </div>
 
           <div className="cpnt_table">
-        <table className="table-default">
-          <caption>
-            <strong className="title dp-blind">퀴즈백과 퀴즈그룹 관리 리스트</strong>
-            <span className="total">
-              {`Total: `}
-              <b>3</b>
-            </span>
-          </caption>
-          <thead>
-            <tr>
-              <th rowSpan={2}><input name="checkAll" type={"checkbox"} /></th>
-              <th rowSpan={2}>퀴즈콘텐츠 번호</th>
-              <th rowSpan={2}>
-                <TooltipText title="클릭 시 등록된 '퀴즈콘텐츠 상세'를 확인 하실 수 잇습니다.">퀴즈콘텐츠 명</TooltipText>
-              </th>
-              <th rowSpan={2}>퀴즈그룹 명</th>
-              <th rowSpan={2}>난이도</th>
-              <th rowSpan={2}>퀴즈유형</th>
-              <th colSpan={2}>문제</th>
-              <th colSpan={2}>보기</th>
-              <th rowSpan={2}>사용여부</th>
-              <th rowSpan={2}>등록일 (최종수정일)</th>
-            </tr>
-            <tr>
-              <th>텍스트</th>
-              <th>이미지</th>
-              <th>텍스트</th>
-              <th>이미지</th>
-            </tr>
-          </thead>
-          <tbody>
-              <tr>
-                  <td><input type={"checkbox"} /></td>
-                  <td>200006</td>
-                  <td><button className="text-link" type="button" onClick={handleOpensetQuzContent}>낙타</button></td>
-                  <td>퀴즈그룹6</td>
-                  <td>1레벨</td>
-                  <td>OX형</td>
-                  <td>O</td>
-                  <td></td>
-                  <td>O</td>
-                  <td></td>
-                  <td>비노출</td>
-                  <td>2021.02.10. 14:22:33</td>
-              </tr>
-              <tr>
-                  <td><input type={"checkbox"} /></td>
-                  <td>200005</td>
-                  <td><button className="text-link" type="button" onClick={handleOpensetQuzContent}>염소</button></td>
-                  <td>퀴즈그룹1 외4개</td>
-                  <td>2레벨</td>
-                  <td>다지선다형</td>
-                  <td></td>
-                  <td>O</td>
-                  <td>O</td>
-                  <td></td>
-                  <td>검수</td>
-                  <td>2021.02.09. 14:22:33</td>
-              </tr>
-              <tr>
-                  <td><input type={"checkbox"} /></td>
-                  <td>200004</td>
-                  <td><button className="text-link" type="button" onClick={handleOpensetQuzContent}>당나귀</button></td>
-                  <td>퀴즈그룹6</td>
-                  <td>3레벨</td>
-                  <td>OX형</td>
-                  <td>O</td>
-                  <td></td>
-                  <td></td>
-                  <td>O</td>
-                  <td>노출</td>
-                  <td>2021.02.07. 14:22:33</td>
-              </tr>
-          </tbody>
-        </table>
-      </div>
+            <table className="table-default">
+              <caption>
+                <strong className="title dp-blind">퀴즈백과 퀴즈그룹 관리 리스트</strong>
+                <span className="total">
+                  {`Total: `}
+                  <b>3</b>
+                </span>
+              </caption>
+              <thead>
+                <tr>
+                  <th rowSpan={2}><input name="checkAll" type={"checkbox"} /></th>
+                  <th rowSpan={2}>퀴즈콘텐츠 번호</th>
+                  <th rowSpan={2}>
+                    <TooltipText title="클릭 시 등록된 '퀴즈콘텐츠 상세'를 확인 하실 수 잇습니다.">퀴즈콘텐츠 명</TooltipText>
+                  </th>
+                  <th rowSpan={2}>퀴즈그룹 명</th>
+                  <th rowSpan={2}>난이도</th>
+                  <th rowSpan={2}>퀴즈유형</th>
+                  <th colSpan={2}>문제</th>
+                  <th colSpan={2}>보기</th>
+                  <th rowSpan={2}>사용여부</th>
+                  <th rowSpan={2}>등록일 (최종수정일)</th>
+                </tr>
+                <tr>
+                  <th>텍스트</th>
+                  <th>이미지</th>
+                  <th>텍스트</th>
+                  <th>이미지</th>
+                </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                      <td><input type={"checkbox"} /></td>
+                      <td>200006</td>
+                      <td><button className="text-link" type="button" onClick={handleOpensetQuzContent}>낙타</button></td>
+                      <td>퀴즈그룹6</td>
+                      <td>1레벨</td>
+                      <td>OX형</td>
+                      <td>O</td>
+                      <td></td>
+                      <td>O</td>
+                      <td></td>
+                      <td>비노출</td>
+                      <td>2021.02.10. 14:22:33</td>
+                  </tr>
+                  <tr>
+                      <td><input type={"checkbox"} /></td>
+                      <td>200005</td>
+                      <td><button className="text-link" type="button" onClick={handleOpensetQuzContent}>염소</button></td>
+                      <td>퀴즈그룹1 외4개</td>
+                      <td>2레벨</td>
+                      <td>다지선다형</td>
+                      <td></td>
+                      <td>O</td>
+                      <td>O</td>
+                      <td></td>
+                      <td>검수</td>
+                      <td>2021.02.09. 14:22:33</td>
+                  </tr>
+                  <tr>
+                      <td><input type={"checkbox"} /></td>
+                      <td>200004</td>
+                      <td><button className="text-link" type="button" onClick={handleOpensetQuzContent}>당나귀</button></td>
+                      <td>퀴즈그룹6</td>
+                      <td>3레벨</td>
+                      <td>OX형</td>
+                      <td>O</td>
+                      <td></td>
+                      <td></td>
+                      <td>O</td>
+                      <td>노출</td>
+                      <td>2021.02.07. 14:22:33</td>
+                  </tr>
+              </tbody>
+            </table>
+          </div>
 
           {/* <div className="cpnt_dlForm">
             <h2 className="title dp-blind">퀴즈그룹 내 퀴즈콘텐츠 리스트</h2>
@@ -489,152 +491,369 @@ const QuzGroup = () => {
       <PopupDialog
         open={isQuzContent}
         setOpen={setQuzContent}
-        title={`오늘의 퀴즈 등록`}
+        title={`퀴즈 콘텐츠`}
         onSubmit={handleOpensetQuzContent}
       >
         <form>
-          <div className="cpnt_pageSearch">
-            <div className="field-wrap cid-center">
-              <select className="fm">
-                <option value={`전체`}>전체</option>
-                <option value={`카테고리 아이디`}>카테고리 아이디</option>
-                <option value={`카테고리 명`}>카테고리 명</option>
-              </select>
-              <input type="search" name="search" />
-              <button type="button"><SearchIcon /> 검색</button>
+
+          {/* (2단) 플랫폼, 퀴즈콘텐츠 명, 문항유형, 난이도, 선택지 개수 / 사용여부, 문제 */}
+          <div className="layout_wrap">
+            <div className="layout_item">
+              {/* (2단-1) */}
+              <div className="cpnt_dlForm">
+                <dl className="dlForm-default">
+                  <div className="tr">
+                    <dt className="required"><span>플랫폼</span></dt>
+                    <dd>
+                      <div className="field-wrap">
+                        <input type="checkbox" name="platform1" id="platform1" required defaultChecked /><label htmlFor="platform1">공통</label>
+                        <input type="checkbox" name="platform2" id="platform2" disabled /><label htmlFor="platform2">IPTV</label>
+                        <input type="checkbox" name="platform3" id="platform3" disabled /><label htmlFor="platform3">모바일</label>
+                      </div>
+                    </dd>
+                  </div>
+                  <div className="tr">
+                    <dt className="required"><span>퀴즈콘텐츠 명</span></dt>
+                    <dd>
+                      <div className="field-wrap">
+                        <input type="text" required placeholder="퀴즈제목을 입력해주세요." />
+                      </div>
+                    </dd>
+                  </div>
+                  <div className="tr">
+                    <dt className="required"><span>문항유형</span></dt>
+                    <dd>
+                      <div className="field-wrap">
+                        <input type="radio" name="type" id="type1" required defaultChecked /><label htmlFor="type1">다지선다</label>
+                        <input type="radio" name="type" id="type2" required /><label htmlFor="type2">OX</label>
+                        <input type="radio" name="type" id="type3" required disabled /><label htmlFor="type3">HTML%</label>
+                      </div>
+                    </dd>
+                  </div>
+                  <div className="tr">
+                    <dt className="required"><span>난이도</span></dt>
+                    <dd>
+                      <div className="field-wrap">
+                        <select>
+                          <option value={`1단계`}>1단계</option>
+                          <option value={`2단계`}>2단계</option>
+                          <option value={`3단계`}>3단계</option>
+                        </select>
+                      </div>
+                    </dd>
+                  </div>
+                  <div className="tr">
+                    <dt className="required"><span>선택지 개수</span></dt>
+                    <dd>
+                      <div className="field-wrap">
+                        <select>
+                          <option value={`1개`}>1개</option>
+                          <option value={`2개`}>2개</option>
+                          <option value={`3개`}>3개</option>
+                        </select>
+                      </div>
+                    </dd>
+                  </div>
+                </dl>
+              </div>
+
+            </div>
+
+            {/* (2단-2) */}
+            <div className="layout_item">
+
+              <div className="cpnt_dlForm">
+                <dl className="dlForm-default">
+                  <div className="tr">
+                    <dt className="required"><span>사용여부</span></dt>
+                    <dd>
+                      <div className="field-wrap">
+                        <input type="radio" name="expose" id="expose1" required defaultChecked /><label htmlFor="expose1">비노출</label>
+                        <input type="radio" name="expose" id="expose2" required /><label htmlFor="expose2">검수</label>
+                        <input type="radio" name="expose" id="expose3" required /><label htmlFor="expose3">비노출</label>
+                      </div>
+                    </dd>
+                  </div>
+                  <div className="tr">
+                    <dt className="required"><span>문제</span></dt>
+                    <dd>
+                      <div className="field-wrap">
+                        <input type="text" required placeholder="문제를 텍스트로 입력해주세요." />
+                      </div>
+                      <div className="field-wrap">
+                        <input type="file" onChange={handleChangeFile} />
+                        <input type="text" />
+                        <button type="button" onClick={handleClickFile}>파일선택</button>
+                        <button type="button" className="field-button play"><PlayArrowIcon /> 재생</button>
+                      </div>
+                      <div className="field-wrap">
+                        <input type="file" onChange={handleChangeFile} />
+                        <input type="text" />
+                        <button type="button" onClick={handleClickFile}>파일선택</button>
+                        <button type="button" className="field-button play"><PlayArrowIcon /> 재생</button>
+                      </div>
+                      {imgBase64.map((item) => {
+                          return (
+                            <div key="1" className="field-input-file-img"><span key="3">
+                              <img
+                                key="0"
+                                src={item}
+                                alt="선택한 이미지"
+                              />
+                              <button key="2" type="button" onClick={handleResetFile}><CloseIcon /> 이미지삭제</button>
+                            </span></div>
+                            )
+                          }
+                        )}
+                      <div className="field-wrap">
+                        <input type="file" onChange={handleChangeFile} />
+                        <input type="text" />
+                        <button type="button" onClick={handleClickFile}>파일선택</button>
+                      </div>
+                    </dd>
+                  </div>
+                </dl>
+              </div>
+
             </div>
           </div>
-          <div className="cpnt_table">
-            <table className="table-default">
-              <caption>
-                <h2 className="title">중분류 카테고리 목록 선택</h2>
-              </caption>
-              <thead>
-                <tr>
-                  <th>선택</th>
-                  <th>카테고리 아이디</th>
-                  <th>카테고리 명</th>
-                  <th>대분류</th>
-                  <th>제공 문항수</th>
-                  <th>숨김타입 여부</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                    <td><input className="field-input" type="radio" name="categoryId" /></td>
-                    <td>100001</td>
-                    <td><button className="text-link" type="button" onClick={handleOpensetQuzContent}>동물</button></td>
-                    <td>과학</td>
-                    <td>50</td>
-                    <td className="text-pit">N</td>
-                </tr>
-                <tr>
-                    <td><input className="field-input" type="radio" name="categoryId" /></td>
-                    <td>100002</td>
-                    <td><button className="text-link" type="button" onClick={handleOpensetQuzContent}>식물</button></td>
-                    <td>과학</td>
-                    <td>100</td>
-                    <td className="text-pit">Y</td>
-                </tr>
-                <tr>
-                    <td><input className="field-input" type="radio" name="categoryId" /></td>
-                    <td>100003</td>
-                    <td><button className="text-link" type="button" onClick={handleOpensetQuzContent}>첨단과학과 태양계</button></td>
-                    <td>과학</td>
-                    <td>230</td>
-                    <td className="text-pit">N</td>
-                </tr>
-              </tbody>
-            </table>
+          
+          {/* (3단) 선택지 및 정답선택 */}
+          <div className="cpnt_title type1 mg-t10">
+            <strong>선택지 및 정답선택</strong>
+          </div>
+          <div className="layout_wrap">
+
+            {/* (3단 - 1 ) */}
+            <div className="layout_item bd-1 pd-10">
+
+              <div className="field-wrap">
+                <textarea rows={`3`} placeholder="선택지 1 내용을 텍스트로 입력해주세요." />
+              </div>
+              <div className="field-wrap">
+                <input type="file" onChange={handleChangeFile} />
+                <input type="text" />
+                <button type="button" onClick={handleClickFile}>파일선택</button>
+                <button type="button" className="field-button play"><PlayArrowIcon /> 재생</button>
+              </div>
+              {imgBase64.map((item) => {
+                  return (
+                    <div key="1" className="field-input-file-img"><span key="3">
+                      <img
+                        key="0"
+                        src={item}
+                        alt="선택한 이미지"
+                      />
+                      <button key="2" type="button" onClick={handleResetFile}><CloseIcon /> 이미지삭제</button>
+                    </span></div>
+                    )
+                  }
+                )}
+              <div className="field-wrap">
+                <input type="file" onChange={handleChangeFile} />
+                <input type="text" />
+                <button type="button" onClick={handleClickFile}>파일선택</button>
+              </div>
+
+            </div>
+
+            {/* (3단 - 2 ) */}
+            <div className="layout_item bd-1 pd-10">
+
+              <div className="field-wrap">
+                <textarea rows={`3`} placeholder="선택지 2 내용을 텍스트로 입력해주세요." />
+              </div>
+              <div className="field-wrap">
+                <input type="file" onChange={handleChangeFile} />
+                <input type="text" />
+                <button type="button" onClick={handleClickFile}>파일선택</button>
+                <button type="button" className="field-button play"><PlayArrowIcon /> 재생</button>
+              </div>
+              {imgBase64.map((item) => {
+                  return (
+                    <div key="1" className="field-input-file-img"><span key="3">
+                      <img
+                        key="0"
+                        src={item}
+                        alt="선택한 이미지"
+                      />
+                      <button key="2" type="button" onClick={handleResetFile}><CloseIcon /> 이미지삭제</button>
+                    </span></div>
+                    )
+                  }
+                )}
+              <div className="field-wrap">
+                <input type="file" onChange={handleChangeFile} />
+                <input type="text" />
+                <button type="button" onClick={handleClickFile}>파일선택</button>
+              </div>
+
+            </div>
+
+            {/* (3단 - 3 ) */}
+            <div className="layout_item bd-1 pd-10">
+
+              <div className="field-wrap">
+                <textarea rows={`3`} placeholder="선택지 3 내용을 텍스트로 입력해주세요." />
+              </div>
+              <div className="field-wrap">
+                <input type="file" onChange={handleChangeFile} />
+                <input type="text" />
+                <button type="button" onClick={handleClickFile}>파일선택</button>
+                <button type="button" className="field-button play"><PlayArrowIcon /> 재생</button>
+              </div>
+              {imgBase64.map((item) => {
+                  return (
+                    <div key="1" className="field-input-file-img"><span key="3">
+                      <img
+                        key="0"
+                        src={item}
+                        alt="선택한 이미지"
+                      />
+                      <button key="2" type="button" onClick={handleResetFile}><CloseIcon /> 이미지삭제</button>
+                    </span></div>
+                    )
+                  }
+                )}
+              <div className="field-wrap">
+                <input type="file" onChange={handleChangeFile} />
+                <input type="text" />
+                <button type="button" onClick={handleClickFile}>파일선택</button>
+              </div>
+
+            </div>
           </div>
 
-          <div className="cpnt_dlForm mg-t30">
-            <h2 className="title">오늘의 퀴즈 등록</h2>
-            <div className="cpnt_btns pst-right-top">
-              <button type="button" className="sb af-r">
-                <AddIcon /> 등록
-              </button>
+          {/* (3단) 정답해설 텍스트 및 음원 */}
+          <div className="cpnt_title type1 mg-t10">
+            <strong>정답해설 텍스트 및 음원</strong>
+          </div>
+          <div className="layout_wrap">
+            {/* (3단 - 1 ) */}
+            <div className="layout_item bd-1 pd-10">
+              
+              <div className="field-wrap">
+                <textarea rows={`3`} placeholder="문제를 텍스트로 입력해주세요." />
+              </div>
+              <div className="field-wrap">
+                <input type="file" onChange={handleChangeFile} />
+                <input type="text" />
+                <button type="button" onClick={handleClickFile}>파일선택</button>
+                <button type="button" className="field-button play"><PlayArrowIcon /> 재생</button>
+              </div>
+
             </div>
+            {/* (3단 - 2 ) */}
+            <div className="layout_item bd-1 pd-10">
+
+            </div>
+            {/* (3단 - 3 ) */}
+            <div className="layout_item bd-1 pd-10">
+
+            </div>
+          </div>
+          
+          {/* (1단) 해설영상, 연관영상 추천 */}
+          <div className="cpnt_dlForm mg-t10">
             <dl className="dlForm-default">
               <div className="tr">
-                <dt className="required"><span>오늘의 퀴즈 주제</span></dt>
-                <dd>
-                  <div className="field-wrap">
-                    <input type="text" required />
-                  </div>
-                  <div className="text-help"><p>※ 최대 30자 입력 가능/ 오늘의 퀴즈 용도로 수정 가능하며, 카테고리 메뉴와 별도 저장</p></div>
-                </dd>
-              </div>
-              <div className="tr">
-                <dt className="required"><span>오늘의 퀴즈 소개 문구</span></dt>
-                <dd>
-                  <div className="field-wrap">
-                    <textarea rows={`3`} required />
-                  </div>
-                  <div className="text-help"><p>※ 최대 500자 입력가능/ 오늘의 퀴즈 용도로 수정 가능하며, 카테고리 메뉴와 별도 저장</p></div>
-                </dd>
-              </div>
-              {/* <div className="tr">
-                <dt className="required"><span>오늘의 퀴즈 소개</span></dt>
-                <dd>
-                  <div className="field-wrap cid-auto cid-range">
-                    <input />
-                    ~
-                    <input />
-                  </div>
-                </dd>
-              </div> */}
-              <div className="tr">
-                <dt className="required"><span>배너 이미지</span></dt>
-                <dd>
-                    {/* {imgBase64.map((item) => {
-                      return (
-                        <div key="1" className="field-input-file-img"><span key="3">
-                          <img
-                            key="0"
-                            src={item}
-                            alt="선택한 이미지"
-                          />
-                          <button key="2" type="button" onClick={handleResetFile}><CloseIcon /> 이미지삭제</button>
-                        </span></div>
-                        )
-                      }
-                    )} */}
-                  <div className="field-wrap">
-                    <input type="file" name="bnrImgNo" id="bnrImgNo" onChange={handleChangeFile} required />
-                    <input type="text" required />
-                    <button type="button" onClick={handleClickFile}>파일선택</button>
-                  </div>
-                  <div className="text-help"><p>※ size 000x000/ jpg,png/ 최대 0MB 업로드 권장</p></div>
-                </dd>
-              </div>
-              {/* <div className="tr">
-                <dt className="required"><span>배너랜딩 유형</span></dt>
+                <dt className="required"><span>해설영상</span></dt>
                 <dd>
                   <div className="field-wrap cid-auto">
-                    <select
-                      name="ladgDvsCd"
-                      {...register("ladgDvsCd", { required: true })}
-                    >
-                      <option value={"선택"}>선택</option>
-                      <option value={"메뉴(카테고리)랜딩"}>
-                        메뉴(카테고리)랜딩
-                      </option>
-                      <option value={"아이들나라 홈"}>아이들나라 홈</option>
-                      <option value={"대메뉴 랜딩"}>대메뉴 랜딩</option>
-                      <option value={"서비스 랜딩"}>서비스 랜딩</option>
-                      <option value={"콘텐츠 랜딩"}>콘텐츠 랜딩</option>
-                    </select>
-                    <input
-                      name="ladgDstVl"
-                      {...register("ladgDstVl", { required: true, minLength: 2 })}
-                    />
+                    <input type="text" required />
+                    <button className="field-button" type="button">앨범ID 조회</button>
                   </div>
                 </dd>
-              </div> */}
-        
+              </div>
+              <div className="tr">
+                <dt className=""><span>얀관영상 추천 (최대 4개)</span></dt>
+                <dd>
+                  <div className="field-wrap cid-auto">
+                    <input type="text" />
+                    <button className="field-button" type="button">앨범ID 조회</button>
+                    <button className="field-button" type="button"><AddIcon /> 추가</button>
+                    <button className="field-button" type="button"><RemoveIcon /> 삭제</button>
+                  </div>
+                </dd>
+              </div>
             </dl>
           </div>
+
+          {/* (2단) 사용여부. 다시보기텍스트 */}
+          <div className="layout_wrap mg-t10">
+
+            {/* (2단 - 1 ) */}
+            <div className="layout_item">
+
+              <div className="cpnt_dlForm">
+                <dl className="dlForm-default">
+                  <div className="tr">
+                    <dt className="required"><span>사용여부</span></dt>
+                    <dd>
+                      {imgBase64.map((item) => {
+                        return (
+                          <div key="1" className="field-input-file-img"><span key="3">
+                            <img
+                              key="0"
+                              src={item}
+                              alt="선택한 이미지"
+                            />
+                            <button key="2" type="button" onClick={handleResetFile}><CloseIcon /> 이미지삭제</button>
+                          </span></div>
+                          )
+                        }
+                      )}
+                      <div className="field-wrap">
+                        <input type="file" name="bnrImgNo" id="bnrImgNo" onChange={handleChangeFile} required />
+                        <input type="text" required />
+                        <button type="button" onClick={handleClickFile}>파일선택</button>
+                      </div>
+                    </dd>
+                  </div>
+                </dl>
+              </div>
+
+            </div>
+
+            {/* (2단 - 2 ) */}
+            <div className="layout_item">
+
+              <div className="cpnt_dlForm">
+                <dl className="dlForm-default">
+                  <div className="tr">
+                    <dt className="required"><span>다시보기 텍스트</span></dt>
+                    <dd>
+                      <div className="field-wrap">
+                        <textarea rows={`3`} placeholder="다시보기 내용을 텍스트로 입력해주세요." />
+                      </div>
+                    </dd>
+                  </div>
+                </dl>
+              </div>
+
+            </div>
+          </div>
+
+          {/* (1단) 퀴즈컨텐츠 키워드, 소속된 퀴즈그룹목록 */}
+          <div className="cpnt_dlForm mg-t10">
+            <dl className="dlForm-default">
+              <div className="tr">
+                <dt><span>퀴즈콘텐츠 키워드</span></dt>
+                <dd>
+                  <div className="field-wrap cid-auto">
+                    <input type="text" placeholder="콤마(,)로 구분하여 입력해주세요." />
+                  </div>
+                </dd>
+              </div>
+              <div className="tr">
+                <dt><span>소속된 퀴즈그룹 목록</span></dt>
+                <dd>
+                  
+                </dd>
+              </div>
+            </dl>
+          </div>
+
         </form>
       </PopupDialog>
       

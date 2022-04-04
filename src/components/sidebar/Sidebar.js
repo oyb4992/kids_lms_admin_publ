@@ -77,7 +77,7 @@ const PersistentDrawerLeft = () => {
   ];
   return (
     // <div className={styles.cpnt_lnb}>
-    <div className="cpnt_lnb">
+    <div className="layout_sidebar cpnt_lnb">
       <h1>LMS 어드민</h1>
       <ul>
         {itemslist.map((item, index) => {

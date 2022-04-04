@@ -6,7 +6,7 @@
 
 
 /* component : lnb */
-.cpnt_lnb { flex:none; width:300px; /*float:left;*/ padding:0 50px; 
+.cpnt_lnb {  
     * { font-family:Dotum,'돋움',tahoma,sans-serif; }
     h1 { height:34px; line-height:22px; font-size:16px; font-weight:700; }
     > ul { border-top:2px solid #4f576a; 
@@ -28,6 +28,16 @@
 .cpnt_title { display:flex; flex-flow:nowrap row; align-items:center; padding-bottom:15px; 
     h1 { line-height:35px; font-size:$fs-t; font-weight:500; }
     .path { display:block; margin-left:auto; color:$c-ts; }
+    &.type1 { padding-bottom:0; border-top:2px solid $c-bd-lineT;
+        strong { flex:1; margin:0 0 0 0 !important; padding:6px 10px; border-left:1px solid $c-bd-line; border-right:1px solid $c-bd-line; background-color:$c-bg2; }
+        + .dlForm-default { border-top:1px solid $c-bd-line; }
+    }
+    + .layout_wrap {
+        .cpnt_dlForm {
+            .dlForm-default { border-top:1px solid $c-bd-line; }
+        }
+        
+    }
 }
 
 /* component : conts - body */
@@ -44,7 +54,7 @@
 .cpnt_pageTab { 
     .MuiTabs-flexContainer { position:relative; 
         &::after { content:""; display:block; position:absolute; left:0; bottom:0; z-index:1; width:100%; height:1px; border-bottom:1px solid #ddd; line-height:1px; font-size:1px; }
-        .MuiButtonBase-root { margin-left:-1px; padding:11px 20px; background-color:#f8f8f8; border:1px solid #ddd; border-bottom:transparent; border-radius:4px 4px 0 0; font-size:1.1rem; color:#555; 
+        .MuiButtonBase-root { margin-left:-1px; padding:11px 20px; background-color:$c-bg2; border:1px solid #ddd; border-bottom:transparent; border-radius:4px 4px 0 0; font-size:1.1rem; color:#555; 
             &:first-child { margin-left:0; }
             &.Mui-selected { position:relative; z-index:2; background-color:#fff; font-weight:700; color:#1b252e; }
         }
@@ -58,13 +68,18 @@
     .MuiTabs-flexContainer { display:flex; flex-flow:row nowrap; justify-content:flex-start; position:relative; width:100%; 
         &::after { content:""; display:block; position:absolute; left:0; top:48%; z-index:0; width:100%; height:1px; border-bottom:1px solid $c-bg-bt-ov; line-height:1px; font-size:1px; }
         .MuiButtonBase-root { flex:1; position:relative; z-index:2; min-height:auto; margin:0 15px; padding:5px 20px; background-color:$c-wt; border:1px solid $c-bg-bt-ov; border-radius:18px; line-height:25px; font-size:1.1rem;  
-            &:first-child { margin-left:0; }
-            &:last-child { margin-right:0; }
+            &:first-child { margin-left:0 !important; }
+            &:last-child { margin-right:0 !important; }
             &.Mui-selected { background-color:$c-mi; border-color:$c-mi; font-weight:700; color:$c-wt; }
         }
     }
     .MuiTabs-indicator { display:none !important; }
     + div[role="tabpanel"] { padding-top:30px; }
+    &.wp-div2 { padding-top:5px;
+        .MuiTabs-flexContainer { justify-content:space-between;
+            .MuiButtonBase-root { flex:0 1 auto; margin:0 0px; padding:5px 0px; }
+        }
+     }
 }
 
 /*component : table (default: table-default) */
@@ -79,7 +94,7 @@
         th, td { border-right:1px solid $c-bd-line; border-bottom:1px solid $c-bd-line; }
         thead tr > *:first-child, tbody tr > *:first-child { border-left:1px solid $c-bd-line; }
         thead {
-            tr > * { padding:6px 10px; background-color:#f8f8f8; text-align:center; font-weight:500; }
+            tr > * { padding:6px 10px; background-color:$c-bg2; text-align:center; font-weight:500; }
         }
         tbody {
             tr{
@@ -112,7 +127,7 @@
         > div {  
             dt {
                 &.thead-tr { display:flex; flex-flow:row nowrap; width:100%;
-                    > span { flex:1; padding:6px 10px; border-right:1px solid $c-bd-line; border-bottom:1px solid $c-bd-line; background-color:#f8f8f8; text-align:center; font-weight:500;
+                    > span { flex:1; padding:6px 10px; border-right:1px solid $c-bd-line; border-bottom:1px solid $c-bd-line; background-color:$c-bg2; text-align:center; font-weight:500;
                         &:first-child { border-left:1px solid $c-bd-line; }
                         svg { width:1.1rem; height:1.1rem; margin-bottom:2px; vertical-align:middle; }
                     }
@@ -130,7 +145,7 @@
             &.tr { display:flex; flex-flow:row nowrap; width:100%; 
                 dt,
                 dd { min-height:39px; }
-                dt { flex:none; display:flex; flex-flow:column nowrap; justify-content:center; width:20%; padding:6px 10px; border-right:1px solid $c-bd-line; border-bottom:1px solid $c-bd-line; background-color:#f8f8f8; text-align:right; 
+                dt { flex:none; display:flex; flex-flow:column nowrap; justify-content:center; width:20%; padding:6px 10px; border-right:1px solid $c-bd-line; border-bottom:1px solid $c-bd-line; background-color:$c-bg2; text-align:right; 
                     &:first-child { border-left:1px solid $c-bd-line; }
                     &.required {
                         span { 
