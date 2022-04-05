@@ -306,7 +306,7 @@ const QuzSchedule = () => {
         title={`카테고리 속성`}
         onSubmit={handleOpenCategory}
         optionClass={`muiActions-blind`}
-        isBtn={false}
+        // isBtn={false}
       >
         <form>
           <div className="cpnt_dlForm">
@@ -326,7 +326,7 @@ const QuzSchedule = () => {
                 <dt className="required"><span>카테고리 명</span></dt>
                 <dd>
                   <div className="field-wrap">
-                    <input type="text" required />
+                    <input type="text" required placeholder="최대 30자 입력 가능" />
                   </div>
                 </dd>
               </div>
@@ -334,7 +334,7 @@ const QuzSchedule = () => {
                 <dt className="required"><span>카테고리 설명</span></dt>
                 <dd>
                   <div className="field-wrap">
-                    <textarea rows={`3`} required />
+                    <textarea rows={`3`} required placeholder="오늘의 퀴즈 or 분야별 퀴즈 진입 시 소개문구 입력&#13;&#10;최대 500자 입력 가능" />
                   </div>
                 </dd>
               </div>
@@ -376,7 +376,7 @@ const QuzSchedule = () => {
                     )}
                   <div className="field-wrap">
                     <input type="file" name="bnrImgNo" id="bnrImgNo" onChange={handleChangeFile} required />
-                    <input type="text" required />
+                    <input type="text" required placeholder="이미지 파일 등록" />
                     <button type="button" onClick={handleClickFile}>파일선택</button>
                   </div>
                   <div className="text-help"><p>※ size 000x000/ jpg,png/ 최대 0MB 업로드 권장</p></div>
@@ -386,7 +386,7 @@ const QuzSchedule = () => {
                 <dt className="required"><span>카테고리 키워드</span></dt>
                 <dd>
                   <div className="field-wrap">
-                    <input type="text" required />
+                    <input type="text" required placeholder="콤마( , )로 구분하여 입력가능" />
                   </div>
                 </dd>
               </div>

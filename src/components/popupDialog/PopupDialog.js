@@ -14,7 +14,10 @@ const PopupDialog = (props) => {
       onClose={(_, reason) => {
         if (reason !== `backdropClick`) {
           setOpen(false);
-          onClose();
+          if(onClose){
+            onClose();
+          }
+          
         }
       }}
       aria-labelledby="confirm-dialog"
@@ -28,7 +31,9 @@ const PopupDialog = (props) => {
           aria-label="close"
           onClick={() => {
             setOpen(false);
-            onClose();
+            if(onClose){
+              onClose();
+            }
           }}
           sx={{
             position: "absolute",

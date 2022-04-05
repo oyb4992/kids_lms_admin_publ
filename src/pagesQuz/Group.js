@@ -57,17 +57,23 @@ const QuzGroup = () => {
   );
   const onInvalid = (errors) => console.log(errors);  
 
-  //다이알로그 페이지 2
+  //다이알로그 그룹콘텐츠
   const [isGroupContent, setGroupContent] = useState(false);
   const handleOpenGroupContent = useCallback(() => {
     setGroupContent(true);
   }, [setGroupContent]);
 
-  //다이알로그 페이지 3
+  //다이알로그 퀴즈콘텐츠
   const [isQuzContent, setQuzContent] = useState(false);
   const handleOpensetQuzContent = useCallback(() => {
     setQuzContent(true);
   }, [setQuzContent]);
+
+  //다이알로그 앨범조회
+  const [isAlbum, setAlbum] = useState(false);
+  const handleAlbum = useCallback(() => {
+    setAlbum(true);
+  }, [setAlbum]);
 
   const [imgBase64, setImgBase64, imgBase642, setImgBase642] = useState([]);
   const [imgFile, setImgFile, imgFile2, setImgFile2] = useState(null);
@@ -270,7 +276,7 @@ const QuzGroup = () => {
                 <dt className="required"><span>퀴즈그룹 명</span></dt>
                 <dd>
                   <div className="field-wrap">
-                    <input type="text" required />
+                    <input type="text" required placeholder="최대 30자 입력 가능" />
                   </div>
                 </dd>
               </div>
@@ -732,7 +738,7 @@ const QuzGroup = () => {
                 <dd>
                   <div className="field-wrap cid-auto">
                     <input type="text" required placeholder="해설 영상 매핑" />
-                    <button className="field-button" type="button">앨범ID 조회</button>
+                    <button className="field-button" type="button" onClick={handleAlbum}>앨범ID 조회</button>
                   </div>
                 </dd>
               </div>
@@ -741,7 +747,7 @@ const QuzGroup = () => {
                 <dd>
                   <div className="field-wrap cid-auto">
                     <input type="text" placeholder="연관 영상 매핑" />
-                    <button className="field-button" type="button">앨범ID 조회</button>
+                    <button className="field-button" type="button" onClick={handleAlbum}>앨범ID 조회</button>
                     <button className="field-button" type="button"><AddIcon /> 추가</button>
                     <button className="field-button" type="button"><RemoveIcon /> 삭제</button>
                   </div>
@@ -828,6 +834,70 @@ const QuzGroup = () => {
         </form>
       </PopupDialog>
       
+      <PopupDialog
+        open={isAlbum}
+        setOpen={setAlbum}
+        title={`앨범 조회`}
+        onSubmit={handleAlbum}
+        btnMsg={`선택`}
+      >
+        <form>
+          <div className="cpnt_pageSearch">
+            <div className="field-wrap cid-center">
+              <select>
+                  <option value={`전체`}>전체</option>
+                  <option value={`앨범 ID`}>앨범 ID</option>
+                  <option value={`앨범 명`}>앨범 명</option>
+              </select>
+              <input type="search" name="search" />
+              <button type="button"><SearchIcon /> 검색</button>
+            </div>
+          </div>
+          <div className="cpnt_table">
+            <table className="table-default">
+              <caption>
+                <strong className="title dp-blind">앨범 리스트</strong>
+                <span className="total">
+                  {`Total: `}
+                  <b>3</b>
+                </span>
+              </caption>
+              <thead>
+                <tr>
+                  <th><input name="checkAll" type={"checkbox"} /></th>
+                  <th>앨범 ID</th>
+                  <th>앨범 명</th>
+                  <th>앨범 경로</th>
+                  <th>키워드</th>
+                </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                      <td><input type={"checkbox"} /></td>
+                      <td>M01211M011PPV00</td>
+                      <td>The Letter A Song(EDM)</td>
+                      <td></td>
+                      <td></td>
+                  </tr>
+                  <tr>
+                  <td><input type={"checkbox"} /></td>
+                      <td>M01211M011PPV00</td>
+                      <td>The Letter A Song(EDM)</td>
+                      <td></td>
+                      <td></td>
+                  </tr>
+                  <tr>
+                      <td><input type={"checkbox"} /></td>
+                      <td>M01211M011PPV00</td>
+                      <td>The Letter A Song(EDM)</td>
+                      <td></td>
+                      <td></td>
+                  </tr>
+              </tbody>
+            </table>
+          </div>
+        </form>
+      </PopupDialog>
       
     </>
   );

@@ -22,6 +22,7 @@ const CurriculumSetting = () => {
             <dd>
               <div className="field-wrap cid-auto">
                 <input type="number" placeholder="시청 비율" />
+                <p className="text-info-icon">시청완료건수에 대한 비율</p>
               </div>
             </dd>
           </div>
@@ -30,6 +31,7 @@ const CurriculumSetting = () => {
             <dd>
               <div className="field-wrap cid-auto">
                 <input type="number" placeholder="보상" />
+                <p className="text-info-icon">커리큘럼 완료 시 보상으로 주어지는 ‘쿠키’의 단위</p>
               </div>
             </dd>
           </div>

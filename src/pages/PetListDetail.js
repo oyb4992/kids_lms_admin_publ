@@ -261,7 +261,7 @@ const PetListDetail = (props) => {
               <dd>
                 <div className="field-wrap af-r pd-t5">
                     <button className="field-button del" type="button"><DeleteOutlineIcon /> 삭제</button>
-                    <button className="field-button add"><AddIcon /> 등록</button>
+                    <button className="field-button add" type="button"><AddIcon /> 등록</button>
                 </div>              
                 <div className="field-wrap isFull isBd">
                   <span className="inTd wt-pc30">애니메이션</span>

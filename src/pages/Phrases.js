@@ -142,7 +142,7 @@ const Phrases = () => {
       </div>
 
       <div className="cpnt_dlForm mg-t30">
-        <h2 className="title">추천 메뉴 진단 노출 문구 <span className="text-info"><ErrorOutlineIcon /> 진단 유도 진입 배너 문구 작성</span></h2>
+        <h2 className="title">추천 메뉴 진단 노출 문구 <span className="text-info-icon">진단 유도 진입 배너 문구 작성</span></h2>
         <dl className="dlForm-default">
           <div className="tr">
             <dt><span>아이진단</span></dt>

@@ -1,14 +1,27 @@
 import React from "react";
 import Tooltip from "@material-ui/core/Tooltip";
 import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
+import ClickAwayListener from '@mui/material/ClickAwayListener';
 
 
 const TooltipBox = (props) => {
     const { title, option, children } = props;
+    const [open, setOpen] = React.useState(false);
+
+    const handleTooltipClose = () => {
+      setOpen(false);
+    };
+
+    const handleTooltipOpen = () => {
+      (open)? setOpen(false) : setOpen(true);
+    };
+
     return (
-      <Tooltip className="" title={title} arrow placement={option? option:'bottom'}>
-        <span className="cpnt_tooltip targetBox">{children}</span>
-      </Tooltip>
+      <ClickAwayListener onClickAway={handleTooltipClose}>
+        <Tooltip className="" title={title} open={open} arrow disableFocusListener disableHoverListener disableTouchListener placement={option? option:'bottom'}>
+          <span className="cpnt_tooltip targetBox" onClick={handleTooltipOpen}>{children}</span>
+        </Tooltip>
+      </ClickAwayListener>
     );
   };
 

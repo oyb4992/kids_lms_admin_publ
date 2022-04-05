@@ -34,7 +34,7 @@
 /**
  app frame layout
 */
-.layout_container { display:flex; flex-flow:wrap row; width:1650px; padding-top:43px; margin:0 auto; 
+.layout_container { display:flex; flex-flow:wrap row; width:1650px; height:calc(100vh - 100px); padding-top:43px; margin:0 auto; 
     &:after { content:""; display:block; width:100%; height:0; padding:0; margin:0; background:none; border:0 solid transparent; overflow:hidden; }
     .layout_sidebar { flex:none; width:300px; /*float:left;*/ padding:0 50px; }
     .layout_contents { flex:1; width:1350px; /*float:left; margin-left:50px;*/ margin-right:0px; }

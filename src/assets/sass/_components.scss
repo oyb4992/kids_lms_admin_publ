@@ -204,7 +204,7 @@
         &.sb { background:$c-sb; color:$c-wt; }
         &.sb2 { background:$c-sb2; color:$c-wt; }
         .MuiSvgIcon-root { vertical-align:middle; font-size:1.3em; }
-    }        
+    } 
 }
 
 /* component : dialog (confirm) */
@@ -286,10 +286,18 @@
 }
 
 .cpnt_tree { padding:0 20px 0 0;
-    .title { display:inline-block; margin-right:10px; margin-bottom:5px; font-size:1.3rem; font-weight:700; color:$c-sb; }
-    .tree-default { line-height:2.2rem; border:1px solid $c-bd-line; padding:10px 0;
-        li {
-            padding-left:20px;
+    .title { display:block; padding-bottom:1.5px; /*padding:1.5px 5px; background-color:#4d5762;*/ font-size:1.3rem; font-weight:700; color:$c-sb; /*color:$c-wt;*/ }
+    .tree-default { line-height:2.2rem; border:1px solid #4d5762; padding:10px 0; border-top:2px solid #4d5762; min-height:300px; max-height:calc(100vh - 250px); overflow-y:auto;
+        ul { 
+            
+        }
+        li { position:relative; padding-left:20px;
+            button { display:block; width:100%; text-align:left; line-height:2.2rem; cursor:pointer;
+                &:hover, &:active { background-color:$c-bg-sb-ov; }
+            }
+            &::before { content:""; display:inline-block; position:absolute; left:7px; top:-10px; z-index:-1; width:1px; height:100%; border-left:1px solid $c-bd-line; }
+            &::after { content:""; display:inline-block; position:absolute; left:7px; bottom:11px; z-index:-1; width:18px; height:1px; border-bottom:1px solid $c-bd-line; }
+            &.root::before, &.root::after { display:none; }
         }
 
         > li {
