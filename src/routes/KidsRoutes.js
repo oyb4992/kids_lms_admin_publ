@@ -45,7 +45,7 @@ const sidebar_category = [
   {
     text: "문구 관리",
     path: "/phrase/setting",
-    sub: [{ text: "문구 관리", path: "/phrase/setting" }],
+    sub: [],
   },
   {
     text: "퀴즈백과 관리",

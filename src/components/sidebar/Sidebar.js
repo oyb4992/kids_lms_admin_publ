@@ -95,7 +95,7 @@ const PersistentDrawerLeft = (props) => {
                   <ul key={`${text}`}>
                     <li
                       className={` ${
-                        path.indexOf(urlpath[2]) > -1 && "active"
+                        (path.indexOf(urlpath[1]) > -1 && path.indexOf(urlpath[2]) > -1) && "active"
                       } `}
                     >
                       <Link key={`${text}`} to={path}>

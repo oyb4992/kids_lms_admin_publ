@@ -93,11 +93,17 @@ export const DefaultLayout = ( props ) => {
     for (let i = 0; i < sidebarList.length; i++) {
       if (path[1] == sidebarList[i].path.split("/")[1]) {
         setMiddlePath(sidebarList[i].text);
-        for (let j = 0; j < sidebarList[i].sub.length; j++) {
-          if (path[2] == sidebarList[i].sub[j].path.split("/")[2]) {
-            setLastPath(sidebarList[i].sub[j].text);
+        console.log(sidebarList[i].sub)
+        if(sidebarList[i].sub.length > 0){
+          for (let j = 0; j < sidebarList[i].sub.length; j++) {
+            if (path[2] == sidebarList[i].sub[j].path.split("/")[2]) {
+              setLastPath(sidebarList[i].sub[j].text);
+            }
           }
+        }else{
+          setLastPath(sidebarList[i].text);
         }
+        
       }
     }
   }, [location, setMiddlePath, setLastPath]);
