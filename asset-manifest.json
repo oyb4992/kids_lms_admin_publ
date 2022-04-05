@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/kids_lms_admin_publ/static/css/main.6e03037b.css",
-    "main.js": "/kids_lms_admin_publ/static/js/main.11c4403f.js",
+    "main.css": "/kids_lms_admin_publ/static/css/main.b58d4fe0.css",
+    "main.js": "/kids_lms_admin_publ/static/js/main.360efe15.js",
     "static/media/sample.mp3": "/kids_lms_admin_publ/static/media/sample.108400f1e604490a82d4.mp3",
     "static/media/LGSmHaTSB.woff2": "/kids_lms_admin_publ/static/media/LGSmHaTSB.4ac5a4c07192f6cc784f.woff2",
     "static/media/LGSmHaTR.woff2": "/kids_lms_admin_publ/static/media/LGSmHaTR.63bb159fef8a2a8b328c.woff2",
@@ -11,7 +11,7 @@
     "index.html": "/kids_lms_admin_publ/index.html"
   },
   "entrypoints": [
-    "static/css/main.6e03037b.css",
-    "static/js/main.11c4403f.js"
+    "static/css/main.b58d4fe0.css",
+    "static/js/main.360efe15.js"
   ]
 }
