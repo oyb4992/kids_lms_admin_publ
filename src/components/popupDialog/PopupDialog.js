@@ -7,23 +7,30 @@ import {
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 const PopupDialog = (props) => {
-  const { title, children, open, setOpen, onSubmit, onClose, onDel=false, btnMsg="등록", isBtn=true, } = props;
+  const {
+    title,
+    children,
+    open,
+    setOpen,
+    onSubmit,
+    onClose,
+    onDel = false,
+    btnMsg = "등록",
+    optionClass = "optionClass",
+    isBtn = true,
+  } = props;
   return (
     <Dialog
       open={open}
       onClose={(_, reason) => {
         if (reason !== `backdropClick`) {
           setOpen(false);
-          if(onClose){
-            onClose();
-          }
-          
+          onClose();
         }
       }}
       aria-labelledby="confirm-dialog"
-      className="cpnt_dialog_page"
+      className={`cpnt_dialog_page ${optionClass}`}
       disableEscapeKeyDown
-      data-option={!isBtn && "noBtn"}
     >
       <DialogTitle>
         {title}
@@ -31,9 +38,7 @@ const PopupDialog = (props) => {
           aria-label="close"
           onClick={() => {
             setOpen(false);
-            if(onClose){
-              onClose();
-            }
+            onClose();
           }}
           sx={{
             position: "absolute",
@@ -46,9 +51,10 @@ const PopupDialog = (props) => {
         </IconButton>
       </DialogTitle>
       <DialogContent>{children}</DialogContent>
-      {isBtn && 
+
+      {isBtn && (
         <DialogActions className="cpnt_btns">
-          {onDel &&
+          {onDel && (
             <button
               className="bt mg-ra"
               type="button"
@@ -58,7 +64,7 @@ const PopupDialog = (props) => {
             >
               삭제
             </button>
-          }
+          )}
           <button
             className="bt"
             type="button"
@@ -78,7 +84,7 @@ const PopupDialog = (props) => {
             {btnMsg}
           </button>
         </DialogActions>
-      }
+      )}
     </Dialog>
   );
 };
