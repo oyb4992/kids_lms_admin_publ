@@ -36,6 +36,10 @@ const PetListDetail = (props) => {
     (e, value) => {
       setFeedingStatus(e.target.innerHTML);
       setFedgIndex(value);
+      // if(e.currentTarget.closest("tbody").querySelector("tr.active")){
+      //   e.currentTarget.closest("tbody").querySelector("tr.active").classList.remove("active");
+      // }
+      // e.currentTarget.closest("tr").classList.add("active");
     },
     [setFeedingStatus]
   );
@@ -311,7 +315,7 @@ const PetListDetail = (props) => {
             </tr>
           </thead>
           <tbody>
-            <tr>
+            <tr className={feedingStatus=='아사직전'&& 'active'}>
               <td>
                 <button
                   className="text-link"
@@ -341,7 +345,7 @@ const PetListDetail = (props) => {
                 }
               </td>
             </tr>
-            <tr>
+            <tr className={feedingStatus=='배고픔'&& 'active'}>
               <td>
                 <button
                   className="text-link"
@@ -357,7 +361,7 @@ const PetListDetail = (props) => {
               <td>X</td>
               <td>O</td>
             </tr>
-            <tr>
+            <tr className={feedingStatus=='보통'&& 'active'}>
               <td>
                 <button
                   className="text-link"
@@ -373,7 +377,7 @@ const PetListDetail = (props) => {
               <td>X</td>
               <td>O</td>
             </tr>
-            <tr>
+            <tr className={feedingStatus=='행복'&& 'active'}>
               <td>
                 <button
                   className="text-link"
@@ -389,7 +393,7 @@ const PetListDetail = (props) => {
               <td>X</td>
               <td>O</td>
             </tr>
-            <tr>
+            <tr className={feedingStatus=='배부름'&& 'active'}>
               <td>
                 <button
                   className="text-link"
@@ -449,16 +453,18 @@ const PetListDetail = (props) => {
             <dd>
               {watch(`grwData[${step}].img.url`) > `` && (
                 <div className="field-input-file-img">
-                  <img
-                    src={watch(`grwData[${step}].img.url`)}
-                    // type="video/mp4"
-                    // controls
-                    alt={watch(`grwData[${step}].img.name`)}
-                    width={`100 px`}
-                  />
-                  <button type="button" onClick={handleResetFile}>
-                    <CloseIcon /> 이미지삭제
-                  </button>
+                  <span>
+                    <img
+                      src={watch(`grwData[${step}].img.url`)}
+                      // type="video/mp4"
+                      // controls
+                      alt={watch(`grwData[${step}].img.name`)}
+                      width={`100 px`}
+                    />
+                    <button type="button" onClick={handleResetFile}>
+                      <CloseIcon /> 이미지삭제
+                    </button>
+                  </span>
                 </div>
               )}
 
@@ -497,7 +503,7 @@ const PetListDetail = (props) => {
                     controls
                     src={watch(`grwData[${step}].sds.url`)}
                   ></audio>
-                  <button type="button">이미지삭제</button>
+                  <button type="button"><CloseIcon /> 음원삭제</button>
                 </div>
               )}
               <div className="field-wrap">
@@ -568,163 +574,168 @@ const PetListDetail = (props) => {
             </div>
           )}
           {feedingStatus !== `` && feedingStatus !== `특수액션` && (
-            <dl className="dlForm-default">
-              <div className="tr">
-                <dt>
-                  <span>대표 아이콘</span>
-                </dt>
-                <dd>
-                  {watch(
-                    `grwData[${stepTab}].fedgList[${fedgIndex}].reprs.url`
-                  ) > `` && (
-                    <div className="field-input-file-img">
-                      <img
-                        src={watch(
-                          `grwData[${stepTab}].fedgList[${fedgIndex}].reprs.url`
-                        )}
-                        alt={watch(
-                          `grwData[${stepTab}].fedgList[${fedgIndex}].reprs.name`
-                        )}
-                        width={`100 px`}
-                      />
-                      <button type="button" onClick={handleResetFile}>
-                        <CloseIcon /> 이미지삭제
-                      </button>
-                    </div>
-                  )}
-                  <div className="field-wrap">
-                    <input
-                      type="file"
-                      {...register(
-                        `grwData[${stepTab}].fedgList[${fedgIndex}].reprs.file`
-                      )}
-                      onChange={(e) => {
-                        handleChangeFile(
-                          e,
-                          `grwData[${stepTab}].fedgList[${fedgIndex}].reprs`
-                        );
-                      }}
-                    />
-                    <input
-                      type="text"
-                      {...register(
-                        `grwData[${stepTab}].fedgList[${fedgIndex}].reprs.name`
-                      )}
-                      value={watch(
-                        `grwData[${stepTab}].fedgList[${fedgIndex}].reprs.name`
-                      )}
-                      readOnly
-                    />
-                    <button type="button" onClick={handleClickFile}>
-                      파일선택
-                    </button>
-                  </div>
-                </dd>
-              </div>
-              <div className="tr">
-                <dt>
-                  <span>기본</span>
-                </dt>
-                <dd>
-                  <div className="field-wrap isFull isBd">
-                    <span className="inTd wt-pc30">애니메이션</span>
-                    <div className="inTd isRow isLeft">
-                      {watch(
-                        `grwData[${stepTab}].fedgList[${fedgIndex}].dft.url`
-                      ) > `` && (
-                        <div className="field-input-file-img">
+            <>
+              <dl className="dlForm-default">
+                <div className="tr">
+                  <dt>
+                    <span>대표 아이콘</span>
+                  </dt>
+                  <dd>
+                    {watch(
+                      `grwData[${stepTab}].fedgList[${fedgIndex}].reprs.url`
+                    ) > `` && (
+                      <div className="field-input-file-img">
+                        <span>
                           <img
                             src={watch(
-                              `grwData[${stepTab}].fedgList[${fedgIndex}].dft.url`
+                              `grwData[${stepTab}].fedgList[${fedgIndex}].reprs.url`
                             )}
                             alt={watch(
-                              `grwData[${stepTab}].fedgList[${fedgIndex}].dft.name`
+                              `grwData[${stepTab}].fedgList[${fedgIndex}].reprs.name`
                             )}
                             width={`100 px`}
                           />
                           <button type="button" onClick={handleResetFile}>
                             <CloseIcon /> 이미지삭제
                           </button>
-                        </div>
-                      )}
-                      <div className="field-wrap">
-                        <input
-                          type="file"
-                          {...register(
-                            `grwData[${stepTab}].fedgList[${fedgIndex}].dft.file`
-                          )}
-                          onChange={(e) => {
-                            handleChangeFile(
-                              e,
-                              `grwData[${stepTab}].fedgList[${fedgIndex}].dft`
-                            );
-                          }}
-                        />
-                        <input
-                          type="text"
-                          {...register(
-                            `grwData[${stepTab}].fedgList[${fedgIndex}].dft.name`
-                          )}
-                          value={watch(
-                            `grwData[${stepTab}].fedgList[${fedgIndex}].dft.name`
-                          )}
-                          readOnly
-                        />
-                        <button type="button" onClick={handleClickFile}>
-                          파일선택
-                        </button>
+                        </span>
                       </div>
+                    )}
+                    <div className="field-wrap">
+                      <input
+                        type="file"
+                        {...register(
+                          `grwData[${stepTab}].fedgList[${fedgIndex}].reprs.file`
+                        )}
+                        onChange={(e) => {
+                          handleChangeFile(
+                            e,
+                            `grwData[${stepTab}].fedgList[${fedgIndex}].reprs`
+                          );
+                        }}
+                      />
+                      <input
+                        type="text"
+                        {...register(
+                          `grwData[${stepTab}].fedgList[${fedgIndex}].reprs.name`
+                        )}
+                        value={watch(
+                          `grwData[${stepTab}].fedgList[${fedgIndex}].reprs.name`
+                        )}
+                        readOnly
+                      />
+                      <button type="button" onClick={handleClickFile}>
+                        파일선택
+                      </button>
                     </div>
-                  </div>
-                  <div className="field-wrap isFull isBd mg-t0 bd-t0">
-                    <span className="inTd wt-pc30">음원</span>
-                    <div className="inTd isRow">
-                      {watch(
-                        `grwData[${stepTab}].fedgList[${fedgIndex}].sds.url`
-                      ) > `` && (
-                        <div className="audio-wrap">
-                          <audio
-                            className="audio-default"
-                            controls
-                            src={watch(
-                              `grwData[${stepTab}].fedgList[${fedgIndex}].sds.url`
+                  </dd>
+                </div>
+                <div className="tr">
+                  <dt>
+                    <span>기본</span>
+                  </dt>
+                  <dd>
+                    <div className="field-wrap isFull isBd">
+                      <span className="inTd wt-pc30">애니메이션</span>
+                      <div className="inTd isRow isLeft">
+                        {watch(
+                          `grwData[${stepTab}].fedgList[${fedgIndex}].dft.url`
+                        ) > `` && (
+                          <div className="field-input-file-img">
+                            <span>
+                              <img
+                                src={watch(
+                                  `grwData[${stepTab}].fedgList[${fedgIndex}].dft.url`
+                                )}
+                                alt={watch(
+                                  `grwData[${stepTab}].fedgList[${fedgIndex}].dft.name`
+                                )}
+                                width={`100 px`}
+                              />
+                              <button type="button" onClick={handleResetFile}>
+                                <CloseIcon /> 이미지삭제
+                              </button>
+                            </span>
+                          </div>
+                        )}
+                        <div className="field-wrap">
+                          <input
+                            type="file"
+                            {...register(
+                              `grwData[${stepTab}].fedgList[${fedgIndex}].dft.file`
                             )}
-                          ></audio>
-                          <button type="button">이미지삭제</button>
+                            onChange={(e) => {
+                              handleChangeFile(
+                                e,
+                                `grwData[${stepTab}].fedgList[${fedgIndex}].dft`
+                              );
+                            }}
+                          />
+                          <input
+                            type="text"
+                            {...register(
+                              `grwData[${stepTab}].fedgList[${fedgIndex}].dft.name`
+                            )}
+                            value={watch(
+                              `grwData[${stepTab}].fedgList[${fedgIndex}].dft.name`
+                            )}
+                            readOnly
+                          />
+                          <button type="button" onClick={handleClickFile}>
+                            파일선택
+                          </button>
                         </div>
-                      )}
-                      <div className="field-wrap isCol">
-                        <input
-                          type="file"
-                          {...register(
-                            `grwData[${stepTab}].fedgList[${fedgIndex}].sds.file`
-                          )}
-                          onChange={(e) => {
-                            handleChangeFile(
-                              e,
-                              `grwData[${stepTab}].fedgList[${fedgIndex}].sds`
-                            );
-                          }}
-                        />
-                        <input
-                          type="text"
-                          {...register(
-                            `grwData[${stepTab}].fedgList[${fedgIndex}].sds.name`
-                          )}
-                          value={watch(
-                            `grwData[${stepTab}].fedgList[${fedgIndex}].sds.name`
-                          )}
-                          readOnly
-                        />
-                        <button type="button" onClick={handleClickFile}>
-                          파일선택
-                        </button>
                       </div>
                     </div>
-                  </div>
-                </dd>
-              </div>
-
+                    <div className="field-wrap isFull isBd mg-t0 bd-t0">
+                      <span className="inTd wt-pc30">음원</span>
+                      <div className="inTd isRow">
+                        {watch(
+                          `grwData[${stepTab}].fedgList[${fedgIndex}].sds.url`
+                        ) > `` && (
+                          <div className="audio-wrap">
+                            <audio
+                              className="audio-default"
+                              controls
+                              src={watch(
+                                `grwData[${stepTab}].fedgList[${fedgIndex}].sds.url`
+                              )}
+                            ></audio>
+                            <button type="button"><CloseIcon /> 이미지삭제</button>
+                          </div>
+                        )}
+                        <div className="field-wrap isCol">
+                          <input
+                            type="file"
+                            {...register(
+                              `grwData[${stepTab}].fedgList[${fedgIndex}].sds.file`
+                            )}
+                            onChange={(e) => {
+                              handleChangeFile(
+                                e,
+                                `grwData[${stepTab}].fedgList[${fedgIndex}].sds`
+                              );
+                            }}
+                          />
+                          <input
+                            type="text"
+                            {...register(
+                              `grwData[${stepTab}].fedgList[${fedgIndex}].sds.name`
+                            )}
+                            value={watch(
+                              `grwData[${stepTab}].fedgList[${fedgIndex}].sds.name`
+                            )}
+                            readOnly
+                          />
+                          <button type="button" onClick={handleClickFile}>
+                            파일선택
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </dd>
+                </div>
+              </dl>
               <InteractField
                 control={control}
                 indexValue={`grwData[${stepTab}].fedgList[${fedgIndex}].intactList`}
@@ -733,7 +744,7 @@ const PetListDetail = (props) => {
                 handleClickFile={handleClickFile}
                 handleChangeFile={handleChangeFile}
               />
-            </dl>
+            </>
           )}
           {feedingStatus === `` && <div>영양상태를 선택해 주세요</div>}
         </div>

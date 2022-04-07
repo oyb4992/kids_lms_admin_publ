@@ -130,6 +130,7 @@ html, body { height:100%; -webkit-font-smoothing:antialiased; -moz-osx-font-smoo
         &:focus { filter:brightness(95%); }
     }
     &[data-error] { border-color:$c-mi; }
+    &.small { height:24px !important; font-size:0.9rem !important; }
     
     
 }
@@ -279,8 +280,13 @@ html, body { height:100%; -webkit-font-smoothing:antialiased; -moz-osx-font-smoo
 //     }
 // }
 .bd-1 { border:1px solid $c-bd-line !important; }
-.bd-t0 { border:0 solid transparent !important; }
+.bd-t0 { border-top:0 solid transparent !important; } .bd-t1 { border-top:1px solid $c-bd-line !important; }
 .bd-b0 { border-bottom:0 solid transparent !important; } .bd-b1 { border-bottom:1px solid $c-bd-line !important; }
+
+.bd-dt-t1 { border-top:1px dashed $c-bd-line !important; }
+.bd-dt-b1 { border-bottom:1px dashed $c-bd-line !important; }
+.bd-db-t1 { border-top:1px double $c-bd-line !important; }
+.bd-db-b1 { border-bottom:1px double $c-bd-line !important; }
 // .wt {
 //     &-pt {
 //         $i: 0;

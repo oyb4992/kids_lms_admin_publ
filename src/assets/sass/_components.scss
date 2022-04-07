@@ -28,8 +28,8 @@
 .cpnt_title { display:flex; flex-flow:nowrap row; align-items:center; padding-bottom:15px; 
     h1 { line-height:35px; font-size:$fs-t; font-weight:500; }
     .path { display:block; margin-left:auto; color:$c-ts; }
-    &.type1 { padding-bottom:0; border-top:2px solid $c-bd-lineT;
-        strong { flex:1; margin:0 0 0 0 !important; padding:6px 10px; border-left:1px solid $c-bd-line; border-right:1px solid $c-bd-line; background-color:$c-bg2; }
+    &.type1 { padding-right:4px; padding-bottom:0; border-top:2px solid $c-bd-lineT; border-left:1px solid $c-bd-line; border-right:1px solid $c-bd-line;
+        strong { flex:1; margin:0 0 0 0 !important; padding:6px 10px;  background-color:$c-bg2; }
         + .dlForm-default { border-top:1px solid $c-bd-line; }
     }
     + .layout_wrap {
@@ -98,7 +98,7 @@
         }
         tbody {
             tr {
-                &:hover > * { background-color:#fefbf1; }
+                &:hover { background-color:#fefbf1; }
                 // &[style|="position"] { width:100%; background-color:#fefbf1; }
                 &.enabled { 
                     > * {  }
@@ -109,9 +109,12 @@
                 &.disabled { 
                     > * { background-color:$c-bg; opacity:.6; }
                 }
-                > * { padding:4px 10px; background-color:#fff; text-align:center;  }
+                > * { padding:4px 10px; /*background-color:#fff;*/ text-align:center;  }
                 td {
 
+                }
+                &.active { position:relative; 
+                    &::after { content:""; display:inline-block; position:absolute; right:-18px; top:50%; transform:translateY(-50%); width:0; height:0; border-width:6px 0 6px 12px; border-style:solid; border-color:transparent transparent transparent $c-mi; }
                 }
             } 
         }
@@ -291,7 +294,8 @@
         ul { 
             
         }
-        li { position:relative; padding-left:20px;
+        li,
+        .Lstli { position:relative; padding-left:20px;
             button { display:block; width:100%; text-align:left; line-height:2.2rem; cursor:pointer;
                 &:hover, &:active { background-color:$c-bg-sb-ov; }
             }
